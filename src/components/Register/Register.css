@@ -36,12 +36,12 @@
     }
 
     & .regBg {
-        background: require('../../../assets/dota2_lina.jpg') -97px 0 no-repeat;
+        background: url('../../../assets/dota2_lina.jpg') -97px 0 no-repeat;
         background-size: cover;
     }
 
     & .loginBg {
-        background: url('/assets/dota2_qop.jpg') -386px 0 no-repeat;
+        background: url('../../../assets/dota2_qop.jpg') -386px 0 no-repeat;
         background-size: cover;
     }
     

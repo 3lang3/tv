@@ -16,14 +16,12 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 import {getCategorys} from 'actions';
 
-// const muiTheme = {
-//   palette: {
-//     textColor: palette.textColorPrimary,
-//     primary1Color: palette.blue,
-//     canvasColor: palette.primarySurfaceColor,
-//     borderColor: palette.dividerColor,
-//   }
-// };
+const muiTheme = {
+  palette: {
+    primary1Color: '#3F51B5',
+    primary2Color: '#3F51B5',
+  }
+};
 
 const getData = (props) => {
   props.getCategorys(props.params.name || 'all');
@@ -49,7 +47,7 @@ class pageHome extends React.Component {
     const params = this.props.params;
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme, muiTheme)}>
         <div className={styles.container} >
           <Nav />
           <Category type={params} />
