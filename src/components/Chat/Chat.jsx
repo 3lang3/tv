@@ -12,9 +12,13 @@ import styles from './Chat.css';
 
 const Chat = (props) =>{
 
+    const nickname = props.user ? props.user.nickname : null,
+              mmr = props.user.steamInfo ? props.user.steamInfo.solo_competitive_rank : null;
+
     const toggleClass = props.chatToggle ? '' : 'chatClose';
 
     return (
+        
         <Socket
             uri={API_HOST} 
             options={{ 
@@ -24,14 +28,15 @@ const Chat = (props) =>{
             <div className={classnames(styles.chat, styles[toggleClass])}>
                 <Barrage />
                 <ChatSetting />
-                <ChatInput />
+                <ChatInput nickname={nickname} mmr={mmr} />
             </div>
         </Socket>
     )
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    chatToggle: state.layouts.chat
+    chatToggle: state.layouts.chat,
+    user: state.metadata.data,
 })
 
 export default connect(mapStateToProps)(Chat)

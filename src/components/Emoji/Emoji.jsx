@@ -44,7 +44,9 @@ class Emoji extends React.Component {
 
         var message = {
             content: ais,
-            color: localStorage.getItem('__barrage_name_color')
+            color: localStorage.getItem('__barrage_name_color'),
+            nickname: this.props.nickname,
+            mmr: this.props.mmr,
         };
 
         this.context.socket.emit('message:send:emoji', message);

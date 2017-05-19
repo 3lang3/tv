@@ -59,7 +59,7 @@ class Barrage extends React.Component {
           mmr = this.props.data.steamInfo ? this.props.data.steamInfo.solo_competitive_rank : null;
 
     this.state.barrages.forEach((barrage, key) => {
-      barragesHtml.push(<BarrageItem key={key} nickname={nickname} mmr={mmr} {...barrage} />)
+      barragesHtml.push(<BarrageItem key={key} {...barrage} />)
     })
     
     return (

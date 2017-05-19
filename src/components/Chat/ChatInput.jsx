@@ -24,7 +24,9 @@ class ChatInput extends React.Component {
 
         var message = {
             content: this.refs.chatTextarea.value,
-            color: localStorage.getItem('__barrage_name_color')
+            color: localStorage.getItem('__barrage_name_color'),
+            nickname: this.props.nickname,
+            mmr: this.props.mmr,
         };
 
         this.context.socket.emit('message:send', message);
@@ -53,6 +55,7 @@ class ChatInput extends React.Component {
     }
 
     render() {
+
         return (
             <section className={styles.chatInput}>
                 <textarea
@@ -61,7 +64,7 @@ class ChatInput extends React.Component {
                     onKeyDown={this.handleKeyEvent}
                 >
                 </textarea>
-                <Emoji  />
+                <Emoji nickname={this.props.nickname} mmr={this.props.mmr} />
             </section>
         )
     }
