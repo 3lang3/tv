@@ -53,7 +53,7 @@ class Register extends React.Component {
                 return this.props.alertOpen('1.邮箱可能不正确啊; 2.密码最少6位哦')
             }
         }else {
-            if(!regEmail.test(emailIpt.value) || (passwordIpt.value.length < 5 || passwordIpt.value.indexOf(' ') > -1) || nickenameIpt.value.length > 3 ) {
+            if(!regEmail.test(emailIpt.value) || (passwordIpt.value.length < 5 ) || nickenameIpt.value.length < 3 ) {
                 return this.props.alertOpen('1.邮箱可能不正确啊; 2.密码最少6位哦; 3.昵称也是要填的啦！')
             }
         }
