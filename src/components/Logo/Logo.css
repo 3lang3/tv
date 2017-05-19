@@ -1,0 +1,36 @@
+.brand {
+    
+}
+
+.logo {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // margin: 17px auto 10px;
+
+    & svg {
+        margin-bottom: 2px;
+    }
+}
+
+
+.name {
+    // margin-bottom: 27px;
+    width: auto;
+    position: relative;
+    &::after {
+        height: 3px;
+        width: 30px;
+        background: #4f545c;
+        opacity: .3;
+        display: inline-block;
+        content: " ";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin: 10px 0 0 -15px;
+    }
+}

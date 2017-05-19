@@ -1,0 +1,65 @@
+.emoji {
+    height: 42px;
+    width: 42px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    & .style {
+        background: url(../../../assets/emoji_btn.png) no-repeat;
+        background-position: 0 0;
+        width: 22px;
+        height: 22px;
+        filter: grayscale(1);
+        background-size: 242px 110px;
+        opacity: .5;
+        transition: transform .1s ease-in-out, opacity .1s ease-in-out, filter .1s ease-in-out;
+
+        &:hover {
+            transform: scale(1.25);
+            filter: grayscale(0);
+            opacity: 1;
+        }
+    }
+}
+.emojiScroll {
+    max-height: 320px;
+    position: fixed !important;
+    bottom: 50px;
+    right: 20px;
+    width: 296px !important;
+    background:#fff;
+    border-radius: 5px;
+    padding: 0 12px;
+    opacity: 0;
+    z-index: -1;
+
+    &.open {
+        opacity: 1;
+        z-index: 99;
+        bottom: 78px;
+    }
+}
+.emojiContent {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 18px;
+    cursor: pointer;
+
+    & .emojiBox {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background-color: #eceeef;
+            border-radius: 3px;
+        }
+    }
+}

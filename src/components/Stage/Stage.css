@@ -1,0 +1,11 @@
+
+.stage {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    transition: none;
+}
+
+.miniStage.stage {
+    margin-left: 320px;
+}

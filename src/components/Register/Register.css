@@ -1,0 +1,67 @@
+.outerClass {
+    padding: 0 !important;
+}
+
+.contentClass {
+    max-width: 568px !important;
+}
+
+.registerSec {
+    display:flex;
+    align-items: stretch;
+    justify-content: center;
+
+    & .inputSec {
+        flex: 2;
+        padding: 35px 20px 30px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    & h4 {
+        margin: 0;
+        color:#000;
+
+        & span {
+            color:#f8882d;
+        }
+    }
+
+    & .imageSec {
+        width: 100%;
+        flex: 1.5;
+        padding: 20px;
+        min-height: 420px;
+    }
+
+    & .regBg {
+        background: require('../../../assets/dota2_lina.jpg') -97px 0 no-repeat;
+        background-size: cover;
+    }
+
+    & .loginBg {
+        background: url('/assets/dota2_qop.jpg') -386px 0 no-repeat;
+        background-size: cover;
+    }
+    
+    & .btnGroup {
+
+    }
+
+    & .underSec {
+        margin: 20px 0 0;
+
+        & a {
+            text-decoration: none;
+            color: #3f51b5;
+            font-size: 12px;
+        }
+    }
+}
+
+.checkbox {
+    font-size: 13px;
+    color:#888;
+    margin: 10px 0 20px;
+}

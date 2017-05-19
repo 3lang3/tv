@@ -1,0 +1,17 @@
+.flex {
+    display: flex;
+}
+
+.chat {
+    padding: 20px;
+    composes: flex;
+    flex-direction: column;
+    position: relative;
+    width: 320px;
+    background: #2e3136;
+    color:#fff;
+}
+
+.chatClose {
+    display: none;
+}

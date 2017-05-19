@@ -1,0 +1,78 @@
+
+.stageItem.oneScreen:first-child {
+    height: 100%;
+    width: 100%;
+}
+.stageItem.twoScreen {
+    height: 100%;
+    width: 50%;
+}
+.stageItem.threeScreen:first-child {
+    height: 100%;
+    width: 50%;
+}
+
+.stageItem {
+    color:#fff;
+    float: left;
+    margin: 0;
+    width: 50%;
+    height: 50%;
+    transition: none;
+    background: #fff;
+    position: relative;
+    
+    & ul {
+        list-style: none;
+        padding: 0;
+        overflow: hidden;
+        margin: 0;
+
+        & li {
+            display: block; 
+            float: left;
+            color:#999;
+            margin: 10px;
+            font-size: 14px;
+            & svg {
+                width: 22px !important;
+                height: 22px !important;
+                opacity: 1;
+            }
+        }
+    }
+
+    & .itemIframe {
+        height: 100%;
+        width: 100%;
+        & iframe, & embed {
+            border: none;
+            width: 100%;
+            min-height: 300px;
+            height: 100%;
+            display: block;
+            transition: none;
+        }
+    }
+
+    & .itemInfo {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: auto;
+        z-index: 1;
+
+        & span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        & svg {
+            color:#fff !important;
+        }
+        
+    }
+}
+
+    

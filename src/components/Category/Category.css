@@ -1,0 +1,62 @@
+
+.tvHide.tv {
+    left: -99999px;
+}
+
+.tvWidth.tv {
+    width: 950px;
+}
+
+.tv {
+    display: flex;
+    width: 280px;
+    height: 100vh;
+    background:#282b30;
+    padding: 20px;
+    flex-direction: column;
+    position: absolute;
+    left:70px;
+    top:0;
+    z-index: 2;
+    transition: none;
+    
+    & .zoom {
+        position: absolute !important;
+        top: 0;
+        right: 30px;
+        & svg {
+            color:#646464 !important;
+        }
+    }
+
+    & .setting {
+        position: absolute !important;
+        top: 0;
+        right: 0;
+        & svg {
+            color:#646464 !important;
+        }
+    }
+
+    & h2 {
+        margin: 20px 0 10px;
+        color:#aaaaaa;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    & .tvItemBox {
+        margin-bottom: 30px;
+    }
+
+    & .tvItemBox > div{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    & .tvItemBox > div:last-child div{
+        transition: none;
+        background-color:#000 !important;
+    }
+}

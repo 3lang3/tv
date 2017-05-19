@@ -1,0 +1,68 @@
+.setting {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    & svg {
+        color:#646464 !important;
+    }
+}
+.settingSection {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background:#fff;
+    border-radius: 5px;
+    padding: 0;
+    font-size: 13px;
+    min-width: 180px;
+    color:#888;
+    z-index: -1;
+    opacity: 0;
+    transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);; 
+
+    &.open {
+        z-index: 99;
+        opacity: 1;
+        top: 40px;
+    }
+
+    & h4 {
+        font-weight: 400;
+        padding: 15px;
+        margin: 0;
+        font-size: .8em;
+    }
+}
+
+
+.colorSection {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 15px 15px;
+    flex-wrap: wrap;
+
+    & span {
+        display: block;
+        width: 18px;
+        height: 18px;
+        background:#ff4400;
+        border-radius: 2px;
+        margin: 0 3px 3px 0;
+        cursor: pointer;
+    }
+}
+
+.lineTop {
+    border-top: 1px solid #eee;
+}
+
+.toggle {
+    color:#888;
+}
+.thumbOff {
+    background-color: #ffcccc;
+}
+.trackOff {
+    background-color: #ff9d9d;
+}

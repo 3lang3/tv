@@ -1,0 +1,57 @@
+.tvItem {
+    background:#fff;
+    font-size: 14px;
+    color:#666;
+    opacity: .75;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 20px;
+    max-width: 280px;
+    
+    &:last-child {
+        margin-bottom: 0;
+    }
+    & .add {
+        position: absolute; 
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        color:#ddd !important;  
+    }
+    & img {
+        width: 280px;
+        height: 158px;
+    }
+    & .title {
+        margin: 4px 15px 0;
+        padding: 0;
+        height: 18px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    & .ico {
+        display: flex;
+        align-items: center;
+        padding: 1px 15px 20px;
+
+        & span {
+            margin-right: 4px;
+        }
+    }
+    & span {
+        color: #bbb;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+
+        & svg {
+            width: 16px !important;
+            height: 16px !important;
+            color:#bbb !important;
+        }
+    }
+    &:hover {
+        opacity: 1;
+
+    }
+}

@@ -1,0 +1,90 @@
+import React from 'react';
+import { connect } from 'react-redux';
+import { findDOMNode } from 'react-dom';
+import { Scrollbars } from 'react-custom-scrollbars';
+import styles from './Emoji.css';
+import classnames from 'classnames';
+import EmojiItem from './EmojiItem.jsx'
+
+class Emoji extends React.Component {
+    constructor(props, context) {
+        super(props, context)
+        this.handleDocumentClick = this.handleDocumentClick.bind(this)
+        this.toggleOpen = this.toggleOpen.bind(this)
+        this.sendMessage = this.sendMessage.bind(this)
+        this.state = {
+            isOpen: false,
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('click', this.handleDocumentClick, false)
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleDocumentClick)
+    }
+
+    handleDocumentClick (event) {
+        if (!findDOMNode(this).contains(event.target)) {
+            this.setState({ isOpen: false })
+        }
+    }
+
+    toggleOpen() {
+        return this.setState({isOpen: !this.state.isOpen})
+    }
+
+    sendMessage(ais) {
+
+        if (!this.context.socket || this.context.socket.status !== 'connected') {
+            console.warn('Socket is unavailable!');
+            return;
+        }
+
+        var message = {
+            content: ais,
+            color: localStorage.getItem('__barrage_name_color')
+        };
+
+        this.context.socket.emit('message:send:emoji', message);
+    }
+
+    render() {
+        const activeClass = this.state.isOpen ? 'open' : '';
+        const x = 42, y = 31;
+        let items = [],
+            count = 0;
+
+        for (var yais = 0; yais < y; yais++) {
+            for (var xais = 0; xais < x; xais++) {
+                count ++;
+                items.push(
+                    <section className={styles.emojiBox} key={count}>
+                        <EmojiItem e={(e) => this.sendMessage(`${e.target.style.backgroundPositionX}+${e.target.style.backgroundPositionY}`)} 
+                            xais={`-${xais*22}px`} yais={`-${yais*22}px`} 
+                        />
+                    </section>
+                )
+            }
+        }
+
+        return (
+            <div className={styles.emoji}>
+                <div onClick={() => this.toggleOpen() } className={styles.style}></div>
+
+                <Scrollbars ref="emojiContainer" className={classnames(styles.emojiScroll, styles[activeClass])}>
+                    <section className={styles.emojiContent}>
+                        {items}
+                    </section>
+                </Scrollbars>
+            </div>
+        )
+    }
+}
+
+Emoji.contextTypes = {
+    socket: React.PropTypes.object.isRequired
+}
+
+export default Emoji;

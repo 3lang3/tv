@@ -1,0 +1,30 @@
+.stageMain {
+    height: calc(100vh - 56px);
+    overflow: hidden;
+    background:#36393e;
+    // padding: 20px; 
+    border-top: 1px solid #34363a;
+    // display: flex;
+    // flex-wrap: wrap;
+    margin: 0;
+    overflow: hidden;
+}
+
+.emptyScreen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100% - 100px);
+    
+    & p {
+        color:hsla(0,0%,100%,.4);
+        font-size: 14px;
+    }
+    
+    & img {
+        width: 100%;
+        max-width: 280px;
+    }
+}

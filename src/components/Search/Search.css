@@ -1,0 +1,32 @@
+.searchBar {
+    position: relative;
+    height: 40px;
+    max-width: 300px !important;
+    & input {
+        border-radius: 2px;
+        height: 100%;
+        padding: 0 10px;
+        background:#2e3136;
+        font-size: 14px;
+        width: 100%;
+        border: none;
+        outline: none;
+        color:#fff;
+        box-sizing: border-box;
+        &:focus {
+            background:#fff;
+            color:#666;
+        }
+    }
+
+    & .fdjico {
+        position: absolute;
+        right: 2px;
+        top: 7px;
+        display: flex;
+        width: 28px;
+        height: 28px;
+        justify-content: center;
+        align-items: center;
+    }
+}

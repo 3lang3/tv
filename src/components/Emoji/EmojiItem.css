@@ -1,0 +1,13 @@
+.emojiItem {
+    width:22px;
+    height: 22px;
+    margin: 3px;
+    background:url(../../../assets/emoji.png) no-repeat;
+    background-size: 924px 682px;
+
+    &.barrage {
+        margin: 0;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}
