@@ -16,14 +16,14 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 import {getCategorys} from 'actions';
 
-const muiTheme = {
-  palette: {
-    textColor: palette.textColorPrimary,
-    primary1Color: palette.blue,
-    canvasColor: palette.primarySurfaceColor,
-    borderColor: palette.dividerColor,
-  }
-};
+// const muiTheme = {
+//   palette: {
+//     textColor: palette.textColorPrimary,
+//     primary1Color: palette.blue,
+//     canvasColor: palette.primarySurfaceColor,
+//     borderColor: palette.dividerColor,
+//   }
+// };
 
 const getData = (props) => {
   props.getCategorys(props.params.name || 'all');

@@ -5,6 +5,8 @@ import classnames from 'classnames';
 import Barrage from 'components/Barrage';
 import ChatInput from 'components/Chat/ChatInput.jsx';
 import ChatSetting from 'components/Chat/ChatSetting.jsx';
+import config from '../../../config';
+const API_HOST = `${config.HOST}:3001`
 
 import styles from './Chat.css';
 
@@ -14,7 +16,7 @@ const Chat = (props) =>{
 
     return (
         <Socket
-            uri={'http://localhost:3001'} 
+            uri={API_HOST} 
             options={{ 
                 //transports: ['websocket'],
             }}

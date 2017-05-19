@@ -2,7 +2,8 @@
 import fetch from 'isomorphic-fetch';
 import {layoutsOpen} from 'actions';
 
-const API_HOST = 'http://localhost:3000'
+import config from '../../config';
+const API_HOST = `${config.HOST}:3000`
 const url = '/api/metadata';
 
 const REQUEST = 'metadata/REQUEST';

@@ -10,6 +10,9 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
+import config from '../../../config';
+const API_HOST = `${config.HOST}:3000`
+
 const convertFormdataToJson = (formData) => {
     let objData = {};
     formData.forEach((value, key) => objData[key] = value);
@@ -46,7 +49,7 @@ class Register extends React.Component {
                     <div className={styles.inputSec}>
                         <div>
                         <h4>欢迎来到<span>RUARUA.live</span></h4>
-                            <form id="formLogin" action="http://localhost:3000/login" method="get" ref="registerForm">
+                            <form id="formLogin" action={`${API_HOST}/login`} method="get" ref="registerForm">
 
                             <TextField
                                 hintText=""

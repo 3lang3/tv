@@ -14,6 +14,9 @@ import classnames from 'classnames';
 import { connect } from 'react-redux';
 import { alertOpen } from 'actions';
 
+import config from '../../../config';
+const API_HOST = `${config.HOST}:3000`
+
 const convertFormdataToJson = (formData) => {
     let objData = {};
     formData.forEach((value, key) => objData[key] = value);
@@ -77,7 +80,7 @@ class Register extends React.Component {
                     <div className={styles.inputSec}>
                         <div>
                         <h4>{ textRegLogin }<span>RUARUA.live</span></h4>
-                            <form id="formRegLogin" action={isLogin ? 'http://localhost:3000/login' : 'http://localhost:3000/register'} method="get">
+                            <form id="formRegLogin" action={isLogin ? `${API_HOST}/login` : `${API_HOST}/register`} method="get">
                                 {
                                     !isLogin
                                         ? <TextField
@@ -132,7 +135,7 @@ class Register extends React.Component {
                                     marginLeft: '10px',
                                 }}
                             />
-                            <p className={styles.underSec}><a href="http://localhost:3000/loginSteam">使用Steam账号登录</a></p>
+                            <p className={styles.underSec}><a href={`${API_HOST}/loginSteam`}>使用Steam账号登录</a></p>
                         </div>
                     </div>
                 </div>

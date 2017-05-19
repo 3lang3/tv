@@ -1,7 +1,8 @@
 /* global API_HOST */
 import fetch from 'isomorphic-fetch';
 
-const API_HOST = 'http://localhost:3000'
+import config from '../../config';
+const API_HOST = `${config.HOST}:3000`
 const url = '/api/invite/';
 
 const REQUEST = 'invite/REQUEST';

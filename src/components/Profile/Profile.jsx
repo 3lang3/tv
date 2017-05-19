@@ -12,6 +12,9 @@ import GiftIco from 'material-ui/svg-icons/action/card-giftcard';
 import { IconSteam } from '../Icons';
 import { browserHistory } from 'react-router';
 
+import config from '../../../config';
+const API_HOST = `${config.HOST}:3000`
+
 class Profile extends React.Component {
     constructor(props) {
         super(props)
@@ -76,7 +79,7 @@ class Profile extends React.Component {
                                         backgroundColor="#a4c639"
                                         hoverColor="#8AA62F"
                                         icon={<IconSteam />}
-                                        onClick={() => window.location.href = 'http://localhost:3000/loginSteam'}
+                                        onClick={() => window.location.href = `${API_HOST}/loginSteam`}
                                     />
                             }
                             <br/>
@@ -85,7 +88,7 @@ class Profile extends React.Component {
                                 className={styles.logoutBtn}
                                 backgroundColor="#ff4400"
                                 hoverColor="#ce3700"
-                                onClick={() => window.location.href= 'http://localhost:3000/logout' }
+                                onClick={() => window.location.href= `${API_HOST}/logout` }
                             />
                         </div>
                     
