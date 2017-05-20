@@ -101,6 +101,7 @@ class Invite extends Component {
                         overlayClassName={styles.overlayClass}
                         className={styles.dialogClass}
                         contentClassName={styles.contentClass}
+                        autoScrollBodyContent={true}
                     >
                         <section className={styles.changeLogSec}>
                             <h4>版本更新<span>version 1.0.0</span></h4>
