@@ -1,3 +1,3 @@
 export default {
-    HOST: 'http://www.ruarua.live',
+    HOST: 'http://localhost',
 }
