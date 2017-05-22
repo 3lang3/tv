@@ -59,7 +59,7 @@ class getCategory extends React.Component {
     }
     
     return (
-      <div className={classnames(styles.tv, styles[isOpen], styles[isWidth])}>
+      <div id="categoryContainer" className={classnames(styles.tv, styles[isOpen], styles[isWidth])}>
         <IconButton
           className={styles.zoom}
           onClick={() => this.props.layoutsWidth()}

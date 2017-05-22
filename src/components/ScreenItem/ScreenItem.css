@@ -1,25 +1,16 @@
 
 .stageItem.oneScreen:first-child {
-    height: 100%;
     width: 100%;
-}
-.stageItem.twoScreen {
-    height: 100%;
-    width: 50%;
-}
-.stageItem.threeScreen:first-child {
-    height: 100%;
-    width: 50%;
 }
 
 .stageItem {
     color:#fff;
-    float: left;
-    margin: 0;
     width: 50%;
     height: 50%;
+    float: left;
+    box-sizing: border-box;
     transition: none;
-    background: #fff;
+    background: none;
     position: relative;
     
     & ul {
@@ -48,9 +39,9 @@
         & iframe, & embed {
             border: none;
             width: 100%;
-            min-height: 300px;
+            min-width: 370.7px;
+            min-height: 209px;
             height: 100%;
-            display: block;
             transition: none;
         }
     }

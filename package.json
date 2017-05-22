@@ -33,6 +33,7 @@
     "react-custom-scrollbars": "^4.1.0",
     "react-dom": "^15.3.2",
     "react-helmet": "^5.0.1",
+    "react-lazyload": "^2.2.7",
     "react-markdown": "^2.4.4",
     "react-measure": "1.4.6",
     "react-redux": "^5.0.4",

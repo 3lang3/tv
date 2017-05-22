@@ -13,7 +13,7 @@ import IconClear from 'material-ui/svg-icons/content/clear';
 import {screenItemsRemove} from 'actions';
 
 const platforms = [
-    {name: 'douyu', url: 'http://staticlive.douyutv.com/common/share/play.swf?room_id='},
+    {name: 'douyu', url: 'https://staticlive.douyucdn.cn/common/share/play.swf?room_id='},
     {name: 'huomao', url: 'https://www.huomao.com/outplayer/index/'},
     {name: 'twitch', url: 'https://player.twitch.tv/?channel='},
     {name: 'afreecatv', url: 'http://www.afreecatv.com/player/player.html?isAfreeca=false&type=station&autoPlay=true&szPart=NORMAL'},
@@ -51,6 +51,16 @@ const preScreenCount = (count) => {
 // 
 class screenItem extends React.Component {
 
+    componentDidMount() {
+        var items = document.querySelectorAll('.testItem');
+
+        if(items.length > 0) {
+            items.forEach((el, i) => {
+                el.style.height = `${el.clientWidth / 1.777777777}px`
+            })
+        }
+    }
+
     render() {
         const item = this.props.item;
         const id = preFixIds(this.props.item.roomId);
@@ -64,9 +74,9 @@ class screenItem extends React.Component {
         })
 
         return (
-            <section className={classnames(styles.stageItem, styles[screenClass])}>
+            <section className={classnames(styles.stageItem, styles[screenClass], 'testItem')}>
                 <section className={styles.itemIframe} 
-                     dangerouslySetInnerHTML={{__html: `<iframe src="${_url}${id}" frameborder="0"></iframe>`}}>
+                     dangerouslySetInnerHTML={{__html: `<embed allowscriptaccess="always" src="${_url}${id}" allowfullscreen="true"></embed>`}}>
                 </section>
                 <section className={styles.itemInfo}>
                     {/*<p onClick={() => item.removeItem(item)}>{item.title}</p>*/}

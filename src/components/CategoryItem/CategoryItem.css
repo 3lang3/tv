@@ -7,6 +7,7 @@
     cursor: pointer;
     margin-bottom: 20px;
     max-width: 280px;
+    width: 100%;
     
     &:last-child {
         margin-bottom: 0;
@@ -21,6 +22,7 @@
     & img {
         width: 280px;
         height: 158px;
+        opacity: 0;
     }
     & .title {
         margin: 4px 15px 0;
@@ -54,4 +56,8 @@
         opacity: 1;
 
     }
+}
+
+.imgFadeIn {
+    opacity: 1 !important;
 }

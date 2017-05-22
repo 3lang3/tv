@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import LazyLoad from 'react-lazyload';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import styles from './CategoryItem.css';
 
 import ActionEye from 'material-ui/svg-icons/action/visibility';
@@ -8,15 +9,31 @@ import PlayAdd from 'material-ui/svg-icons/av/playlist-add';
 
 import {screensActive, screenItemsAdd, screenItemsRemove} from 'actions';
 
-class categoryItem extends React.Component {
+class CategoryItem extends React.Component {
+    constructor(props) {
+        super(props)
+        this.imageLoad = this.imageLoad.bind(this)
+    }
+
+    imageLoad(e) {
+        e.target.className = styles.imgFadeIn;
+        return false
+    }
 
     render() {
         const item = this.props.item;
 
         return (
             <section onClick={() => this.props.addItem(item)} className={styles.tvItem}>
+                
                 <PlayAdd className={styles.add} />
-                <img src={`${item.cover}`} />
+                <LazyLoad
+                    overflow={true}
+                    height={158}
+                    throttle={200}
+                >
+                    <img src={`${item.cover}`} onLoad={this.imageLoad} />
+                </LazyLoad>
                 <div className={styles.title} title={`${item.title}`}>
                     {item.title}
                 </div>
@@ -24,6 +41,7 @@ class categoryItem extends React.Component {
                     <span><ActionEye /> {item.view}</span>
                     <span><ActionEye /> {item.anchor}</span>
                 </div>
+                
             </section>
         )
     }
@@ -33,4 +51,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   addItem: (item) => dispatch(screenItemsAdd(item))
 })
 
-export default connect(null, mapDispatchToProps)(categoryItem)
+export default connect(null, mapDispatchToProps)(CategoryItem)

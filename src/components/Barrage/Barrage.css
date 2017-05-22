@@ -26,5 +26,10 @@
         color:#bcbcbc;
         font-size: 13px;
         margin-bottom: 10px;
+        transition: none;
+
+        & * {
+            transition: none;
+        }
     }
 }
