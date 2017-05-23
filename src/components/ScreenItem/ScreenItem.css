@@ -1,17 +1,18 @@
 
 .stageItem.oneScreen:first-child {
-    width: 100%;
+    width: 98%;
+    margin: 0 0 0 1%;
 }
 
 .stageItem {
     color:#fff;
-    width: 50%;
-    height: 50%;
+    width: 49%;
     float: left;
     box-sizing: border-box;
     transition: none;
     background: none;
     position: relative;
+    margin: 0 0 0 0.66666%;
     
     & ul {
         list-style: none;
@@ -36,6 +37,10 @@
     & .itemIframe {
         height: 100%;
         width: 100%;
+        position: absolute;
+        /* padding-bottom: 28%; */
+        left: 0;
+        top: 0;
         & iframe, & embed {
             border: none;
             width: 100%;

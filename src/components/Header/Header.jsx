@@ -56,6 +56,7 @@ class Header extends React.Component {
                 {
                     !isOpen ? <IconButton
                                 className={styles.toggleBtn}
+                                tooltip="显示列表"
                                 onClick={() => this.props.layoutsOpen(true) }
                               >
                                 <ToggleIco />

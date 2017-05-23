@@ -61,3 +61,7 @@
 .imgFadeIn {
     opacity: 1 !important;
 }
+
+.notShow {
+    display: none;
+}

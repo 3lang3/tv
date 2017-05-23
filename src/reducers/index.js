@@ -1,4 +1,5 @@
 import categorys from './categorys';
+import search from './search';
 import screens from './screens';
 import screenItems from './screenItems';
 import layouts from './layouts';
@@ -9,6 +10,7 @@ import invite from './invite';
 
 export {
     categorys,
+    search,
     screens,
     screenItems,
     layouts,

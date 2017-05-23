@@ -1,16 +1,15 @@
-import { categorysActions } from 'actions';
+import { searchActions } from 'actions';
 
 const initialState = {
     loading: false,
     error: false,
     done: false,
     data: {},
-    filter: '',
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case categorysActions.REQUEST:
+        case searchActions.REQUEST:
             return {
                 ...state,
                 loading: true,
@@ -18,7 +17,7 @@ export default (state = initialState, action) => {
                 done: false,
                 data: {}
             }
-        case categorysActions.OK:
+        case searchActions.OK:
             return {
                 ...state,
                 loading: false,
@@ -26,17 +25,12 @@ export default (state = initialState, action) => {
                 done: true,
                 data: action.payload,
             }
-        case categorysActions.ERROR:
+        case searchActions.ERROR:
             return {
                 ...state,
                 loading: false,
                 error: true,
                 done: false,
-            }
-        case categorysActions.FILTER:
-            return {
-                ...state,
-                filter: action.payload,
             }
         default:
             return state;

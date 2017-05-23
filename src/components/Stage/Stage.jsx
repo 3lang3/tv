@@ -7,9 +7,9 @@ import Screen from 'components/Screen';
 import styles from './Stage.css';
 
 export const stage = (props) => {
-  const isOpen = props.open ? 'miniStage' : '';
+  //const isOpen = props.open ? 'miniStage' : '';
   return (
-    <div className={classnames(styles.stage, styles[isOpen])}>
+    <div className={styles.stage}>
       <Header />
       <Screen />
     </div>

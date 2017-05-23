@@ -4,9 +4,19 @@ import { connect } from 'react-redux';
 import styles from './Screen.css';
 import ScreenItem from 'components/ScreenItem';
 
-import {screenItemsAdd, screenItemsRemove} from 'actions';
+import {screenItemsAdd, screenItemsRemove, layoutsOpen} from 'actions';
 
 class screen extends React.Component {
+
+    constructor(props) {
+        super(props)
+    }
+    
+    componentWillUpdate(props, nextProps) {
+        if(props.items.length == 0) {
+            props.layoutsOpen(true)
+        }
+    }
 
     render() {
         const items = [];
@@ -35,5 +45,9 @@ const mapStateToProps = (state, ownProps) => ({
     items: state.screenItems,
 })
 
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    layoutsOpen: (clas) => dispatch(layoutsOpen(clas)),
+})
 
-export default connect(mapStateToProps)(screen)
+
+export default connect(mapStateToProps, mapDispatchToProps)(screen)

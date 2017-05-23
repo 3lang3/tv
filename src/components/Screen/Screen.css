@@ -2,11 +2,10 @@
     height: calc(100vh - 56px);
     overflow: hidden;
     background:#36393e;
-    // padding: 20px; 
     border-top: 1px solid #34363a;;
-    // display: flex;
-    // flex-wrap: wrap;
-    // align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     margin: 0;
     overflow: hidden;
 }

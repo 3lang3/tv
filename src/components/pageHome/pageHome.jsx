@@ -33,9 +33,9 @@ class pageHome extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
-    if(this.props.params.name != nextProps.params.name) {
-      getData(nextProps)
-    }
+    // if(this.props.params.name != nextProps.params.name) {
+    //   getData(nextProps)
+    // }
 
     if(this.props.params != nextProps.params) {
       getData(nextProps)

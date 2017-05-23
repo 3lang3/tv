@@ -63,7 +63,11 @@ class Emoji extends React.Component {
                 count ++;
                 items.push(
                     <section className={styles.emojiBox} key={count}>
-                        <EmojiItem e={(e) => this.sendMessage(`${e.target.style.backgroundPositionX}+${e.target.style.backgroundPositionY}`)} 
+                        <EmojiItem 
+                            e={(e) => {
+                                this.sendMessage(`${e.target.style.backgroundPositionX}+${e.target.style.backgroundPositionY}`)
+                                this.toggleOpen()
+                            }} 
                             xais={`-${xais*22}px`} yais={`-${yais*22}px`} 
                         />
                     </section>

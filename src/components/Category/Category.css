@@ -5,6 +5,14 @@
 
 .tvWidth.tv {
     width: 950px;
+
+    & .flexWrapper{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
 }
 
 .tv {
@@ -39,7 +47,7 @@
     }
 
     & h2 {
-        margin: 20px 0 10px;
+        margin: 0 0 5px 0;
         color:#aaaaaa;
         font-size: 18px;
         font-weight: 400;
@@ -49,14 +57,46 @@
         margin-bottom: 30px;
     }
 
-    & .tvItemBox > div{
+    & .flexWrapper{
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
     }
 
     & .tvItemBox > div:last-child div{
         transition: none;
         background-color:#000 !important;
+    }
+}
+
+.categoryTitle {
+    margin: 20px 0 20px;
+}
+
+.chipSec {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+
+    & span {
+        font-size: 12px;
+        display: block;
+        border-radius: 15px;
+        font-weight: 400;
+        background: #ccc;
+        color: #2e3136;
+        padding: 3px 6px;
+        margin: 0 4px 5px 0;
+        cursor: pointer;
+
+        &.active {
+            background:#5b6ca9;
+        }
+
+        &:hover {
+            background:#fff;
+        }
     }
 }

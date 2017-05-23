@@ -1,12 +1,10 @@
 .header {
-        padding: 0 20px;
+        padding: 0 0 0 20px;
         height: 56px;
         border-bottom: 1px solid #313338;
         display: flex;
-        justify-content: flex-start;
+        justify-content: flex-end;
         background:#36393e;
-        items-align: center;
-        justify-content: flex-start;
         align-items: center;
         position: relative;
 
@@ -30,8 +28,6 @@
         }
 
         & nav {
-            position: absolute;
-            right: 10px;
 
             & svg {
                 opacity: .5;
@@ -44,7 +40,9 @@
     }
 
 .toggleBtn {
-    margin-left: -20px !important;
+    position: absolute !important;
+    left: 5px;
+
     & svg {
         color:#fff !important;
         opacity: .5;

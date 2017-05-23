@@ -6,12 +6,13 @@ import CategoryItem from 'components/CategoryItem';
 import Error from 'components/Error';
 import Spinner from 'components/Spinner';
 import { IconZoom, IconMini } from 'components/Icons';
+import { forceCheck } from 'react-lazyload';
 
 import { Scrollbars } from 'react-custom-scrollbars';
 import IconButton from 'material-ui/IconButton';
 import CloseIco from 'material-ui/svg-icons/navigation/close';
 
-import {layoutsWidth, layoutsOpen} from 'actions';
+import {layoutsWidth, layoutsOpen, filterCategorys} from 'actions';
 
 const preTypeTitle = (props) => {
   switch(props.type.name) {
@@ -37,10 +38,24 @@ const preTypeTitle = (props) => {
 class getCategory extends React.Component {
   constructor(props) {
     super(props)
+    this.toggleWidth = this.toggleWidth.bind(this)
+    this.filterHander = this.filterHander.bind(this)
+  }
+
+  filterHander(clas) {
+    this.props.filterCategorys(clas)
+  }
+
+  toggleWidth() {
+    this.props.layoutsWidth()
   }
 
   componentWillUpdate(props, newProps) {
     if(props == newProps) return false;
+  }
+
+  componentDidUpdate() {
+    forceCheck()
   }
 
   render() {
@@ -50,19 +65,25 @@ class getCategory extends React.Component {
     const loading = this.props.data.loading;
     const isError = this.props.data.error;
     const items = this.props.data.data;
+    const filterName = this.props.data.filter;
+
     let itemsHtml = [];
+    let itemsPlatform = [''];
 
     if(items instanceof Array) {
       items.forEach((item, key) => {
+        if(itemsPlatform.indexOf(item.platform) == -1 ) itemsPlatform.push(item.platform);
         itemsHtml.push(<CategoryItem key={key} item={item} />)
       })
     }
+
+
     
     return (
       <div id="categoryContainer" className={classnames(styles.tv, styles[isOpen], styles[isWidth])}>
         <IconButton
           className={styles.zoom}
-          onClick={() => this.props.layoutsWidth()}
+          onClick={this.toggleWidth}
         >
         { this.props.width ? <IconMini fill="#646464" /> : <IconZoom fill="#646464" />}
         </IconButton>
@@ -73,10 +94,28 @@ class getCategory extends React.Component {
         >
           <CloseIco />
         </IconButton>
-        <h2>{typeName}</h2>
+
+        <div className={styles.categoryTitle}>
+            <h2>{typeName}</h2>
+            <section className={styles.chipSec}>
+              {
+                itemsPlatform.length > 1 && itemsPlatform.map((platform, key) => {
+                  {/*if(platform == 'douyu') platform = '斗鱼';
+                  if(platform == 'twitch') platform = 'Twitch';
+                  if(platform == 'huomao') platform = '火猫';
+                  if(platform == 'huya') platform = '虎牙';
+                  if(platform == 'douyuvideo') platform = '斗鱼视频';*/}
+                  return <span className={ filterName == platform ? styles.active : '' } onClick={() => this.filterHander(platform)} key={key}>{platform || 'All'}</span>
+                })
+              }
+            </section>
+        </div>
+        
         <Scrollbars className={styles.tvItemBox}>
-          {loading ? <Spinner size={50} color="#fff" /> : ''}
-          {isError ? <Error img={require('../../../assets/error_fetch.svg')} content='Ooops,服务器好像出了点小问题' /> : itemsHtml }
+          <section className={styles.flexWrapper}>
+            {loading ? <Spinner size={50} color="#fff" /> : ''}
+            {isError ? <Error img={require('../../../assets/error_fetch.svg')} content='Ooops,服务器好像出了点小问题' /> : itemsHtml }
+          </section>
         </Scrollbars>
       </div>
     )
@@ -90,6 +129,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  filterCategorys: (clas) => dispatch(filterCategorys(clas)),
   layoutsWidth: (clas) => dispatch(layoutsWidth(clas)),
   layoutsOpen: (clas) => dispatch(layoutsOpen(clas)),
 })

@@ -18,13 +18,18 @@ const platforms = [
     {name: 'twitch', url: 'https://player.twitch.tv/?channel='},
     {name: 'afreecatv', url: 'http://www.afreecatv.com/player/player.html?isAfreeca=false&type=station&autoPlay=true&szPart=NORMAL'},
     {name: 'douyuvideo', url: 'https://v.douyu.com/video/share/index?vid='},
+    {name: 'huya', url: 'http://liveshare.huya.com/'},
 ]
 
-const preFixIds = (ids) => {
+const preFixIds = (item) => {
+    let ids = item.roomId;
     let _id;
 
     if(typeof ids != 'object') {
+        
         _id = ids;
+        if(item.platform == 'huya') _id = `${ids}//huyacoop.swf`;
+
     }else {
         for (let key in ids) {
             _id+= `&${key}=${ids[key]}`
@@ -51,20 +56,11 @@ const preScreenCount = (count) => {
 // 
 class screenItem extends React.Component {
 
-    componentDidMount() {
-        var items = document.querySelectorAll('.testItem');
-
-        if(items.length > 0) {
-            items.forEach((el, i) => {
-                el.style.height = `${el.clientWidth / 1.777777777}px`
-            })
-        }
-    }
-
     render() {
         const item = this.props.item;
-        const id = preFixIds(this.props.item.roomId);
-
+        const id = preFixIds(this.props.item);
+        const paddBottom = (item.platform == 'douyu' || item.platform == 'huya' || item.platform == 'douyuvideo') ? 640/360 : 1.77777777778
+        const secHeight = this.props.screenCount > 1 ? 49 : 98;
         const screenClass = preScreenCount(this.props.screenCount);
 
         let _url;
@@ -74,7 +70,7 @@ class screenItem extends React.Component {
         })
 
         return (
-            <section className={classnames(styles.stageItem, styles[screenClass], 'testItem')}>
+            <section className={classnames(styles.stageItem, styles[screenClass])} style={{paddingBottom: `${secHeight/paddBottom}%`}}>
                 <section className={styles.itemIframe} 
                      dangerouslySetInnerHTML={{__html: `<embed allowscriptaccess="always" src="${_url}${id}" allowfullscreen="true"></embed>`}}>
                 </section>

@@ -1,4 +1,5 @@
 export * from './categorysActions';
+export * from './searchActions';
 export * from './screensActions';
 export * from './screenItemsActions';
 export * from './layoutsActions';

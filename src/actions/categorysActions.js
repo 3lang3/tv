@@ -8,11 +8,13 @@ const url = '/api/categorys/';
 const REQUEST = 'categorys/REQUEST';
 const OK = 'categorys/OK';
 const ERROR = 'categorys/ERROR';
+const FILTER = 'categorys/FILTER';
 
 export const categorysActions = {
   REQUEST,
   OK,
   ERROR,
+  FILTER,
 };
 
 const getCategorysRequest = () => ({
@@ -29,6 +31,11 @@ const getCategorysError = payload => ({
   payload,
 });
 
+const filterCategorys = payload => ({
+  type: FILTER,
+  payload,
+})
+
 const getCategorys = (name) => (dispatch) => {
   dispatch(getCategorysRequest());
   dispatch(layoutsOpen(true))
@@ -40,4 +47,5 @@ const getCategorys = (name) => (dispatch) => {
 
 export {
   getCategorys,
+  filterCategorys
 };
