@@ -8,20 +8,37 @@ import styles from './Changelog.css';
 
 class ChangeLog extends React.Component {
 
-    render() {
+    constructor(props) {
+        super(props)
+        this.closeHandler = this.closeHandler.bind(this)
+        this.state = {
+            open: false,
+        }
+    }
+
+    componentDidUpdate() {
         const needShowChangeLog = localStorage.getItem('needShowChangeLog');
         const version = this.props.metadata.version;
-        let open = false;
 
         if ( version !== undefined && (needShowChangeLog !== version || needShowChangeLog === null)) {
             localStorage.setItem('needShowChangeLog', version);
-            open = true;
+            this.closeHandler()
         }
+    }
+
+    closeHandler() {
+        this.setState({
+            open: true,
+        })
+    }
+
+    render() {
+        
 
         return (
             <Dialog
                 modal={false}
-                open={open}
+                open={this.state.open}
                 bodyClassName={styles.outerClass}
                 overlayClassName={styles.overlayClass}
                 className={styles.dialogClass}
@@ -54,7 +71,7 @@ class ChangeLog extends React.Component {
                                 margin: '30px auto 0',
                                 color: '#fff',
                             }}
-                            onClick={() => browserHistory.push('/category/all')}
+                            onClick={() => this.setState({open: false})}
                         />
                     </div>
                     <p className={styles.copyRight}>站点所有资源均来自互联网聚合, 如有任何疑问请联系 <span>675483520@qq.com</span></p>
