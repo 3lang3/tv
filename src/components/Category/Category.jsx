@@ -73,7 +73,7 @@ class getCategory extends React.Component {
     if(items instanceof Array) {
       items.forEach((item, key) => {
         if(itemsPlatform.indexOf(item.platform) == -1 ) itemsPlatform.push(item.platform);
-        itemsHtml.push(<CategoryItem key={key} item={item} />)
+        itemsHtml.push(<CategoryItem filter={this.props.filter} key={key} item={item} type="category" />)
       })
     }
 
@@ -126,6 +126,7 @@ const mapStateToProps = (state, ownProps) => ({
     data: state.categorys,
     width: state.layouts.width,
     open: state.layouts.open,
+    filter: state.categorys.filter,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

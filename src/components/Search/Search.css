@@ -35,12 +35,19 @@
 
 .searchResult {
     position: absolute;
-    top: 44px;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 300px;
     background: #fff;
-    border-radius: 4px;
-    display: flex;
-    align-content: center;
+    z-index: 1;
+}
+
+.emptyContent {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    color: #ccc;
+    font-size: 12px;
+    padding: 0 10px;
+    box-sizing: border-box;
 }

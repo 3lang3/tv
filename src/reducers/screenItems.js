@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
                 let isSame = false;
                 
                 newState.map(item => {
-                    if(item == action.payload) return isSame = true;
+                    if((item.title == action.payload.title && item.roomId == action.payload.roomId)) return isSame = true;
                 })
 
                 if(isSame) {

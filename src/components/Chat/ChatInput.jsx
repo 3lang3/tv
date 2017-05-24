@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ChatInput.css';
 import { emojiToggle } from 'actions';
 import Emoji from 'components/Emoji';
+import ShareScreen from 'components/ShareScreen';
 
 class ChatInput extends React.Component {
     constructor(props, context) {
@@ -65,6 +66,7 @@ class ChatInput extends React.Component {
                 >
                 </textarea>
                 <Emoji nickname={this.props.nickname} mmr={this.props.mmr} />
+                <ShareScreen nickname={this.props.nickname} mmr={this.props.mmr} />
             </section>
         )
     }

@@ -8,6 +8,18 @@ import PlayAdd from 'material-ui/svg-icons/av/playlist-add';
 
 import {screensActive, screenItemsAdd, screenItemsRemove, layoutsOpen} from 'actions';
 
+const getClassType = (type) => {
+    switch(type) {
+        case 'category':
+            return 'tvItem';
+        case 'search':
+            return 'search';
+        case 'screen':
+            return 'screen';
+        default:
+            return '';
+    }
+}
 
 class CategoryItem extends React.Component {
     constructor(props) {
@@ -23,6 +35,8 @@ class CategoryItem extends React.Component {
     render() {
         const item = this.props.item;
         const notShow = (!this.props.filter || this.props.filter == item.platform) ? '' : 'notShow';
+        const styleType = getClassType(this.props.type);
+        const overflow = typeof this.props.overflow !== 'undefined' ? this.props.overflow : true;
 
         return (
             <section 
@@ -30,19 +44,21 @@ class CategoryItem extends React.Component {
                     this.props.addItem(item)
                     this.props.layoutsOpen(false)
                 }} 
-                className={classnames(styles.tvItem, styles[notShow])}
+                className={classnames(styles[styleType], styles[notShow])}
             >
                 
                 <PlayAdd className={styles.add} />
-                <LazyLoad
-                    overflow={true}
-                    resize={true}
-                    height={158}
-                    throttle={200}
-                >
-                    <img src={`${item.cover}`} onLoad={this.imageLoad} />
-                </LazyLoad>
-                <section>
+                <section className={styles.imgWrapper}>
+                    <LazyLoad
+                        overflow={overflow}
+                        resize={true}
+                        height={158}
+                        throttle={200}
+                    >
+                        <img src={`${item.cover}`} onLoad={this.imageLoad} />
+                    </LazyLoad>
+                </section>
+                <section className={styles.textSec}>
                     <div className={styles.title} title={`${item.title}`}>
                         {item.title}
                     </div>
@@ -67,4 +83,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem)
+export default connect(null, mapDispatchToProps)(CategoryItem)

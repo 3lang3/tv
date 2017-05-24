@@ -38,7 +38,8 @@ const filterCategorys = payload => ({
 
 const getCategorys = (name) => (dispatch) => {
   dispatch(getCategorysRequest());
-  dispatch(layoutsOpen(true))
+  dispatch(layoutsOpen(true));
+  dispatch(filterCategorys(''));
   return fetch(`${API_HOST}${url}${name}`)
     .then(res => res.json())
     .then(json => dispatch(getCategorysOk(json)))

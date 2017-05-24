@@ -86,13 +86,14 @@
         border-radius: 15px;
         font-weight: 400;
         background: #ccc;
-        color: #2e3136;
+        color: #6d6d6d;
         padding: 3px 6px;
         margin: 0 4px 5px 0;
         cursor: pointer;
 
         &.active {
             background:#5b6ca9;
+            color:#fff;
         }
 
         &:hover {
