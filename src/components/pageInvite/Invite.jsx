@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ChangeLog from 'components/Changelog';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
@@ -38,14 +37,7 @@ class Invite extends Component {
 
     passInvite() {
         localStorage.setItem('__inviteCode', this.props.location.query.code);
-        let needShowChangeLog = localStorage.getItem('needShowChangeLog');
-
-        if(needShowChangeLog === true || needShowChangeLog === null) {
-            localStorage.setItem('needShowChangeLog', false);
-            this.handleOpen();
-        }else {
-            return browserHistory.push('/category/all');
-        }
+        return browserHistory.push('/category/all');
     }
 
     render() {
@@ -92,7 +84,6 @@ class Invite extends Component {
                             }
                         </div>
                     </div>
-                    <ChangeLog open={this.state.open} />
                 </div>
                 
             </MuiThemeProvider>

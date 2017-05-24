@@ -41,11 +41,11 @@ class Header extends React.Component {
         const isChat = this.props.layout.chat;
         const isOpen = this.props.layout.open;
         
-        const {loading: loading, error: isError, done: isDone, data: user } = this.props.data;
-        const isLogin = typeof user.status == 'undefined' ? true : false;
-        const avatar = user.avatar ? user.avatar : require('../../../assets/avatar.png');
+        const {loading: loading, error: isError, done: isDone, data: userInfo } = this.props.data;
+        const isLogin = userInfo.status ? true : false;
+        const user = userInfo.user;
         const afterLoginProfile = isLogin 
-                                    ? <img style={{width: '30px'}} src={`${avatar}`} /> 
+                                    ? <img style={{width: '30px'}} src={user.avatar || require('../../../assets/avatar.png')} /> 
                                     : <IconProfile />;
         const afterLoginProfileDialog = isLogin 
                                     ? <Profile data={this.props.data} open={RegisterDialogStatus} handleClose={this.handleClose} />

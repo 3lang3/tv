@@ -11,9 +11,9 @@ const API_HOST = `${config.HOST}:3001`
 import styles from './Chat.css';
 
 const Chat = (props) =>{
-
-    const nickname = props.user ? props.user.nickname : null,
-              mmr = props.user.steamInfo ? props.user.steamInfo.solo_competitive_rank : null;
+    const user = props.data.user;
+    const nickname = user ? user.nickname : null,
+              mmr = user && user.steamInfo ? user.steamInfo.solo_competitive_rank : null;
 
     const toggleClass = props.chatToggle ? '' : 'chatClose';
 
@@ -36,7 +36,7 @@ const Chat = (props) =>{
 
 const mapStateToProps = (state, ownProps) => ({
     chatToggle: state.layouts.chat,
-    user: state.metadata.data,
+    data: state.metadata.data,
 })
 
 export default connect(mapStateToProps)(Chat)

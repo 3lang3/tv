@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 import styles from './pageHome.css';
-
+import ChangeLog from 'components/Changelog';
 import Chat from 'components/Chat';
 import Nav from 'components/Nav';
 import Category from 'components/Category';
@@ -28,14 +28,12 @@ const getData = (props) => {
 }
 
 class pageHome extends React.Component {
+
   componentDidMount() {
     getData(this.props)
   }
 
   componentWillUpdate(nextProps) {
-    // if(this.props.params.name != nextProps.params.name) {
-    //   getData(nextProps)
-    // }
 
     if(this.props.params != nextProps.params) {
       getData(nextProps)
@@ -54,13 +52,15 @@ class pageHome extends React.Component {
           <Stage />
           <Chat />
           <Alert />
-
+          <ChangeLog />
           <ReactTooltip place="top" type="light" effect="solid"/>
         </div>
       </MuiThemeProvider>
     )
   }
 }
+
+
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   getCategorys: (name) => dispatch(getCategorys(name))
