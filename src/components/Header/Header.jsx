@@ -48,7 +48,7 @@ class Header extends React.Component {
                                     ? <img style={{width: '30px'}} src={user.avatar || require('../../../assets/avatar.png')} /> 
                                     : <IconProfile />;
         const afterLoginProfileDialog = isLogin 
-                                    ? <Profile data={this.props.data} open={RegisterDialogStatus} handleClose={this.handleClose} />
+                                    ? <Profile data={user} open={RegisterDialogStatus} handleClose={this.handleClose} />
                                     : <Register open={RegisterDialogStatus} handleClose={this.handleClose} />;
 
         return (

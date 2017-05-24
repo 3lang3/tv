@@ -22,7 +22,7 @@ class Profile extends React.Component {
 
     render() {
         const open = this.props.open;
-        const data = this.props.data.data;
+        const data = this.props.data;
         const steamInfo = data.steamInfo ? data.steamInfo : null;
         const avatar = data.avatar ? data.avatar : require('../../../assets/avatar.png');
 
