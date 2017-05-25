@@ -28,3 +28,8 @@
         max-width: 280px;
     }
 }
+
+.navOpenClass {
+    position: relative;
+    left: 160px;
+}

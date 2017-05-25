@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import classnames from 'classnames';
 import styles from './Screen.css';
 import ScreenItem from 'components/ScreenItem';
 
@@ -13,7 +13,7 @@ class screen extends React.Component {
     }
     
     componentWillUpdate(props, nextProps) {
-        if(props.items.length == 0) {
+        if(props.items.length == 0 && !props.layouts.open) {
             props.layoutsOpen(true)
         }
     }
@@ -21,7 +21,7 @@ class screen extends React.Component {
     render() {
         const items = [];
         const screen = this.props.items.length;
-        
+        const bgClass = this.props.layouts.open ? 'navOpenClass' : '';
         this.props.items.forEach((item, key) => {
             items.push(<ScreenItem key={item.roomId} screenCount={screen} item={item} />)
         })
@@ -31,7 +31,7 @@ class screen extends React.Component {
                 {
                     items.length > 0 
                     ? items 
-                    : <section className={styles.emptyScreen}>
+                    : <section className={classnames(styles.emptyScreen, styles[bgClass])}>
                         <img src={require('../../../assets/status_img_6_black.png')} alt=""/>
                         <p>Rua, 赶快从左侧列表挑选主播吧！</p>
                       </section>
@@ -43,6 +43,7 @@ class screen extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     items: state.screenItems,
+    layouts: state.layouts,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

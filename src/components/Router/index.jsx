@@ -44,7 +44,7 @@ const checkStatus = (nextState, replace, next) => {
       if(inviteCode) {
         next()
       }else {
-        replace('/invite?code=errorcode');
+        replace('/invite?code=testcode');
         next()
       }
 }

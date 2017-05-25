@@ -82,18 +82,18 @@ class getCategory extends React.Component {
     return (
       <div id="categoryContainer" className={classnames(styles.tv, styles[isOpen], styles[isWidth])}>
         <IconButton
-          className={styles.zoom}
+          className={styles.setting}
           onClick={this.toggleWidth}
         >
         { this.props.width ? <IconMini fill="#646464" /> : <IconZoom fill="#646464" />}
         </IconButton>
-        <IconButton
+        {/*<IconButton
           className={styles.setting}
           tooltip="关闭"
           onClick={() => this.props.layoutsOpen(false) }
         >
           <CloseIco />
-        </IconButton>
+        </IconButton>*/}
 
         <div className={styles.categoryTitle}>
             <h2>{typeName}</h2>
