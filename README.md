@@ -1,4 +1,4 @@
-# [RUARUA.live](http://ruarua.live)开源项目
+# [RUARUA.live](http://ruarua.live/invite?code=testcode)开源项目
 
 ruarua.live: 全球视频直播资源聚合，同时观看多个内容
 
