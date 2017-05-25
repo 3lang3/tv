@@ -1,6 +1,7 @@
 # [RUARUA.live](http://ruarua.live/invite?code=testcode)开源项目
 
-ruarua.live: 全球视频直播资源聚合，同时观看多个内容
+#### ruarua.live: 全球视频直播资源聚合，同时观看多个内容,[点击进入](http://ruarua.live/invite?code=testcode)
+![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/logo-text.png)
 
 快速开始(dev)
 ----
@@ -26,7 +27,7 @@ ruarua.live: 全球视频直播资源聚合，同时观看多个内容
 注意
 ----
 * `cnpm`可能会导致项目`install`某些包不成功,不推荐使用
-* 默认api地址为localhost, 可以手动配置为ruarua.live,也可以clone [tv-core](https://github.com/EthanOrange/tv-core)这个项目,然后在开发环境运行(port:3000)
+* 默认api地址为http://ruarua.live, 可以手动配置为本地服务器,也可以clone [tv-core](https://github.com/EthanOrange/tv-core)这个项目,然后在开发环境运行(port:3000)
 * 可以配置webpack-dev-server(webpack.config.js)修改默认开发端口。
 * websockt默认为3001端口
 
@@ -37,7 +38,3 @@ ruarua.live: 全球视频直播资源聚合，同时观看多个内容
   * Redux入门: https://egghead.io/courses/getting-started-with-redux
   * ES6指南: https://github.com/lukehoban/es6features
   * Postcss: http://postcss.org/
-
-Testing
-----
-<img src="/.github/browserstack_logo.png?raw=true" width="350" align="left">
