@@ -55,7 +55,7 @@ class Nav extends React.Component {
         <section className={styles.copySec}>
           <Github />
           <Cheese />
-          <Bug />
+          {/*<Bug />*/}
         </section>
       </div>
     )

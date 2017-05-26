@@ -46,18 +46,18 @@ class ChangeLog extends React.Component {
                 autoScrollBodyContent={true}
             >
                 <section className={styles.changeLogSec}>
-                    <h4>版本更新<span>version 1.1.0</span></h4>
-                    <img src={require('../../../assets/changelog.jpg')} alt="" />
+                    <h4>版本更新<span>version 1.1.3</span></h4>
+                    <img src='/assets/changelog.jpg'alt="" />
                     <h2>
                         更新内容
                     </h2>
                     <ul>
-                        <li>添加搜索功能(针对roomTitle和roomAnchor的检索)</li>
-                        <li>添加观看分享功能(将当前观看房间发送至聊天, 其余用户点击相应分享可直接观看)</li>
-                        <li>添加类目平台分类功能</li>
-                        <li>优化视频显示比例</li>
-                        <li>优化图片按需加载</li>
-                        <li>依然一大堆BUG.. <strong>#NeedYOU!</strong></li>
+                        <li>添加网站ico以及meta信息</li>
+                        <li>优化类目栏展现</li>
+                        <li>添加Bilibili源(all和单机游戏类目)</li>
+                        <li>添加Github开源地址,期待你的加入 <strong><a href="https://github.com/EthanOrange/tv" target="_blank">View Github</a></strong></li>
+                        <li>添加赞助功能, 希望有能力的伙伴能和网站一同前行</li>
+                        <li>依然一大堆BUG和ISSUE <strong>#NeedYOU</strong></li>
                     </ul>
                     <div style={{
                         textAlign: 'center'

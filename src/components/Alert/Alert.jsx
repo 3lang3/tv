@@ -8,7 +8,7 @@ class Alert extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            autoHideDuration: 2500,
+            autoHideDuration: 4000,
         };
     }
 

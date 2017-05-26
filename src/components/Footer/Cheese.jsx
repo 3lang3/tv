@@ -1,9 +1,15 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import IconButton from 'material-ui/IconButton';
-import styles from './Footer.css';
+import styles from './Footer.css';3
+import TextField from 'material-ui/TextField';
 
+import { 
+  alertOpen,
+  getCheese,
+ } from 'actions';
 import {IconCheese} from '../Icons';
 
 /**
@@ -12,16 +18,16 @@ import {IconCheese} from '../Icons';
  *
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
-export default class Cheese extends React.Component {
+class Cheese extends React.Component {
   constructor(props) {
     super(props)
     this.handleOpen = this.handleOpen.bind(this)
     this.handleClose = this.handleClose.bind(this)
     this.handleCheese = this.handleCheese.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
 
     this.state = {
         open: false,
-        cheese: false,
     };
   }
   
@@ -33,6 +39,12 @@ export default class Cheese extends React.Component {
     this.setState({open: false});
   };
 
+  handleSubmit() {
+    this.props.alertOpen('RUARUA.live有您的支持甚感荣幸, 24小时之内您将出现在赞助榜单中.')
+    //this.props.getCheese() 等待cheese接口
+    this.handleClose()
+  }
+
   handleCheese() {
       this.setState({
           cheese: true,
@@ -40,12 +52,15 @@ export default class Cheese extends React.Component {
   }
 
   render() {
+    const submitText = '扫码赞助之后请点这里';
+    const submitAction = this.handleSubmit;
+
     const actions = [
       <FlatButton
-        label="扫码赞助之后请点这里"
+        label={submitText}
         primary={true}
         keyboardFocused={true}
-        onTouchTap={this.handleCheese}
+        onTouchTap={submitAction}
       />,
       <FlatButton
         label="下次再说"
@@ -55,6 +70,8 @@ export default class Cheese extends React.Component {
     ];
 
     return (
+      
+
       <div className={styles.btn}>
         <IconButton
             tooltip="给予赞助"
@@ -75,7 +92,7 @@ export default class Cheese extends React.Component {
           <div className={styles.cheeseContent}>
               <section>
                 <h2>需要你的帮助!</h2>
-                <p>RUARUA.live是无盈利的开源站点，如果您对网站有兴趣,希望网站持续提供优质资源, 也许您能帮我们分担一点服务器费用...</p>
+                <p>RUARUA.live是无盈利的开源站点，如果您对网站有兴趣,希望网站持续提供优质资源, 也许您能帮我分担一点服务器费用...</p>
               </section>
               <section className={styles.payContent}>
                 <section className={styles.cheeseSvgBox}>
@@ -101,3 +118,10 @@ export default class Cheese extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  alertOpen: (clas) => dispatch(alertOpen(clas)),
+  getCheese: (body) => dispatch(getCheese(body)),
+})
+
+export default connect(null, mapDispatchToProps)(Cheese)

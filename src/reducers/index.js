@@ -7,6 +7,7 @@ import metadata from './metadata';
 import emoji from './emoji';
 import alert from './alert';
 import invite from './invite';
+import cheese from './cheese';
 
 export {
     categorys,
@@ -18,4 +19,5 @@ export {
     emoji,
     alert,
     invite,
+    cheese,
 };
