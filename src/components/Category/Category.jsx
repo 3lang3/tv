@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { findDOMNode } from 'react-dom';
 import classnames from 'classnames';
 import styles from './Category.css';
 import CategoryItem from 'components/CategoryItem';
@@ -40,6 +41,7 @@ class getCategory extends React.Component {
     super(props)
     this.toggleWidth = this.toggleWidth.bind(this)
     this.filterHander = this.filterHander.bind(this)
+    //this.handleDocumentClick = this.handleDocumentClick.bind(this)
   }
 
   filterHander(clas) {
@@ -51,7 +53,9 @@ class getCategory extends React.Component {
   }
 
   componentWillUpdate(props, newProps) {
-    if(props == newProps) return false;
+    if(props.items.length == 0 && !props.layouts.open) {
+        props.layoutsOpen(true)
+    }
   }
 
   componentDidUpdate() {
@@ -60,8 +64,8 @@ class getCategory extends React.Component {
 
   render() {
     const typeName = preTypeTitle(this.props);
-    const isOpen = this.props.open ? '' : 'tvHide';
-    const isWidth = this.props.width ? 'tvWidth' : '';
+    const isOpen = this.props.layouts.open ? '' : 'tvHide';
+    const isWidth = this.props.layouts.width ? 'tvWidth' : '';
     const loading = this.props.data.loading;
     const isError = this.props.data.error;
     const items = this.props.data.data;
@@ -80,20 +84,28 @@ class getCategory extends React.Component {
 
     
     return (
-      <div id="categoryContainer" className={classnames(styles.tv, styles[isOpen], styles[isWidth])}>
-        <IconButton
-          className={styles.setting}
-          onClick={this.toggleWidth}
-        >
-        { this.props.width ? <IconMini fill="#646464" /> : <IconZoom fill="#646464" />}
-        </IconButton>
-        {/*<IconButton
-          className={styles.setting}
-          tooltip="关闭"
-          onClick={() => this.props.layoutsOpen(false) }
-        >
-          <CloseIco />
-        </IconButton>*/}
+      <div className={classnames(styles.tv, styles[isOpen], styles[isWidth])}>
+        <div className={styles.topSec}>
+          <IconButton
+            onClick={this.toggleWidth}
+          >
+          { this.props.width ? <IconMini fill="#646464" /> : <IconZoom fill="#646464" />}
+          </IconButton>
+          {
+            this.props.items.length > 0 
+                ?<IconButton
+                    tooltip="关闭"
+                    onClick={() => {
+                      if(this.props.items.length > 0) {
+                        this.props.layoutsOpen(false)
+                      }
+                    }}
+                  >
+                    <CloseIco />
+                  </IconButton>
+                : ''
+          }
+        </div>
 
         <div className={styles.categoryTitle}>
             <h2>{typeName}</h2>
@@ -124,9 +136,9 @@ class getCategory extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     data: state.categorys,
-    width: state.layouts.width,
-    open: state.layouts.open,
+    layouts: state.layouts,
     filter: state.categorys.filter,
+    items: state.screenItems,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

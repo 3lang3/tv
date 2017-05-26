@@ -12,12 +12,6 @@ class screen extends React.Component {
         super(props)
     }
     
-    componentWillUpdate(props, nextProps) {
-        if(props.items.length == 0 && !props.layouts.open) {
-            props.layoutsOpen(true)
-        }
-    }
-
     render() {
         const items = [];
         const screen = this.props.items.length;

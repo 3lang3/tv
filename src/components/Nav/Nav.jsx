@@ -11,6 +11,7 @@ import {
 import Logo from 'components/Logo';
 import styles from './Nav.css'
 import classnames from 'classnames';
+import {Github, Cheese, Bug} from 'components/Footer';
 
 const returnFetchingLink = (name) => {
 
@@ -19,9 +20,11 @@ const returnFetchingLink = (name) => {
 class Nav extends React.Component {
   constructor(props) {
     super(props)
+
   }
 
   render() {
+
     return (
       <div className={styles.nav}>
         <Link data-tip="所有主播" to="/category/all" activeClassName={styles.active} className={classnames(styles.navItem, styles.logoNav)} > 
@@ -48,6 +51,12 @@ class Nav extends React.Component {
         <Link data-tip="娱乐" to="/category/girls" activeClassName={styles.active} className={styles.navItem}>
           <img src={require('../../../assets/girl.png')} />
         </Link>
+
+        <section className={styles.copySec}>
+          <Github />
+          <Cheese />
+          <Bug />
+        </section>
       </div>
     )
   }

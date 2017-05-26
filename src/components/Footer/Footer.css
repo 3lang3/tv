@@ -1,0 +1,76 @@
+.btn {
+
+    & svg {
+        opacity: .3;
+        color:#fff !important;
+    }
+
+    & button:hover {
+
+        & svg {
+            opacity: 1;
+        }
+    }
+}
+.outerClass {
+    padding: 0 !important;
+}
+
+.contentClass {
+    max-width: 568px !important;
+}
+
+.overlayClass {
+    background:rgba(0, 0, 0, .9) !important;
+}
+
+.cheeseContent {
+
+    & .payContent {
+        position: relative;
+        margin: 20px 0;
+
+        & .payBox {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+
+            & div {
+                display: inline-block;
+            }
+
+            & p {
+                font-size: 12px;
+                margin: 2px 0;
+                text-align: center;
+            }
+
+            & img {
+                width: 100px;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    & .cheeseSvgBox {
+        padding: 15px;
+        border: 2px solid #ffce4d;
+        border-radius: 50%;
+        width: 48px;
+
+        & svg {
+            width: 45px;
+            height: 45px;
+            fill:#ffce4d;
+        }
+    }
+
+    & p {
+        margin-bottom: 0;
+        font-size: 12px;
+    }
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}

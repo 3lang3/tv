@@ -28,20 +28,12 @@
     z-index: 2;
     transition: none;
     
-    & .zoom {
-        position: absolute !important;
-        top: 0;
-        right: 30px;
-        & svg {
-            color:#646464 !important;
-        }
-    }
-
-    & .setting {
+    & .topSec {
         position: absolute !important;
         top: 0;
         right: 0;
-        & svg {
+
+         & svg {
             color:#646464 !important;
         }
     }

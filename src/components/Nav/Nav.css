@@ -14,7 +14,7 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 3;
 }
 .navItemactive {
     background:#fff;
@@ -64,4 +64,22 @@
 
 .logoNav {
     margin-top: 20px;
+}
+
+.copySec {
+    position: absolute;
+    bottom: 10px;
+    curosr: pointer;
+
+    & svg {
+        opacity: .3;
+        color:#fff !important;
+    }
+
+    & button:hover {
+
+        & svg {
+            opacity: 1;
+        }
+    }
 }

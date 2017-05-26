@@ -10,6 +10,8 @@ import IconUser from './User';
 import IconZoom from './Zoom';
 import IconMini from './Mini';
 import IconSteam from './Steam';
+import IconCheese from './Cheese';
+import IconGithub from './Github';
 
 export {
     IconLogo,
@@ -23,5 +25,7 @@ export {
     IconUser,
     IconZoom,
     IconMini,
-    IconSteam
+    IconSteam,
+    IconGithub,
+    IconCheese,
 }
