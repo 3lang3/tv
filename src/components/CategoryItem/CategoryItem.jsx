@@ -8,7 +8,7 @@ import PlayAdd from 'material-ui/svg-icons/av/playlist-add';
 import FavoriteBroIco from 'material-ui/svg-icons/action/favorite-border';
 import FavoriteIco from 'material-ui/svg-icons/action/favorite';
 
-import {screensActive, screenItemsAdd, screenItemsRemove, layoutsOpen} from 'actions';
+import {screensActive, screenItemsAdd, screenItemsRemove, layoutsOpen, alertOpen} from 'actions';
 
 const getClassType = (type) => {
     switch(type) {
@@ -43,10 +43,12 @@ class CategoryItem extends React.Component {
             let newfavoriteList = favoriteList.filter(_item => _item.anchor != item.anchor || _item.roomId != item.roomId );
 
             localStorage.setItem('favoriteList', JSON.stringify(newfavoriteList));
+            this.props.alertOpen('取关成功！')
             
         }else {
             favoriteList.push(item);
             localStorage.setItem('favoriteList', JSON.stringify(favoriteList));
+            this.props.alertOpen('关注成功！')
         }
 
         this.setState({
@@ -110,6 +112,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   addItem: (item) => dispatch(screenItemsAdd(item)),
   layoutsOpen: (clas) => dispatch(layoutsOpen(clas)),
+  alertOpen: (clas) => dispatch(alertOpen(clas)),
 })
 
 
