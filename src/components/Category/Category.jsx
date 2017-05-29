@@ -36,6 +36,24 @@ const preTypeTitle = (props) => {
   }
 }
 
+let favoriteList = JSON.parse(localStorage.getItem('favoriteList'));
+
+const isFavorite = (item) => {
+  let _target = false;
+
+  if(favoriteList instanceof Array) {
+    favoriteList.forEach((list, index) => {
+      if(item.roomId == list.roomId && item.anchor == list.anchor) {
+        _target = true;
+      }
+    })
+  }else {
+    _target = false;
+  }
+
+  return _target;
+}
+
 class getCategory extends React.Component {
   constructor(props) {
     super(props)
@@ -77,11 +95,10 @@ class getCategory extends React.Component {
     if(items instanceof Array) {
       items.forEach((item, key) => {
         if(itemsPlatform.indexOf(item.platform) == -1 ) itemsPlatform.push(item.platform);
-        itemsHtml.push(<CategoryItem filter={this.props.filter} key={key} item={item} type="category" />)
+
+        itemsHtml.push(<CategoryItem favorite={isFavorite(item)} filter={this.props.filter} key={key} item={item} type="category" />)
       })
     }
-
-
     
     return (
       <div className={classnames(styles.tv, styles[isOpen], styles[isWidth])}>

@@ -30,6 +30,7 @@
         height: 18px;
         text-overflow: ellipsis;
         overflow: hidden;
+        white-space: nowrap;
     }
     & .ico {
         display: flex;
@@ -52,6 +53,18 @@
             color:#bbb !important;
         }
     }
+
+    & .like {
+        position: absolute;
+        right: 5px;
+        
+        & svg {
+            width: 20px !important;
+            height: 20px !important;
+            fill: #ff7f6d !important;
+        }
+    }
+
     &:hover {
         opacity: 1;
     }

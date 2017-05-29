@@ -5,6 +5,8 @@ import styles from './CategoryItem.css';
 import classnames from 'classnames';
 import ActionEye from 'material-ui/svg-icons/action/visibility';
 import PlayAdd from 'material-ui/svg-icons/av/playlist-add';
+import FavoriteBroIco from 'material-ui/svg-icons/action/favorite-border';
+import FavoriteIco from 'material-ui/svg-icons/action/favorite';
 
 import {screensActive, screenItemsAdd, screenItemsRemove, layoutsOpen} from 'actions';
 
@@ -25,6 +27,33 @@ class CategoryItem extends React.Component {
     constructor(props) {
         super(props)
         this.imageLoad = this.imageLoad.bind(this)
+        this.toggleFavorite = this.toggleFavorite.bind(this)
+
+        this.state = {
+            favorite: this.props.favorite
+        }
+    }
+
+    toggleFavorite(e) {
+
+        let favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
+        let item = this.props.item;
+
+        if(this.state.favorite) {
+            let newfavoriteList = favoriteList.filter(_item => _item.anchor != item.anchor || _item.roomId != item.roomId );
+
+            localStorage.setItem('favoriteList', JSON.stringify(newfavoriteList));
+            
+        }else {
+            favoriteList.push(item);
+            localStorage.setItem('favoriteList', JSON.stringify(favoriteList));
+        }
+
+        this.setState({
+            favorite: !this.state.favorite,
+        })
+
+        e.stopPropagation();
     }
 
     imageLoad(e) {
@@ -33,6 +62,7 @@ class CategoryItem extends React.Component {
     }
 
     render() {
+
         const item = this.props.item;
         const notShow = (!this.props.filter || this.props.filter == item.platform) ? '' : 'notShow';
         const styleType = getClassType(this.props.type);
@@ -47,7 +77,7 @@ class CategoryItem extends React.Component {
                 className={classnames(styles[styleType], styles[notShow])}
             >
                 
-                <PlayAdd className={styles.add} />
+                {/*<PlayAdd className={styles.add} />*/}
                 <section className={styles.imgWrapper}>
                     <LazyLoad
                         overflow={overflow}
@@ -65,6 +95,7 @@ class CategoryItem extends React.Component {
                     <div className={styles.ico}>
                         <span><ActionEye /> {item.view}</span>
                         <span><ActionEye /> {item.anchor}</span>
+                        <span onClick={this.toggleFavorite} className={styles.like}>{this.state.favorite ? <FavoriteIco /> : <FavoriteBroIco />}</span>
                     </div>
                 </section>
             </section>
