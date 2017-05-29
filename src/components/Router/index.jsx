@@ -28,7 +28,7 @@ export default () => (
     <Router history={history}>
       <Route path="/" component={App}>
         <IndexRoute onEnter={checkStatus} component={Home} />
-        <Route onEnter={checkStatus} path="category" component={Home}>
+        <Route onEnter={checkStatus} path=":category" component={Home}>
           <Route  onEnter={checkFetchStatus} path=":name" component={Home} />
         </Route>
         <Route path="invite" component={Invite} />

@@ -24,7 +24,7 @@ class Header extends React.Component {
         this.handleOpen = this.handleOpen.bind(this)
         this.handleClose = this.handleClose.bind(this)
         this.state = {
-            open: false,
+            open: window.location.href.includes('false') ? true : false,
         };
     }
     
@@ -37,6 +37,7 @@ class Header extends React.Component {
     };
     // 
     render() {
+
         const RegisterDialogStatus = this.state.open;
         const isChat = this.props.layout.chat;
         const isOpen = this.props.layout.open;
@@ -49,7 +50,7 @@ class Header extends React.Component {
                                     : <IconProfile />;
         const afterLoginProfileDialog = isLogin 
                                     ? <Profile data={user} open={RegisterDialogStatus} handleClose={this.handleClose} />
-                                    : <Register open={RegisterDialogStatus} handleClose={this.handleClose} />;
+                                    : <Register open={RegisterDialogStatus}  handleClose={this.handleClose} />;
 
         return (
             <section className={styles.header}>

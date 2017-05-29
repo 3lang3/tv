@@ -7,19 +7,16 @@ import Snackbar from 'material-ui/Snackbar';
 class Alert extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            autoHideDuration: 4000,
-        };
     }
 
     render() {
-        const {open: open, message: message } = this.props.alert;
+        const {open: open, message: message , duration: duration} = this.props.alert;
 
         return (
             <Snackbar
                 open={open}
                 message={message}
-                autoHideDuration={this.state.autoHideDuration}
+                autoHideDuration={duration}
                 className={styles.alert}
              />
         )

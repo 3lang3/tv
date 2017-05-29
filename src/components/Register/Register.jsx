@@ -29,10 +29,18 @@ class Register extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            toggle: true,
+            toggle: window.location.href.includes('register') ? false  : true,
         }
         this.submit = this.submit.bind(this);
         this.toggle = this.toggle.bind(this);
+    }
+
+    componentDidMount() {
+        let registerMsg =  window.location.href.includes('register')
+                ? '注册失败 | 邮箱已被占用啦.'
+                : '登录失败 | 账号或者密码有问题哦.'
+
+        window.location.href.includes('false') && this.props.alertOpen({message: registerMsg, duration: 10000 })
     }
 
     toggle() {
@@ -61,6 +69,7 @@ class Register extends React.Component {
     }
 
     render() {
+        
         const open = this.props.open;
         const isLogin = this.state.toggle;
         const textRegLogin = isLogin ? '登录' : '注册';
@@ -74,6 +83,7 @@ class Register extends React.Component {
                 bodyClassName={styles.outerClass}
                 contentClassName={styles.contentClass}
                 onRequestClose={this.props.handleClose}
+                overlayClassName={styles.overlayClass}
                 >
                 <div className={styles.registerSec}>
                     <div className={classnames(styles.imageSec, styles[toggleClass])}></div>

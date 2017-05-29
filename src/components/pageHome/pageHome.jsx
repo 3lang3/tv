@@ -24,7 +24,12 @@ const muiTheme = {
 };
 
 const getData = (props) => {
-  props.getCategorys(props.params.name || 'all');
+  if(props.params.category == 'categorys') {
+    props.getCategorys(props.params.name || 'all');
+  }else {
+    props.getCategorys('all');
+  }
+  
 }
 
 class pageHome extends React.Component {
@@ -43,6 +48,7 @@ class pageHome extends React.Component {
 
   render() {
     const params = this.props.params;
+    const loginStatus = this.props.params.category != 'category' ? this.props.params : '';
 
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme, muiTheme)}>

@@ -6,6 +6,11 @@
     max-width: 568px !important;
 }
 
+.overlayClass {
+    background:rgba(0, 0, 0, .9) !important;
+}
+
+
 .registerSec {
     display:flex;
     align-items: stretch;
