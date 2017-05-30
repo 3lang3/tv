@@ -8,3 +8,5 @@ export * from './emojiActions';
 export * from './alertActions';
 export * from './inviteActions';
 export * from './cheeseActions';
+export * from './favoriteActions';
+export * from './onlineActions';

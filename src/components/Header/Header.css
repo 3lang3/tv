@@ -31,6 +31,8 @@
 
             & svg {
                 opacity: .5;
+                color:#fff !important;
+                
                 &:hover {
                     opacity: 1;
                 }

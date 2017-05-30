@@ -36,9 +36,7 @@ const preTypeTitle = (props) => {
   }
 }
 
-let favoriteList = JSON.parse(localStorage.getItem('favoriteList'));
-
-const isFavorite = (item) => {
+const isFavorite = (item, favoriteList) => {
   let _target = false;
 
   if(favoriteList instanceof Array) {
@@ -91,12 +89,13 @@ class getCategory extends React.Component {
 
     let itemsHtml = [];
     let itemsPlatform = [''];
+    let favoriteList = this.props.favorite;
 
     if(items instanceof Array) {
       items.forEach((item, key) => {
         if(itemsPlatform.indexOf(item.platform) == -1 ) itemsPlatform.push(item.platform);
 
-        itemsHtml.push(<CategoryItem favorite={isFavorite(item)} filter={this.props.filter} key={key} item={item} type="category" />)
+        itemsHtml.push(<CategoryItem favoriteStatus={(isFavorite(item, favoriteList))} filter={this.props.filter} key={item.roomId} item={item} type="category" />)
       })
     }
     
@@ -156,6 +155,7 @@ const mapStateToProps = (state, ownProps) => ({
     layouts: state.layouts,
     filter: state.categorys.filter,
     items: state.screenItems,
+    favorite: state.favorite.data,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

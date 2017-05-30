@@ -17,27 +17,32 @@ import ToggleIco from 'material-ui/svg-icons/communication/clear-all';
 import { layoutsChat, layoutsOpen } from 'actions';
 import Register from 'components/Register';
 import Profile from 'components/Profile';
+import Favorite from 'components/Favorite';
 
 class Header extends React.Component {
     constructor(props) {
         super(props)
         this.handleOpen = this.handleOpen.bind(this)
         this.handleClose = this.handleClose.bind(this)
+
         this.state = {
             open: window.location.href.includes('false') ? true : false,
+            favoriteOpen: false,
         };
     }
     
     handleOpen() {
         this.setState({open: true});
-    };
+    }
 
     handleClose() {
         this.setState({open: false});
-    };
+    }
+
     // 
     render() {
 
+        const FavoriteStatus = this.state.favoriteOpen;
         const RegisterDialogStatus = this.state.open;
         const isChat = this.props.layout.chat;
         const isOpen = this.props.layout.open;
@@ -68,9 +73,12 @@ class Header extends React.Component {
                     >
                         {isChat ? <IconChatBubble /> : <IconChatBubbleClose /> }
                     </IconButton>*/}
-                    <IconButton>
+
+                    <Favorite />
+  
+                    {/*<IconButton>
                         <IconNotice />
-                    </IconButton>
+                    </IconButton>*/}
                     
                     <IconButton onTouchTap={this.handleOpen}> 
                         { loading ? <Spinner color="#fff" size={22} /> : afterLoginProfile }

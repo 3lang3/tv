@@ -1,0 +1,28 @@
+.favorite {
+    width: 100%;
+    height: 100vh;
+    background: #fff;
+    max-width: 360px;
+    position: fixed;
+    top: 0;
+    opacity: 0;
+    right: -460px;
+    transition: all .4s ease;
+    box-shadow: -5px 0 30px rgba(0,0,0, .2);
+
+    &.open {
+        z-index: 1;
+        opacity: 1;
+        right: 0;
+    }
+}
+
+.favoriteContent {
+    width: 100%;
+    text-align: left;
+    overflow: hidden;
+
+    & span svg {
+        color:#bbb !important;
+    }
+}

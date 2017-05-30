@@ -24,7 +24,7 @@ const muiTheme = {
 };
 
 const getData = (props) => {
-  if(props.params.category == 'categorys') {
+  if(props.params.category == 'category') {
     props.getCategorys(props.params.name || 'all');
   }else {
     props.getCategorys('all');

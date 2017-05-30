@@ -8,10 +8,11 @@
     margin-bottom: 20px;
     max-width: 280px;
     width: 100%;
-    
-    &:last-child {
-        margin-bottom: 0;
+
+    & .textSec {
+        border-bottom: none !important;
     }
+
     & .add {
         position: absolute; 
         top: 10px;
@@ -68,6 +69,16 @@
     &:hover {
         opacity: 1;
     }
+
+    & .onlineTarget {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        top: 23px;
+        right: 10px;
+        border-radius: 50%;
+        background:#cddc39;
+    }
 }
 
 .search {
@@ -82,6 +93,10 @@
     float: left;
     height: 50px;
     overflow: hidden;
+
+    &:hover {
+        background:#f2f2f2;
+    }
 
     &:last-child {
         margin-bottom: 0;
@@ -100,7 +115,7 @@
         border-bottom: 1px solid #eee;
         width: 100%;
         font-size: 12px;
-        overflow: hidden;
+        overflow: hidden;        
     }
 
     & .add {
@@ -119,7 +134,7 @@
     }
     & .title {
         margin: 0 10px;
-        padding: 0;
+        padding: 0 20px 0 0;
         height: 14px;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -134,6 +149,7 @@
             margin-right: 4px;
         }
     }
+
     & span {
         color: #bbb;
         font-size: 10px;
@@ -148,8 +164,36 @@
             color:#bbb !important;
         }
     }
+
+    & .like {
+        position: absolute;
+        right: 5px;
+        top: 15px;
+        
+        & svg {
+            width: 20px !important;
+            height: 20px !important;
+            fill: #ff7f6d !important;
+            opacity: 1 !important;
+        }
+    }
+
     &:hover {
         opacity: 1;
+    }
+
+    & .onlineTarget {
+        position: absolute;
+        width: auto;
+        line-height: 20px;
+        height: 20px;
+        top: 15px;
+        padding: 0 10px;
+        left: 0;
+        background: #cddc39;
+        font-size: 10px;
+        color: #fff;
+        border-radius: 0 10px 10px 0;
     }
 }
 
@@ -171,10 +215,6 @@
         background: #535d75;
         color: #fff;
         opacity: 1;
-    }
-
-    &:last-child {
-        margin-bottom: 0;
     }
 
     & .imgWrapper {
@@ -236,6 +276,7 @@
             color:#bbb !important;
         }
     }
+
     &:hover {
         opacity: 1;
 

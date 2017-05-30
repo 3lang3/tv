@@ -8,7 +8,7 @@ import PlayAdd from 'material-ui/svg-icons/av/playlist-add';
 import FavoriteBroIco from 'material-ui/svg-icons/action/favorite-border';
 import FavoriteIco from 'material-ui/svg-icons/action/favorite';
 
-import {screensActive, screenItemsAdd, screenItemsRemove, layoutsOpen, alertOpen} from 'actions';
+import {screensActive, screenItemsAdd, screenItemsRemove, layoutsOpen, alertOpen, addFavorite, removeFavorite} from 'actions';
 
 const getClassType = (type) => {
     switch(type) {
@@ -23,37 +23,43 @@ const getClassType = (type) => {
     }
 }
 
+const isFavorite = (item, favoriteList) => {
+  let _target = false;
+
+  if(favoriteList instanceof Array) {
+    favoriteList.forEach((list, index) => {
+      if(item.roomId == list.roomId && item.anchor == list.anchor) {
+        _target = true;
+      }
+    })
+  }else {
+    _target = false;
+  }
+
+  return _target;
+}
+
+
 class CategoryItem extends React.Component {
     constructor(props) {
         super(props)
         this.imageLoad = this.imageLoad.bind(this)
         this.toggleFavorite = this.toggleFavorite.bind(this)
-
-        this.state = {
-            favorite: this.props.favorite
-        }
+        
     }
 
     toggleFavorite(e) {
 
-        let favoriteList = JSON.parse(localStorage.getItem('favoriteList')) || [];
         let item = this.props.item;
 
-        if(this.state.favorite) {
-            let newfavoriteList = favoriteList.filter(_item => _item.anchor != item.anchor || _item.roomId != item.roomId );
-
-            localStorage.setItem('favoriteList', JSON.stringify(newfavoriteList));
+        if(this.props.favoriteStatus) {
+            this.props.removeFavorite(item);
             this.props.alertOpen('取关成功！')
             
         }else {
-            favoriteList.push(item);
-            localStorage.setItem('favoriteList', JSON.stringify(favoriteList));
+            this.props.addFavorite(item);
             this.props.alertOpen('关注成功！')
         }
-
-        this.setState({
-            favorite: !this.state.favorite,
-        })
 
         e.stopPropagation();
     }
@@ -69,6 +75,8 @@ class CategoryItem extends React.Component {
         const notShow = (!this.props.filter || this.props.filter == item.platform) ? '' : 'notShow';
         const styleType = getClassType(this.props.type);
         const overflow = typeof this.props.overflow !== 'undefined' ? this.props.overflow : true;
+        const online = this.props.online == true ? true : false;
+        const onlineHtml = online ? <div className={styles.onlineTarget}>正在直播</div> : '';
 
         return (
             <section 
@@ -97,9 +105,10 @@ class CategoryItem extends React.Component {
                     <div className={styles.ico}>
                         <span><ActionEye /> {item.view}</span>
                         <span><ActionEye /> {item.anchor}</span>
-                        <span onClick={this.toggleFavorite} className={styles.like}>{this.state.favorite ? <FavoriteIco /> : <FavoriteBroIco />}</span>
+                        <span onClick={this.toggleFavorite} className={styles.like}>{this.props.favoriteStatus ? <FavoriteIco /> : <FavoriteBroIco style={{opacity: '.3'}} />}</span>
                     </div>
                 </section>
+                {onlineHtml}
             </section>
         )
     }
@@ -107,14 +116,17 @@ class CategoryItem extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     filter: state.categorys.filter,
+    favorite: state.favorite.data,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   addItem: (item) => dispatch(screenItemsAdd(item)),
   layoutsOpen: (clas) => dispatch(layoutsOpen(clas)),
   alertOpen: (clas) => dispatch(alertOpen(clas)),
+  removeFavorite: (item) => dispatch(removeFavorite(item)),
+  addFavorite: (item) => dispatch(addFavorite(item)),
 })
 
 
 
-export default connect(null, mapDispatchToProps)(CategoryItem)
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryItem)
