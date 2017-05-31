@@ -35,7 +35,7 @@ const config = {
     publicPath: '/build/',
   },
   resolve: {
-    extensions: ['.jsx', '.js', '.css', '.json'],
+    extensions: ['.jsx', '.js', '.css', '.json', 'scss'],
     modules: [
       path.resolve(__dirname, 'src'),
       path.resolve(__dirname, 'assets'),
@@ -48,7 +48,7 @@ const config = {
       test: /\.css$/,
       loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss-loader',
       exclude: /node_modules\/c3/,
-    }, {
+    },{
       test: /\.css$/,
       loader: 'style-loader!css-loader',
       include: /node_modules\/c3/,

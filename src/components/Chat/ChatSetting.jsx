@@ -86,7 +86,7 @@ class ChatSetting extends React.Component {
                         <section className={styles.colorSection}>
                             {colorsHtml}
                         </section>
-                        <h4 className={styles.lineTop}>
+                        {/*<h4 className={styles.lineTop}>
                             <Toggle
                                 onToggle={(event, isInputChecked) => {
                                     console.log(isInputChecked)
@@ -108,7 +108,7 @@ class ChatSetting extends React.Component {
                                 }} 
                                 label="夜间模式" 
                             />
-                        </h4>
+                        </h4>*/}
                     </section>
                 </section>
             </div>

@@ -5,6 +5,8 @@ import { forceCheck } from 'react-lazyload';
 import styles from './Favorite.css';
 import classnames from 'classnames';
 import CategoryItem from 'components/CategoryItem';
+import Spinner from 'components/Spinner';
+import Error from 'components/Error';
 
 import IconButton from 'material-ui/IconButton';
 import FavoriteBroIco from 'material-ui/svg-icons/action/favorite-border';
@@ -66,6 +68,7 @@ class Favorite extends React.Component {
         let open = this.state.open ? 'open' : '';
         let favoriteList = this.props.favorite;
         let onlineFavoriteList = this.props.online.data;
+        const {loading: loading, error: error, done: done } = this.props.online;
         let favoriteHtml = [];
 
         if(favoriteList instanceof Array) {
@@ -76,14 +79,17 @@ class Favorite extends React.Component {
             })
         }
 
+        let _html = favoriteHtml.length > 0 ? favoriteHtml : <div className={styles.noContent}><Error img={require('../../../assets/status_img_5_white.png')} content='没有关注任何主播哦~' /> </div>
+
         return (
             <IconButton tooltip="关注列表">
                 <FavoriteBroIco onTouchTap={this.toggleOpen} />
                 <div className={classnames(styles.favorite, styles[open])}>
                     <div className={styles.favoriteContent}>
-                        
-                            {favoriteHtml}
-                        
+                        {loading ? <div style={{marginTop: '40%'}}><Spinner color="#5b6ca9" size={30} /></div> : ''}
+
+                        { done || error ? _html : ''}
+
                     </div>
                 </div>
             </IconButton>

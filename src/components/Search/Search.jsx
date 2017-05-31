@@ -72,15 +72,17 @@ class Search extends React.Component {
         if(data.length > 0) {
             data.forEach( (item, index) => {
                 //if(index  > 9 ) return;
-                results.push(<CategoryItem key={index} type="search" item={item} />)
+                results.push(<CategoryItem key={item.roomId} type="search" item={item} />)
             })
         }
+
+        let resultsHtml = results.length > 0 ? results : <div className={styles.emptyContent}>抱歉ruarua没有找到任何内容...</div>
 
         return (
             <section className={styles.searchBar} style={{
                 width: this.props.width,
             }}>
-                <input ref="keywordIpt" onKeyDown={() => debounced()} type="text" placeholder="Search" />
+                <input ref="keywordIpt" onKeyDown={() => debounced()} type="text" placeholder="谁在直播?" />
                 <div onClick={debounced} className={styles.fdjico}>
                     <IconFdj />
                 </div>
@@ -92,8 +94,9 @@ class Search extends React.Component {
                                     height: '200px'
                                 }}>
                                     <section onClick={this.closeHander} className={styles.searchResult}>
-                                        {loading ? <Spinner size={30} /> : ''}
-                                        { results.length > 0 && !loading ? results : <div className={styles.emptyContent}>没有找到任何内容...</div> }
+                                        {loading ? <Spinner color="#5b6ca9" size={30} /> : ''}
+
+                                        { done && !loading ? resultsHtml : '' }
                                     </section>
                                 </Scrollbars>
                             

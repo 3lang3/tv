@@ -26,3 +26,16 @@
         color:#bbb !important;
     }
 }
+
+.noContent {
+
+    & img {
+        width: 150px;
+        height: auto;
+        border-radius: 0;
+    }
+
+    & p {
+        color:#aaa !important;
+    }
+}

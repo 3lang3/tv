@@ -1,8 +1,7 @@
 .stageMain {
     height: calc(100vh - 56px);
     overflow: hidden;
-    background:#36393e;
-    border-top: 1px solid #34363a;;
+    background:#0c1016;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,11 +15,17 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: calc(100% - 100px);
-    
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    animation: fadeIn .5s;
+
     & p {
         color:hsla(0,0%,100%,.4);
         font-size: 14px;
+        position: absolute;
+        bottom: 20px;
+        left: calc(50% - 194px)
     }
     
     & img {
@@ -32,4 +37,9 @@
 .navOpenClass {
     position: relative;
     left: 160px;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }

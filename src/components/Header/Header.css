@@ -1,45 +1,44 @@
 .header {
-        padding: 0 0 0 20px;
-        height: 56px;
-        border-bottom: 1px solid #313338;
+    padding: 0 0 0 20px;
+    height: 56px;
+    display: flex;
+    justify-content: flex-end;
+    background:#0c1016;
+    align-items: center;
+    position: relative;
+
+    & .fdjico {
+        position: absolute;
+        display: block; 
+        width: 28px;
+        height: 28px;
         display: flex;
-        justify-content: flex-end;
-        background:#36393e;
+        justify-content: center;
         align-items: center;
-        position: relative;
+        cursor: pointer;
+        right: 0;
+        top: 0;
+    }
 
-        & .fdjico {
-            position: absolute;
-            display: block; 
-            width: 28px;
-            height: 28px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            right: 0;
-            top: 0;
-        }
+    & img {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+    }
 
-        & img {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-        }
+    & nav {
 
-        & nav {
-
-            & svg {
-                opacity: .5;
-                color:#fff !important;
-                
-                &:hover {
-                    opacity: 1;
-                }
+        & svg {
+            opacity: .5;
+            color:#fff !important;
+            
+            &:hover {
+                opacity: 1;
             }
         }
-        
     }
+    
+}
 
 .toggleBtn {
     position: absolute !important;

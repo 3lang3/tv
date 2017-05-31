@@ -60,7 +60,7 @@ class screenItem extends React.Component {
     render() {
         const item = this.props.item;
         const id = preFixIds(this.props.item);
-        const paddBottom = (item.platform == 'douyu' || item.platform == 'huya' || item.platform == 'douyuvideo') ? 640/360 : 1.77777777778
+        const paddBottom = (item.platform == 'douyu' || item.platform == 'huya' || item.platform == 'douyuvideo') ? 16/9 : 16/9 
         const secHeight = this.props.screenCount > 1 ? 49 : 98;
         const screenClass = preScreenCount(this.props.screenCount);
 
