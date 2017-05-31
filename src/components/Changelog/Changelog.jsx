@@ -46,15 +46,16 @@ class ChangeLog extends React.Component {
                 autoScrollBodyContent={true}
             >
                 <section className={styles.changeLogSec}>
-                    <h4>版本更新<span>version 1.1.3</span></h4>
-                    <img src='/assets/changelog.jpg'alt="" />
+                    <h4>版本更新<span>version 1.2.0</span></h4>
+                    <img src={require('../../../assets/changelog.jpg')}alt="" />
                     <h2>
                         更新内容
                     </h2>
                     <ul>
-                        <li>添加网站ico以及meta信息</li>
-                        <li>优化类目栏展现</li>
-                        <li>添加Bilibili源(all和单机游戏类目)</li>
+                        <li>添加Favorite关注列表</li>
+                        <li>更改主舞台空闲状态UI(星系ui)</li>
+                        <li>优化源数据</li>
+                        <li>优化注册登录UI</li>
                         <li>添加Github开源地址,期待你的加入 <strong><a href="https://github.com/EthanOrange/tv" target="_blank">View Github</a></strong></li>
                         <li>添加赞助功能, 希望有能力的伙伴能和网站一同前行</li>
                         <li>依然一大堆BUG和ISSUE <strong>#NeedYOU</strong></li>
