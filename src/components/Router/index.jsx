@@ -40,13 +40,9 @@ export default () => (
 );
 
 const checkStatus = (nextState, replace, next) => {
-  var inviteCode = localStorage.getItem('__inviteCode') || null;
-      if(inviteCode) {
+ 
         next()
-      }else {
-        replace('/invite?code=testcode');
-        next()
-      }
+      
 }
 
 const checkFetchStatus = (nextState, replace, next) => {
