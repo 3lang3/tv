@@ -40,6 +40,7 @@
     width: 100%;
     background: #fff;
     z-index: 1;
+    min-height: 50px;
 }
 
 .emptyContent {

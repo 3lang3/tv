@@ -93,7 +93,7 @@ class Search extends React.Component {
                                 }}>
                                     <section onClick={this.closeHander} className={styles.searchResult}>
                                         {loading ? <Spinner size={30} /> : ''}
-                                        { results.length > 0 ? results : <div className={styles.emptyContent}>没有找到任何内容...</div> }
+                                        { results.length > 0 && !loading ? results : <div className={styles.emptyContent}>没有找到任何内容...</div> }
                                     </section>
                                 </Scrollbars>
                             

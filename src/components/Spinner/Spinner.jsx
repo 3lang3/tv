@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import CircularProgress from 'material-ui/CircularProgress';
 
 const Spinner = ({ size = 59.5, color = '#00BCD4' }) => (
-  <div style={{ margin: 'auto' }}>
+  <div style={{ margin: 'auto', textAlign: 'center' }}>
     <CircularProgress size={Math.max(size, 4)} color={color} />
   </div>
 );

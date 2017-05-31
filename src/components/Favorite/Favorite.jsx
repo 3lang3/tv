@@ -26,7 +26,7 @@ class Favorite extends React.Component {
         super(props)
         this.handleDocumentClick = this.handleDocumentClick.bind(this)
         this.toggleOpen = this.toggleOpen.bind(this)
-        this.closeHander = this.closeHander.bind(this)
+
         this.state = {
             open: false,
         }
@@ -37,7 +37,7 @@ class Favorite extends React.Component {
     }
 
     componentDidMount() {
-        document.addEventListener('click', this.handleDocumentClick, false)
+        document.addEventListener('click', this.handleDocumentClick, true)
     }
 
     componentWillUnmount() {
@@ -49,10 +49,6 @@ class Favorite extends React.Component {
         if (!findDOMNode(this).contains(event.target)) {
             this.setState({ open: false })
         }
-    }
-
-    closeHander() {
-        this.setState({ open: false })
     }
 
     toggleOpen() {
@@ -81,8 +77,8 @@ class Favorite extends React.Component {
         }
 
         return (
-            <IconButton tooltip="关注">
-                <FavoriteBroIco  onTouchTap={this.toggleOpen} />
+            <IconButton tooltip="关注列表">
+                <FavoriteBroIco onTouchTap={this.toggleOpen} />
                 <div className={classnames(styles.favorite, styles[open])}>
                     <div className={styles.favoriteContent}>
                         
