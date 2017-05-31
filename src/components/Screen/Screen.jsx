@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import styles from './Screen.css';
 import ScreenItem from 'components/ScreenItem';
+import { BgSolarStystem } from 'components/Background';
 
 import {screenItemsAdd, screenItemsRemove, layoutsOpen} from 'actions';
 
@@ -26,9 +27,9 @@ class screen extends React.Component {
                     items.length > 0 
                     ? items 
                     : <section className={classnames(styles.emptyScreen, styles[bgClass])}>
-                        <img src={require('../../../assets/status_img_6_black.png')} alt=""/>
-                        <p>Rua, 赶快从左侧列表挑选主播吧！</p>
-                      </section>
+                        <p className={styles.text}>这么多平台这么多主播早已饥渴难耐啦！支持同时观看多个哦~</p>
+                        <BgSolarStystem />
+                    </section>
                 }
             </section>
         )
