@@ -45,6 +45,9 @@ class Nav extends React.Component {
         <Link data-tip="炉石" to="/category/hearthstone" activeClassName={styles.active} className={styles.navItem}>
           <img src={require('../../../assets/hearthstone.png')} />
         </Link>
+        <Link data-tip="守望先锋" to="/category/overwatch" activeClassName={styles.active} className={styles.navItem}>
+          <img src={require('../../../assets/overwatch.png')} />
+        </Link>
         <Link data-tip="星际争霸" to="/category/starcraft" activeClassName={styles.active} className={styles.navItem}>
           <img src={require('../../../assets/starcraft.png')} />
         </Link>
