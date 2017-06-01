@@ -72,8 +72,10 @@ class CategoryItem extends React.Component {
     render() {
 
         const item = this.props.item;
-        const notShow = (!this.props.filter || this.props.filter == item.platform) ? '' : 'notShow';
         const styleType = getClassType(this.props.type);
+
+        const notShow = (!this.props.filter || this.props.filter == item.platform || styleType != 'tvItem') ? '' : 'notShow';
+        
         const overflow = typeof this.props.overflow !== 'undefined' ? this.props.overflow : true;
         const online = this.props.online == true ? true : false;
         const onlineHtml = online ? <div className={styles.onlineTarget}>正在直播</div> : '';
