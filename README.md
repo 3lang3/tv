@@ -4,6 +4,9 @@
 #### ruarua.live: 全球视频直播资源聚合，同时观看多个内容,[点击进入](http://ruarua.live/invite?code=testcode)
 ![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/logo-text.png)
 
+#### live demo 截图:
+![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/doc_banner_2.jpg)
+
 快速开始(dev)
 ----
 * 安装 Node.js (6.0.0 +) 
