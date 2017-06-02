@@ -18,6 +18,7 @@ class screen extends React.Component {
         const screen = this.props.items.length;
         const bgClass = this.props.layouts.open ? 'navOpenClass' : '';
         this.props.items.forEach((item, key) => {
+            items.push(<ScreenItem key={`${item.roomId}${item}`} screenCount={screen} item={item} />)
         })
         
         return (
