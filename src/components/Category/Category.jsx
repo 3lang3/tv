@@ -95,7 +95,7 @@ class getCategory extends React.Component {
       items.forEach((item, key) => {
         if(itemsPlatform.indexOf(item.platform) == -1 ) itemsPlatform.push(item.platform);
 
-        itemsHtml.push(<CategoryItem favoriteStatus={(isFavorite(item, favoriteList))} filter={this.props.filter} key={item.roomId} item={item} type="category" />)
+        itemsHtml.push(<CategoryItem favoriteStatus={(isFavorite(item, favoriteList))} filter={this.props.filter} key={`${item.roomId}${key}`} item={item} type="category" />)
       })
     }
     
