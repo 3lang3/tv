@@ -211,6 +211,10 @@
     opacity: .75;
     transition: all .4s !important;
 
+    &:last-child {
+        margin-bottom: 0;
+    }
+
     &:hover {
         background: #535d75;
         color: #fff;
@@ -275,6 +279,10 @@
             height: 16px !important;
             color:#bbb !important;
         }
+    }
+
+    & .like {
+        display: none;
     }
 
     &:hover {

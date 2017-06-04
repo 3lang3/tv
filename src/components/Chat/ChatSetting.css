@@ -2,6 +2,7 @@
     position: absolute !important;
     top: 0;
     right: 0;
+    z-index: 0;
     
     & svg {
         color:#646464 !important;
@@ -19,10 +20,11 @@
     color:#888;
     z-index: -1;
     opacity: 0;
+    display: none;
     transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);; 
 
     &.open {
-        z-index: 99;
+        display: block;
         opacity: 1;
         top: 40px;
     }

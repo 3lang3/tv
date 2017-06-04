@@ -6,7 +6,8 @@ import Barrage from 'components/Barrage';
 import ChatInput from 'components/Chat/ChatInput.jsx';
 import ChatSetting from 'components/Chat/ChatSetting.jsx';
 import config from '../../../config';
-const API_HOST = `${config.HOST}:3001`
+
+const API_HOST = `${config.ChatHOST}`
 
 import styles from './Chat.css';
 
@@ -26,7 +27,7 @@ const Chat = (props) =>{
             }}
         >
             <div className={classnames(styles.chat, styles[toggleClass])}>
-                <Barrage />
+                <Barrage nickname={nickname} />
                 <ChatSetting />
                 <ChatInput nickname={nickname} mmr={mmr} />
             </div>

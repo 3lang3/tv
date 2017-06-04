@@ -1,3 +1,4 @@
 export default {
-    HOST: 'http://ruarua.live',
+    HOST: 'http://localhost',
+    ChatHOST: 'http://localhost:3001',
 }

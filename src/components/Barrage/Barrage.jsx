@@ -23,6 +23,7 @@ class Barrage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.onMessage = this.onMessage.bind(this);
+    this.onMessageLogin = this.onMessageLogin.bind(this);
     this.connectError = this.connectError.bind(this);
     this.connectSuccess = this.connectSuccess.bind(this);
     this.state = {
@@ -39,6 +40,13 @@ class Barrage extends React.Component {
 
     this.refs.barrageScroll.scrollToBottom();
   }
+
+  onMessageLogin(message) {
+    console.log(message)
+    this.setState({
+      barrages: barrageSplit(this.state.barrages, message),
+    })
+  }
   
   connectError() {
     this.setState({
@@ -47,9 +55,16 @@ class Barrage extends React.Component {
   }
 
   connectSuccess() {
+
+    this.context.socket.emit('login', {
+      username: this.props.nickname || '弹幕大神',
+      color: localStorage.getItem('__barrage_name_color'),
+    });
+
     this.setState({
       online: true,
     })
+
   }
 
   render() {
@@ -75,6 +90,8 @@ class Barrage extends React.Component {
           
           
           <Event event='message:receive' handler={this.onMessage} />
+          <Event event='message:login' handler={this.onMessageLogin} />
+          <Event event='message:logout' handler={this.onMessageLogin} />
           <Event event='connect_error' handler={this.connectError} />
           <Event event='reconnecting' handler={this.connectError} />
           <Event event='reconnect_error' handler={this.connectError} />

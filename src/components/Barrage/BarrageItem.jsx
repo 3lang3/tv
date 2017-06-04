@@ -20,6 +20,9 @@ const getBarrage = (props) => {
 
             return <div className={styles.share}>{ items }</div>;
 
+        case 'log':
+            return <span>欢迎<strong style={{color: props.user.color}}>{` ${props.user.username}` }</strong>!</span>
+            
         default:
             return props.content
     }
@@ -29,14 +32,16 @@ export default (props) => {
     const namecolor = props.color || '#fff';
     const barrage = getBarrage(props);
     const typeText =  props.type == 'screen' ? '正在看' : '';
+    const typeTitle = props.type == 'log' ? true : false; 
 
     return (
         <li>
-            {props.mmr ? <span className={styles.playerMmr}>{props.mmr}</span> : ''}
-            <span 
-                className={styles.playerName} 
-                style={{color: namecolor}}
-            >{props.nickname || '弹幕大神'}{typeText}: </span>
+            {/*{props.mmr ? <span className={styles.playerMmr}>{props.mmr}</span> : ''}*/}
+
+            {
+                typeTitle ? '' : <span  className={styles.playerName} style={{color: namecolor}}>{props.nickname || '弹幕大神'}{typeText}: </span>
+            }
+            
             { barrage }
         </li>
     )
