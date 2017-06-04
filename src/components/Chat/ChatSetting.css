@@ -20,13 +20,16 @@
     color:#888;
     z-index: -1;
     opacity: 0;
-    display: none;
     transition: all .6s cubic-bezier(0.19, 1, 0.22, 1);; 
 
     &.open {
-        display: block;
         opacity: 1;
         top: 40px;
+
+        & span {
+            width: 18px;
+            height: 18px;
+        }
     }
 
     & h4 {
@@ -47,12 +50,13 @@
 
     & span {
         display: block;
-        width: 18px;
-        height: 18px;
+        width: 0;
+        height: 0;
         background:#ff4400;
         border-radius: 2px;
         margin: 0 3px 3px 0;
         cursor: pointer;
+        transition: none;
     }
 }
 
