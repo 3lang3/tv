@@ -10,6 +10,7 @@ import invite from './invite';
 import cheese from './cheese';
 import favorite from './favorite';
 import online from './online';
+import recommend from './recommend';
 
 export {
     categorys,
@@ -21,7 +22,8 @@ export {
     emoji,
     alert,
     invite,
-    cheese,
+    cheese, 
     favorite,
     online,
+    recommend,
 };

@@ -1,18 +1,28 @@
 import React from './react';
 import { connect } from 'react-redux';
 
-import styles from './Recommmend.css';
+import styles from './Recommend.css';
 
-class Recommmend extends React.Component {
+class Recommend extends React.Component {
 
     constructor(props) {
         super(props)
     }
 
-    rend() {
+    render() {
 
         return (
-            <div>Recommmend content</div>
+            <div>Recommend content</div>
         )
     }
 }
+
+const mapStateToProps = (state, ownProps) => ({
+    recommend: state.recommend,
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recommend);

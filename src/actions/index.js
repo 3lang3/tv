@@ -10,3 +10,4 @@ export * from './inviteActions';
 export * from './cheeseActions';
 export * from './favoriteActions';
 export * from './onlineActions';
+export * from './recommendActions';
