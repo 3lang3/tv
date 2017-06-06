@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import CategoryItem from 'components/CategoryItem';
 import ScreenItem from 'components/ScreenItem';
 import { Scrollbars } from 'react-custom-scrollbars';
@@ -44,7 +45,7 @@ class Recommend extends React.Component {
     constructor(props) {
         super(props)
 
-        
+        this.moreCategory = this.moreCategory.bind(this)
     }
 
     componentDidMount() {
@@ -56,6 +57,12 @@ class Recommend extends React.Component {
         forceCheck()
     }
 
+    moreCategory(clas) {
+
+        browserHistory.push(`/category/${clas}`)
+        this.props.getCategorys(clas)
+    }
+
     render() {
         const {loading: loading, error: error, done: done, data: data } = this.props.recommend;
         let itemsHtml = [];
@@ -65,7 +72,7 @@ class Recommend extends React.Component {
         for(let key in data) {
             
             let items = data[key];
-            itemsHtml.push(<h2 key={key}>{key}<span className={styles.text}>热门主播</span> <span onClick={() => this.props.getCategorys(key)} className={styles.more}>more</span></h2>)
+            itemsHtml.push(<h2 key={key}>{key}<span className={styles.text}>热门主播</span> <span onClick={ () => {this.moreCategory(key)}} className={styles.more}>more</span></h2>)
 
             items && items.forEach((item, key) => {
                 itemsHtml.push(<CategoryItem favoriteStatus={(isFavorite(item, favoriteList))} filterSwitch={false} key={`${item.roomId}${key}`} item={item} type="category" />)
