@@ -1,7 +1,6 @@
 
 .stageItem.oneScreen:first-child {
     width: 98%;
-    margin: 0 0 0 1%;
 }
 
 .stageItem {
@@ -12,7 +11,7 @@
     transition: none;
     background: none;
     position: relative;
-    margin: 0 0 0 0.66666%;
+    margin: auto;
     
     & ul {
         list-style: none;

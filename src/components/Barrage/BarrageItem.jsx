@@ -15,7 +15,7 @@ const getBarrage = (props) => {
             let items = [];
 
             JSON.parse(props.content).forEach((item, key) => {
-                items.push(<CategoryItem key={`${item.roomId}${key}`} type="screen" item={item} />)
+                items.push(<CategoryItem filterSwitch={false} key={`${item.roomId}${key}`} type="screen" item={item} />)
             })
 
             return <div className={styles.share}>{ items }</div>;

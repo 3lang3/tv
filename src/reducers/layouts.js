@@ -2,7 +2,7 @@ import { layoutsActions } from 'actions';
 
 const initialState = {
     width: false,
-    open: true,
+    open: false,
     chat: true,
 };
 

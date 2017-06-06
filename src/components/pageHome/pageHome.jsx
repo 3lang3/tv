@@ -35,7 +35,7 @@ const getData = (props) => {
 class pageHome extends React.Component {
 
   componentDidMount() {
-    getData(this.props)
+    //getData(this.props)
   }
 
   componentWillUpdate(nextProps) {

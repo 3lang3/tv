@@ -1,0 +1,117 @@
+.container {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
+    background-attachment: fixed;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.scroll {
+    &  > div:last-child div{
+        transition: none;
+        background-color:#000 !important;
+    }
+}
+
+.banner {
+    width: 1200px;
+    height: 465px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+
+    & * {
+        box-sizing: border-box;
+    }
+
+    & .list {
+        width: 170px;
+        background: rgba(0, 0, 0, 0.3);;
+        display: flex;
+        flex-direction: column;
+
+        & .item {
+            height: 93px;
+
+            & img {
+                width: 170px;
+                height: 90px;
+            }
+        }
+    }
+    
+    & .info {
+        padding: 20px;
+        width: 200px;
+        background: rgba(0, 0, 0, 0.3);
+
+        & h4 {
+            margin: 0 0 20px;
+            font-weight: 400;
+            color: #fff;
+        }
+
+        & p {
+            margin: 0;
+            line-height: 1.8em;
+            font-size: 13px;
+            color:#888;
+        }
+    }
+
+    & .player {
+        max-width: 826px;
+        width: 100%;
+
+        & section:first-child {
+            padding: 0 !important;
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+}
+
+.content {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 0px;
+    box-sizing: border-box;
+
+    & h2 {
+        color:#fff;
+        width: 100%;
+        margin: 10px 0 12px;
+        box-sizing: border-box;
+        font-size: 0 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        color: #f8882d;
+        position: relative;
+
+        & .text {
+            color: #fff;
+            font-size: 14px;
+            padding: 0 0 2px 4px;
+        }
+
+        & .more {
+            font-size: 12px;
+            color:#6f6f6f;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+
+            &:hover {
+                color: #f8882d;
+            }
+        }
+    }
+}

@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import styles from './Screen.css';
 import ScreenItem from 'components/ScreenItem';
 import { BgSolarStystem } from 'components/Background';
+import Recommend from 'components/Recommend';
 
 import {screenItemsAdd, screenItemsRemove, layoutsOpen} from 'actions';
 
@@ -23,13 +24,18 @@ class screen extends React.Component {
         
         return (
             <section className={styles.stageMain}>
-                {
+                {/*{
                     items.length > 0 
                     ? items 
                     : <section className={classnames(styles.emptyScreen, styles[bgClass])}>
                         <p className={styles.text}>这么多平台这么多主播早已饥渴难耐啦！支持同时观看多个哦~</p>
                         <BgSolarStystem />
                     </section>
+                }*/}
+                {
+                    items.length > 0 
+                    ? items 
+                    : <Recommend />
                 }
             </section>
         )

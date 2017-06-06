@@ -59,13 +59,13 @@ class Header extends React.Component {
 
         return (
             <section className={styles.header}>
-                <IconButton
+                {/*<IconButton
                     className={styles.toggleBtn}
                     tooltip="显示列表"
                     onClick={() => this.props.layoutsOpen(true) }
                     >
                     <ToggleIco />
-                </IconButton>
+                </IconButton>*/}
                 <Search width="50%" />
                 <nav>
                     {/*<IconButton

@@ -72,7 +72,7 @@ class Search extends React.Component {
         if(data.length > 0) {
             data.forEach( (item, index) => {
                 //if(index  > 9 ) return;
-                results.push(<CategoryItem key={item.roomId} type="search" item={item} />)
+                results.push(<CategoryItem filterSwitch={false} key={item.roomId} type="search" item={item} />)
             })
         }
 

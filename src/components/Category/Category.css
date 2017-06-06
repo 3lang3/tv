@@ -1,10 +1,10 @@
 
-.tvHide.tv {
-    left: -99999px;
+.tvOpen.tv {
+    left:70px;
 }
 
 .tvWidth.tv {
-    width: 950px;
+    width: calc(100vw - 470px);
 
     & .flexWrapper{
         display: flex;
@@ -23,8 +23,9 @@
     padding: 20px;
     flex-direction: column;
     position: absolute;
-    left:70px;
+    
     top:0;
+    left: -99999px;
     z-index: 2;
     transition: none;
     

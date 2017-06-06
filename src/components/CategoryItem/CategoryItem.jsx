@@ -71,10 +71,11 @@ class CategoryItem extends React.Component {
 
     render() {
 
+        const filterSwitch = this.props.filterSwitch;
         const item = this.props.item;
         const styleType = getClassType(this.props.type);
 
-        const notShow = (!this.props.filter || this.props.filter == item.platform || styleType != 'tvItem') ? '' : 'notShow';
+        const notShow = (!filterSwitch || !this.props.filter || this.props.filter == item.platform ) ? '' : 'notShow';
         
         const overflow = typeof this.props.overflow !== 'undefined' ? this.props.overflow : true;
         const online = this.props.online == true ? true : false;

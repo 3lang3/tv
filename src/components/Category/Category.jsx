@@ -69,9 +69,9 @@ class getCategory extends React.Component {
   }
 
   componentWillUpdate(props, newProps) {
-    if(props.items.length == 0 && !props.layouts.open) {
-        props.layoutsOpen(true)
-    }
+    // if(props.items.length == 0 && !props.layouts.open) {
+    //     props.layoutsOpen(true)
+    // }
   }
 
   componentDidUpdate() {
@@ -80,7 +80,7 @@ class getCategory extends React.Component {
 
   render() {
     const typeName = preTypeTitle(this.props);
-    const isOpen = this.props.layouts.open ? '' : 'tvHide';
+    const isOpen = this.props.layouts.open ? 'tvOpen' : '';
     const isWidth = this.props.layouts.width ? 'tvWidth' : '';
     const loading = this.props.data.loading;
     const isError = this.props.data.error;
@@ -95,7 +95,7 @@ class getCategory extends React.Component {
       items.forEach((item, key) => {
         if(itemsPlatform.indexOf(item.platform) == -1 ) itemsPlatform.push(item.platform);
 
-        itemsHtml.push(<CategoryItem favoriteStatus={(isFavorite(item, favoriteList))} filter={this.props.filter} key={`${item.roomId}${key}`} item={item} type="category" />)
+        itemsHtml.push(<CategoryItem favoriteStatus={(isFavorite(item, favoriteList))} filterSwitch={true} key={`${item.roomId}${key}`} item={item} type="category" />)
       })
     }
     
@@ -105,22 +105,15 @@ class getCategory extends React.Component {
           <IconButton
             onClick={this.toggleWidth}
           >
-          { this.props.width ? <IconMini fill="#646464" /> : <IconZoom fill="#646464" />}
+          { this.props.layouts.width ? <IconMini fill="#646464" /> : <IconZoom fill="#646464" />}
           </IconButton>
-          {
-            this.props.items.length > 0 
-                ?<IconButton
-                    tooltip="关闭"
-                    onClick={() => {
-                      if(this.props.items.length > 0) {
-                        this.props.layoutsOpen(false)
-                      }
-                    }}
-                  >
-                    <CloseIco />
-                  </IconButton>
-                : ''
-          }
+          <IconButton
+              tooltip="关闭"
+              onClick={() => this.props.layoutsOpen(false)}
+            >
+              <CloseIco />
+            </IconButton>
+
         </div>
 
         <div className={styles.categoryTitle}>
