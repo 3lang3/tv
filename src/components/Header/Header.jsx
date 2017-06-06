@@ -68,11 +68,11 @@ class Header extends React.Component {
                 </IconButton>*/}
                 <Search width="50%" />
                 <nav>
-                    {/*<IconButton
+                    <IconButton
                         onClick={this.props.layoutsChat}
                     >
-                        {isChat ? <IconChatBubble /> : <IconChatBubbleClose /> }
-                    </IconButton>*/}
+                        <IconChatBubble />
+                    </IconButton>
 
                     <Favorite />
   
