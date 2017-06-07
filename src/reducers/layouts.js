@@ -3,7 +3,7 @@ import { layoutsActions } from 'actions';
 const initialState = {
     width: false,
     open: false,
-    chat: true,
+    chat: false,
 };
 
 export default (state = initialState, action) => {
@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
         case layoutsActions.CHAT:
             return {
                 ...state,
-                chat: !state.chat
+                chat: action.payload
             }
 
         default:

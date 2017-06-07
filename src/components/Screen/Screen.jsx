@@ -6,18 +6,30 @@ import ScreenItem from 'components/ScreenItem';
 import { BgSolarStystem } from 'components/Background';
 import Recommend from 'components/Recommend';
 
-import {screenItemsAdd, screenItemsRemove, layoutsOpen} from 'actions';
+import {screenItemsAdd, screenItemsRemove, layoutsOpen, layoutsChat} from 'actions';
 
 class screen extends React.Component {
 
     constructor(props) {
         super(props)
     }
+
+    componentWillUpdate(nextProps, nextState) {
+        if(nextProps.item != this.props.items) {
+            this.props.layoutsChat(true)
+            if(nextProps.items.length > 0) {
+                this.props.layoutsChat(true)
+            }else {
+                this.props.layoutsChat(false)
+            }
+        };
+
+    }
     
     render() {
         const items = [];
         const screen = this.props.items.length;
-        const bgClass = this.props.layouts.open ? 'navOpenClass' : '';
+        //const bgClass = this.props.layouts.open ? 'navOpenClass' : '';
         this.props.items.forEach((item, key) => {
             items.push(<ScreenItem key={`${item.roomId}${item}`} screenCount={screen} item={item} />)
         })
@@ -44,11 +56,11 @@ class screen extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     items: state.screenItems,
-    layouts: state.layouts,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     layoutsOpen: (clas) => dispatch(layoutsOpen(clas)),
+    layoutsChat: (clas) => dispatch(layoutsChat(clas)),
 })
 
 

@@ -21,6 +21,7 @@ const layoutsWidth = payload => ({
 
 const layoutsChat = payload => ({
   type: CHAT,
+  payload,
 });
 
 
