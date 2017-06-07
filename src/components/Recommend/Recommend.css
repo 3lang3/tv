@@ -16,7 +16,7 @@
 
 .banner {
     width: 1200px;
-    height: 465px;
+    height: 565px;
     margin: 20px auto;
     display: flex;
     justify-content: space-between;
@@ -26,42 +26,24 @@
     }
 
     & .list {
-        width: 170px;
+        width: 200px;
         background: rgba(0, 0, 0, 0.3);;
         display: flex;
         flex-direction: column;
 
         & .item {
-            height: 93px;
+            height: 113px;
 
             & img {
-                width: 170px;
-                height: 90px;
+                width: 200px;
+                height: 113px;
             }
         }
     }
-    
-    & .info {
-        padding: 20px;
-        width: 200px;
-        background: rgba(0, 0, 0, 0.3);
 
-        & h4 {
-            margin: 0 0 20px;
-            font-weight: 400;
-            color: #fff;
-        }
-
-        & p {
-            margin: 0;
-            line-height: 1.8em;
-            font-size: 13px;
-            color:#888;
-        }
-    }
 
     & .player {
-        max-width: 826px;
+        max-width: 1000px;
         width: 100%;
 
         & section:first-child {

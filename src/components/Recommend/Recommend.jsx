@@ -85,15 +85,6 @@ class Recommend extends React.Component {
                 <Scrollbars className={styles.scroll}>
                     {bannerItems.length > 0 
                         ? <div className={styles.banner}>
-                        <section className={styles.info}>
-                            <h4>【震中杯】OG vs Liquid （小组赛BO3）</h4>
-                            <p>
-                                EPICENTER 震中杯决赛阶段将于6月4日至6月11日在俄罗
-                                斯莫斯科开战。由直邀加地区预选组成的10只世界顶尖强
-                                队将在本比赛中角逐，争夺50万美元总奖金以及冠军荣誉。
-                                群雄逐鹿，谁主沉浮，精彩赛事尽在火猫直播。
-                            </p>
-                        </section>
                         <section className={styles.player}>
                             <ScreenItem item={bannerItems[0]} screenCount={1} />
                         </section>
