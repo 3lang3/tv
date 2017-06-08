@@ -59,6 +59,7 @@ class screenItem extends React.Component {
 
     render() {
         const item = this.props.item;
+        const isBanner = this.props.isBanner ? true : false;
         const id = preFixIds(this.props.item);
         const paddBottom = (item.platform == 'douyu' || item.platform == 'huya' || item.platform == 'douyuvideo') ? 16/9 : 16/9 
         const secHeight = this.props.screenCount > 1 ? 49 : 98;
@@ -76,12 +77,22 @@ class screenItem extends React.Component {
                      dangerouslySetInnerHTML={{__html: `<embed allowscriptaccess="always" src="${_url}${id}" allowfullscreen="true"></embed>`}}>
                 </section>
                 <section className={styles.itemInfo}>
-                    {/*<p onClick={() => item.removeItem(item)}>{item.title}</p>*/}
+                    {
+                        !isBanner
+                            ? <ul>
+                                <li>
+                                    <span><IconClear onClick={() => this.props.removeItem(item) } /></span>
+                                </li>
+                            </ul>
+                            : ''
+                    }
+                    {
+                        /*<p onClick={() => item.removeItem(item)}>{item.title}</p>
                     <ul>
                         <li>
                             <span><IconClear onClick={() => this.props.removeItem(item) } /></span>
                         </li>
-                        {/*<li>
+                        <li>
                             <span><IconGame /> {item.type}</span>
                         </li>
                         <li>
@@ -89,8 +100,10 @@ class screenItem extends React.Component {
                         </li>
                         <li>
                             <span><ActionEye /> {item.view}</span>
-                        </li>*/}
-                    </ul>
+                        </li>
+                        </ul>
+                        */}
+                    
                 </section>
             </section>
         )

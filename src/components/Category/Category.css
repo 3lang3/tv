@@ -4,7 +4,7 @@
 }
 
 .tvWidth.tv {
-    width: calc(100vw - 470px);
+    width: 960px;
 
     & .flexWrapper{
         display: flex;
@@ -12,6 +12,7 @@
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: flex-start;
+        padding-right: 20px;
     }
 }
 
@@ -23,9 +24,8 @@
     padding: 20px;
     flex-direction: column;
     position: absolute;
-    
     top:0;
-    left: -99999px;
+    left: -1000px;
     z-index: 2;
     transition: none;
     
@@ -55,6 +55,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+        transition: none;
     }
 
     & .tvItemBox > div:last-child div{

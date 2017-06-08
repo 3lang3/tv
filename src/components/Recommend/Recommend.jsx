@@ -86,14 +86,14 @@ class Recommend extends React.Component {
                     {bannerItems.length > 0 
                         ? <div className={styles.banner}>
                         <section className={styles.player}>
-                            <ScreenItem item={bannerItems[0]} screenCount={1} />
+                            <ScreenItem isBanner={true} item={bannerItems[0]} screenCount={1} />
                         </section>
                         <section className={styles.list}>
-                            <section className={styles.item}><img src={bannerItems[0].cover} alt=""/></section>
-                            <section className={styles.item}><img src={bannerItems[1].cover} alt=""/></section>
-                            <section className={styles.item}><img src={bannerItems[2].cover} alt=""/></section>
-                            <section className={styles.item}><img src={bannerItems[3].cover} alt=""/></section>
-                            <section className={styles.item}><img src={bannerItems[4].cover} alt=""/></section>
+                            <section className={styles.item}><img src={bannerItems[0].cover} alt={bannerItems[0].title}/></section>
+                            <section className={styles.item}><img src={bannerItems[1].cover} alt={bannerItems[1].title}/></section>
+                            <section className={styles.item}><img src={bannerItems[2].cover} alt={bannerItems[2].title}/></section>
+                            <section className={styles.item}><img src={bannerItems[3].cover} alt={bannerItems[3].title}/></section>
+                            <section className={styles.item}><img src={bannerItems[4].cover} alt={bannerItems[4].title}/></section>
                         </section>
                     </div>
                     : ''
