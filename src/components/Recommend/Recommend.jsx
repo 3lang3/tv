@@ -78,7 +78,7 @@ class Recommend extends React.Component {
                             </div>
                         </Scrollbars>
                     </div>
-                    : <div className={styles.empty}><Spinner /></div>
+                    : <div className={styles.empty}><Spinner color="#fff" /></div>
                 }
                 
             </div>

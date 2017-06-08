@@ -23,7 +23,7 @@ export default (state = initialState, action) => {
         case layoutsActions.CHAT:
             return {
                 ...state,
-                chat: action.payload
+                chat: action.payload || !state.chat
             }
 
         default:
