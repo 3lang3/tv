@@ -11,6 +11,7 @@ import cheese from './cheese';
 import favorite from './favorite';
 import online from './online';
 import recommend from './recommend';
+import banner from './banner';
 
 export {
     categorys,
@@ -26,4 +27,5 @@ export {
     favorite,
     online,
     recommend,
+    banner,
 };

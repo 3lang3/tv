@@ -14,57 +14,11 @@
     }
 }
 
-.banner {
-    width: 1200px;
-    height: 565px;
-    margin: 20px auto;
-    display: flex;
-    justify-content: space-between;
-
-    & * {
-        box-sizing: border-box;
-    }
-
-    & .list {
-        width: 200px;
-        background: rgba(0, 0, 0, 0.3);;
-        display: flex;
-        flex-direction: column;
-
-        & .item {
-            cursor: pointer;
-            margin-bottom: 5px;
-            overflow: hidden;
-            padding-left: 5px;
-            opacity: .5;
-
-            & img {
-                width: 100%;
-                height: 113px;
-            }
-
-            &:last-child {
-                margin-bottom: 0;
-            }
-
-            &.active, &:hover {
-                opacity: 1;
-            }
-        }
-    }
-
-
-    & .player {
-        max-width: 1000px;
-        width: 100%;
-
-        & section:first-child {
-            padding: 0 !important;
-            height: 100%;
-            width: 100%;
-        }
-    }
-
+.outerWrapper {
+    opacity: 0;
+    animation: zoomIn 4s ease forwards;
+    width: 100%;
+    height: 100%;
 }
 
 .content {
@@ -108,4 +62,17 @@
             }
         }
     }
+}
+
+.empty {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes zoomIn {
+    from {opacity: 0; transform: scale(.95) }
+    to {opacity: 1; transform: scale(1)}
 }

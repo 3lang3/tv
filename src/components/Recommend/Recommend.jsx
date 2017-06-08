@@ -1,8 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
+import classnames from 'classnames';
 import CategoryItem from 'components/CategoryItem';
-import ScreenItem from 'components/ScreenItem';
+import Banner from 'components/Banner';
+import Spinner from 'components/Spinner';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { forceCheck } from 'react-lazyload';
 
@@ -26,20 +28,6 @@ const isFavorite = (item, favoriteList) => {
   return _target;
 }
 
-const bannerItemsHander = (data) => {
-    let results = [];
-
-    for(let key in data) {
-            
-        let items = data[key];
-
-        if(results.length < 5) results.push(items[0])
-
-    }
-    console.log(results)
-    return results;
-}
-
 class Recommend extends React.Component {
 
     constructor(props) {
@@ -49,7 +37,6 @@ class Recommend extends React.Component {
     }
 
     componentDidMount() {
-        console.log('Update')
         this.props.getRecommend();
     }
 
@@ -64,10 +51,10 @@ class Recommend extends React.Component {
     }
 
     render() {
+
         const {loading: loading, error: error, done: done, data: data } = this.props.recommend;
         let itemsHtml = [];
         let favoriteList = this.props.favorite;
-        let bannerItems = bannerItemsHander(data);
 
         for(let key in data) {
             
@@ -82,26 +69,18 @@ class Recommend extends React.Component {
 
         return (
             <div className={styles.container}>
-                <Scrollbars className={styles.scroll}>
-                    {bannerItems.length > 0 
-                        ? <div className={styles.banner}>
-                        <section className={styles.player}>
-                            <ScreenItem isBanner={true} item={bannerItems[0]} screenCount={1} />
-                        </section>
-                        <section className={styles.list}>
-                            <section className={styles.item}><img src={bannerItems[0].cover} alt={bannerItems[0].title}/></section>
-                            <section className={styles.item}><img src={bannerItems[1].cover} alt={bannerItems[1].title}/></section>
-                            <section className={styles.item}><img src={bannerItems[2].cover} alt={bannerItems[2].title}/></section>
-                            <section className={styles.item}><img src={bannerItems[3].cover} alt={bannerItems[3].title}/></section>
-                            <section className={styles.item}><img src={bannerItems[4].cover} alt={bannerItems[4].title}/></section>
-                        </section>
+                { !loading &&  done
+                    ? <div className={styles.outerWrapper}>
+                        <Scrollbars className={styles.scroll}>
+                            <Banner />
+                            <div className={styles.content}>
+                                {itemsHtml}
+                            </div>
+                        </Scrollbars>
                     </div>
-                    : ''
-                    }
-                    <div className={styles.content}>
-                        {itemsHtml}
-                    </div>
-                </Scrollbars>
+                    : <div className={styles.empty}><Spinner /></div>
+                }
+                
             </div>
         )
     }
@@ -114,7 +93,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     getRecommend: () => dispatch(getRecommend()),
-    getCategorys: (name) => dispatch(getCategorys(name))
+    getCategorys: (name) => dispatch(getCategorys(name)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Recommend);
