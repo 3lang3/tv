@@ -47,6 +47,7 @@ class Profile extends React.Component {
                 onRequestClose={this.props.handleClose}
                 bodyClassName={styles.outerClass}
                 contentClassName={styles.contentClass}
+                overlayClassName={styles.overlayClass}
                 >
                 <div className={styles.profileSec}>
                     <div className={styles.imageSec}>

@@ -3,17 +3,19 @@
 }
 
 .contentClass {
-    max-width: 568px !important;
+    max-width: 368px !important;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
-.profileSec {
-
+.overlayClass {
+    background:rgba(0, 0, 0, .98) !important;
 }
 
 .imageSec {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center;
     padding: 50px 30px 20px;
     color: #fff;
     // background: #315af3;
@@ -40,6 +42,8 @@
 
 .listSec {
     padding: 20px 30px;
+    background: #fff;
+    text-align: center;
     font-size: 14px;
     & p {
         margin: 12px 0;
