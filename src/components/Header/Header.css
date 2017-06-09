@@ -27,6 +27,9 @@
     }
 
     & nav {
+        display: flex;
+        align-items: baseline;
+        padding-right: 10px;
 
         & svg {
             opacity: .5;
