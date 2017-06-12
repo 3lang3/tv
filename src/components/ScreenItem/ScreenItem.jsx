@@ -19,6 +19,7 @@ const platforms = [
     {name: 'afreecatv', url: 'http://www.afreecatv.com/player/player.html?isAfreeca=false&type=station&autoPlay=true&szPart=NORMAL'},
     {name: 'douyuvideo', url: 'https://v.douyu.com/video/share/index?vid='},
     {name: 'huya', url: 'http://liveshare.huya.com/'},
+    {name: 'quanmin', url: 'http://quanmin.tv/static/v2/boot/embed/embed.html?isindex=2&roomid='},
     {name: 'bilibili', url: 'https://static.hdslb.com/live-static/swf/LivePlayerEx_1.swf?cid='},
 ]
 

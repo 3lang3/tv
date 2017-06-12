@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './pageHome.css';
+import styles from './pageAbout.css';
 
 export default () => (
     <div className={styles.container}>
