@@ -21,6 +21,7 @@ const platforms = [
     {name: 'huya', url: 'http://liveshare.huya.com/'},
     {name: 'quanmin', url: 'http://quanmin.tv/static/v2/boot/embed/embed.html?isindex=2&roomid='},
     {name: 'bilibili', url: 'https://static.hdslb.com/live-static/swf/LivePlayerEx_1.swf?cid='},
+    {name: 'longzhu', url: 'http://player.plures.net/prod/player/vPlayer_v162.swf?&env=cn&vxml=http://player.plures.net/prod/player/videoConfig/video_homev6.xml&roomId='},
 ]
 
 const preFixIds = (item) => {
