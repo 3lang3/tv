@@ -1,29 +1,21 @@
 .container {
-    width: 100%;
+    width: auto;
     height: 100%;
-    background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
-    background-attachment: fixed;
-    padding: 0 20px;
-    box-sizing: border-box;
+    margin: 0 -1rem;
+    // background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
+    // background-attachment: fixed;
 }
 
-.scroll {
-    &  > div:last-child div{
-        transition: none;
-        background-color:#000 !important;
-    }
-}
 
 .outerWrapper {
-    opacity: 0;
-    animation: zoomIn 2s ease forwards;
+    opacity: 1;
+    // animation: zoomIn 1.2s ease forwards;
     width: 100%;
     height: 100%;
 }
 
 .content {
     width: 100%;
-    max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
     height: 100%;
@@ -37,11 +29,12 @@
         width: 100%;
         margin: 10px 0 12px;
         box-sizing: border-box;
-        font-size: 0 20px;
+        font-size: 1.8rem;
         font-weight: 400;
         text-transform: uppercase;
         color: #f8882d;
         position: relative;
+        padding: 0 1rem;
 
         & .text {
             color: #fff;
@@ -53,7 +46,7 @@
             font-size: 12px;
             color:#6f6f6f;
             position: absolute;
-            right: 0;
+            right: 1rem;
             bottom: 0;
             cursor: pointer;
 
@@ -73,6 +66,6 @@
 }
 
 @keyframes zoomIn {
-    from {opacity: 0; transform: scale(1.02); filter: grayscale(1); }
+    from {opacity: 0; transform: scale(1.01); filter: grayscale(1); }
     to {opacity: 1; transform: scale(1);  filter: grayscale(0);}
 }

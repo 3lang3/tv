@@ -26,46 +26,20 @@ const onlineFiter = (item, onlines) => {
 class Favorite extends React.Component {
     constructor(props) {
         super(props)
-        this.handleDocumentClick = this.handleDocumentClick.bind(this)
-        this.toggleOpen = this.toggleOpen.bind(this)
-
-        this.state = {
-            open: false,
-        }
-    }
-
-    componentDidUpdate() {
-        forceCheck()
     }
 
     componentDidMount() {
-        document.addEventListener('click', this.handleDocumentClick, true)
+        let data = this.props.favorite;
+        this.props.getOnline(data)
     }
 
     componentWillUnmount() {
-        document.removeEventListener('click', this.handleDocumentClick)
-    }
-
-    handleDocumentClick (event) {
-
-        if (!findDOMNode(this).contains(event.target)) {
-            this.setState({ open: false })
-        }
-    }
-
-    toggleOpen() {
-        if(!this.state.open) {
-            let data = this.props.favorite;
-            this.props.getOnline(data)
-        }
-        this.setState({
-            open: !this.state.open,
-        })
+        //document.removeEventListener('click', this.handleDocumentClick)
     }
 
 
     render() {
-        let open = this.state.open ? 'open' : '';
+
         let favoriteList = this.props.favorite;
         let onlineFavoriteList = this.props.online.data;
         const {loading: loading, error: error, done: done } = this.props.online;
@@ -79,20 +53,20 @@ class Favorite extends React.Component {
             })
         }
 
-        let _html = favoriteHtml.length > 0 ? favoriteHtml : <div className={styles.noContent}><Error img={require('../../../assets/status_img_5_white.png')} content='没有关注任何主播哦~' /> </div>
+        let _html = favoriteHtml.length > 0 
+                ? favoriteHtml 
+                : <div className={styles.noContent}><Error img={require('../../../assets/followed-channels__empty.png')} content='关注频道,轻松观看您喜爱的内容。 您可能会喜欢这些内容！' /> </div>
 
         return (
-            <IconButton tooltip="关注列表">
-                <FavoriteBroIco onTouchTap={this.toggleOpen} />
-                <div className={classnames(styles.favorite, styles[open])}>
-                    <div className={styles.favoriteContent}>
-                        {loading ? <div style={{marginTop: '40%'}}><Spinner color="#5b6ca9" size={30} /></div> : ''}
+            <div className={styles.favorite}>
+                <h4>正在关注</h4>
+                <div className={styles.favoriteContent}>
+                    {loading ? <div style={{marginTop: '40%'}}><Spinner color="#5b6ca9" size={30} /></div> : ''}
 
-                        { done || error ? _html : ''}
+                    { done || error ? _html : ''}
 
-                    </div>
                 </div>
-            </IconButton>
+            </div>
         )
     }
 }

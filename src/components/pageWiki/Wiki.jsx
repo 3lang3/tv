@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import styles from './Invite.css';
+import styles from './Wiki.css';
 import FlatButton from 'material-ui/FlatButton';
 import { IconLogo, IconName } from '../Icons';
 import {browserHistory, Redirect } from 'react-router';

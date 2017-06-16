@@ -1,19 +1,15 @@
 .favorite {
-    width: 100%;
-    height: 100vh;
-    background: #fff;
-    max-width: 360px;
-    position: fixed;
-    top: 0;
-    opacity: 0;
-    right: -460px;
+    height: auto;
     transition: all .4s ease;
-    box-shadow: -5px 0 30px rgba(0,0,0, .2);
+    margin: 0 -1.5rem;
 
-    &.open {
-        z-index: 1;
-        opacity: 1;
-        right: 0;
+    & h4 {
+        margin: 0 1.5rem;
+        font-weight: 400;
+        color: #cbc8d0;
+        padding: .8rem 0;
+        border-bottom: 1px solid #392e5c;
+        font-size: 1.4rem;
     }
 }
 
@@ -21,6 +17,7 @@
     width: 100%;
     text-align: left;
     overflow: hidden;
+    margin-top: .5rem;
 
     & span svg {
         color:#bbb !important;
@@ -30,12 +27,13 @@
 .noContent {
 
     & img {
-        width: 150px;
         height: auto;
         border-radius: 0;
     }
 
     & p {
-        color:#aaa !important;
+        color:#898395 !important;
+        font-size: .8rem;
+        padding: 0 2rem;
     }
 }

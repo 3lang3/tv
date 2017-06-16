@@ -12,12 +12,12 @@
     & svg {
         width: 26px !important;
         height: 28px !important;
-        color: rgb(132, 134, 137) !important;
+        color: rgba(0, 0, 0, .15) !important;
     }
 
     &:hover {
         & svg {
-            color:#fff !important;
+            color:rgba(0, 0, 0, .3) !important;
         }
     }
 }

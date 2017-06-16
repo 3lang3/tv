@@ -1,18 +1,20 @@
 
 .stageItem.oneScreen:first-child {
-    width: 98%;
+    width: 100%;
 }
 
 .stageItem {
     color:#fff;
-    width: 49%;
+    width: 50%;
     float: left;
     box-sizing: border-box;
     transition: none;
     background: none;
     position: relative;
     margin: auto;
-    
+    height: auto;
+    padding: 0 .5%;
+
     & ul {
         list-style: none;
         padding: 0;
@@ -33,20 +35,91 @@
         }
     }
 
+    & .brand {
+        width: 100%;
+        padding: 1rem;
+        margin: 0;
+        background: #f8f8f8;
+        display: flex;
+        justify-content: space-between;
+
+        & svg {
+            fill: #b8b5c0 !important;
+            width: 20px !important;
+            height: 20px !important;
+            vertical-align: text-bottom;
+        }
+
+        & .typeImg {
+            width: 4rem;
+            height: 5.5rem;
+            margin-right: 1rem;
+
+            & img {
+                width: 100%;
+            }
+        }
+
+        & .title {
+            flex: 1;
+        }
+
+        & .view {
+            display: flex;
+            align-items: center;
+            color: #999;
+            font-size: 1.4rem;
+
+            & span {
+                margin: 0 .75rem;
+                display: inline-block;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+            }
+        }
+
+        & h3, & h5 {
+            font-weight: 400;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        & h3 {
+            color:#19171c;
+            margin: .5rem 0;
+            font-size: 1.6rem;
+            line-height: 2rem;
+        }
+
+        & h5 {
+            font-size: 1.4rem;
+            color:#6441a4;
+            margin: 0;
+
+            & a {
+                text-decoration: none;
+            }
+        }
+    }
+
     & .itemIframe {
         height: 100%;
         width: 100%;
-        position: absolute;
-        /* padding-bottom: 28%; */
-        left: 0;
-        top: 0;
+        background: #424242;
+        position: relative;
+        
         & iframe, & embed {
             border: none;
             width: 100%;
-            min-width: 370.7px;
-            min-height: 209px;
             height: 100%;
-            transition: none;
+            max-height: 735px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
         }
     }
 
@@ -61,10 +134,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            cursor: pointer;
         }
 
         & svg {
-            color:#fff !important;
+            color:#ccc !important;
+
+            &:hover {
+                color:#333 !important;
+            }
         }
         
     }

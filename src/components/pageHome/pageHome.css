@@ -17,8 +17,7 @@
     right:0;
     left:0;
     bottom:0;
-    composes: flex;
+    // composes: flex;
     overflow: hidden;
-    padding-left: 70px;
 }
 

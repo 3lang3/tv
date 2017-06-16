@@ -1,3 +1,4 @@
+import category from './category';
 import categorys from './categorys';
 import search from './search';
 import screens from './screens';
@@ -14,6 +15,7 @@ import recommend from './recommend';
 import banner from './banner';
 
 export {
+    category,
     categorys,
     search,
     screens,

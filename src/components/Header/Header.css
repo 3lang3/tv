@@ -1,52 +1,73 @@
 .header {
-    padding: 0 0 0 20px;
-    height: 56px;
+    width: 100%;
+    height: auto;
     display: flex;
-    justify-content: flex-end;
-    background:#0c1016;
+    justify-content: flex-start;
     align-items: center;
-    position: relative;
-
-    & .fdjico {
-        position: absolute;
-        display: block; 
-        width: 28px;
-        height: 28px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        right: 0;
-        top: 0;
-    }
+    position: absolute;
+    left: 0;
+    bottom: 1.5rem;
 
     & img {
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        margin-right: 1rem;
     }
 
-    & nav {
-        display: flex;
-        align-items: baseline;
-        padding-right: 10px;
+    & .btn {
+        width: calc(100% - 3rem) !important;
+        color:#6441a4 !important;
+        background:#fff !important;
+        margin-left: 1.5rem !important;
 
-        & svg {
-            opacity: .5;
+        &:hover {
+            background: #6441a4 !important;
             color:#fff !important;
-            
-            &:hover {
-                opacity: 1;
-            }
         }
     }
-    
 }
 
-.toggleBtn {
-    position: absolute !important;
-    left: 5px;
+.profileBtn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0 1.5rem;
 
+    &:hover {
+        background:#392e5c;
+    }
+
+    & .text {
+        width: 100%;
+        flex: 1;
+        overflow: hidden;
+
+        & h5 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 400;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        & span {
+            display: block;
+            color:#dad8de;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        & i {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #90ff10;
+            margin-right: .5rem;
+        }
+    }
     & svg {
         color:#fff !important;
         opacity: .5;

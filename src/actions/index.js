@@ -1,3 +1,4 @@
+export * from './categoryActions';
 export * from './categorysActions';
 export * from './searchActions';
 export * from './screensActions';

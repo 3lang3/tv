@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Link, browserHistory } from 'react-router';
 import styles from './pageHome.css';
 import ChangeLog from 'components/Changelog';
+import Main from 'components/Main';
 import Chat from 'components/Chat';
-import Nav from 'components/Nav';
+import Side from 'components/Side';
 import Category from 'components/Category';
 import Stage from 'components/Stage';
 import Alert from 'components/Alert';
@@ -29,7 +30,6 @@ const getData = (props) => {
   }else {
     props.getCategorys('all');
   }
-  
 }
 
 class pageHome extends React.Component {
@@ -40,9 +40,9 @@ class pageHome extends React.Component {
 
   componentWillUpdate(nextProps) {
 
-    if(this.props.params != nextProps.params) {
-      getData(nextProps)
-    }
+    // if(this.props.params != nextProps.params) {
+    //   getData(nextProps)
+    // }
     
   }
 
@@ -53,13 +53,11 @@ class pageHome extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme, muiTheme)}>
         <div className={styles.container} >
-          <Nav />
-          <Category type={params} />
-          <Stage />
+          <Side />
+          <Main />
           <Chat />
-          <Alert />
           <ChangeLog />
-          <ReactTooltip place="top" type="light" effect="solid"/>
+          <ReactTooltip place="top" effect="solid"/>
         </div>
       </MuiThemeProvider>
     )

@@ -3,9 +3,13 @@
 }
 
 .contentClass {
-    max-width: 368px !important;
-    border-radius: 4px;
+    max-width: 328px !important;
+    border-radius: .5rem;
     overflow: hidden;
+
+    & > div:first-child {
+        background:none !important;
+    }
 }
 
 .overlayClass {
@@ -19,7 +23,7 @@
     padding: 50px 30px 20px;
     color: #fff;
     // background: #315af3;
-    background: url('/assets/dota2_lina_rev.jpg') center center no-repeat;
+    background: #333;
     background-size: cover;
 
     & img {

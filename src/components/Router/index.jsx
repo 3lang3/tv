@@ -10,29 +10,31 @@ import store from 'store';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import App from 'components/App';
-import Invite from 'components/pageInvite';
-import Home from 'components/pageHome';
-import About from 'components/pageAbout';
+import Category from 'components/Category';
+import Categorys from 'components/Categorys';
+import Live from 'components/Screen';
+import Recommend from 'components/Recommend';
+import Wiki from 'components/pageWiki';
 import FourOhFour from 'components/FourOhFour';
 import CategoryItem from 'components/CategoryItem';
-import { getMetadata } from 'actions';
+import { getMetadata, getCategory } from 'actions';
 
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store);
 
 // Fetch metadata (used on all pages)
 store.dispatch(getMetadata());
+store.dispatch(getCategory());
 
 export default () => (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute onEnter={checkStatus} component={Home} />
-        <Route onEnter={checkStatus} path=":category" component={Home}>
-          <Route  onEnter={checkFetchStatus} path=":name" component={Home} />
-        </Route>
-        <Route path="invite" component={Invite} />
-        <Route path="about" component={About} />
+        <IndexRoute component={Category} />
+        <Route path="categorys" component={Category} />
+        <Route path="categorys/:name" component={Categorys} />
+        <Route path="recommend" component={Recommend} />
+        <Route path="live" component={Live} />
         <Route path="*" component={FourOhFour} />
       </Route>
     </Router>

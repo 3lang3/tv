@@ -49,17 +49,27 @@
   src:url(/assets/c383b1af097688e4ef1637838c2befe1.woff) format("woff")
 }*/
 
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Whitney, "Helvetica Neue",Helvetica,Arial, "Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+}
+
+html *, body * {
+  box-sizing: border-box;
+}
+
 html {
   line-height: 1.15; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
-}
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: Whitney, "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  font-size: 62.5%;
 }
 
+body {
+  font-size: 1.2rem;
+  line-height: 2rem;
+}
 /* Sections
    ========================================================================== */
 
@@ -105,7 +115,7 @@ main { /* 1 */
  */
 
 figure {
-  margin: 1em 40px;
+  margin: 0;
 }
 
 /**

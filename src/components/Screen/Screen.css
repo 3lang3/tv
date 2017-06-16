@@ -1,11 +1,10 @@
 .stageMain {
-    height: calc(100vh - 56px);
+    height: auto;
     overflow: hidden;
-    background:#0c1016;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin: 0;
+    margin: 0 -.5%;
     overflow: hidden;
 }
 

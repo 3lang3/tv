@@ -1,97 +1,68 @@
-
-.tvOpen.tv {
-    left:70px;
+.container {
+    width: 100%;
+    height: 100%;
 }
-
-.tvWidth.tv {
-    width: 960px;
-
-    & .flexWrapper{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding-right: 20px;
-    }
-}
-
-.tv {
+.content {
     display: flex;
-    width: 280px;
-    height: 100vh;
-    background:#282b30;
-    padding: 20px;
-    flex-direction: column;
-    position: absolute;
-    top:0;
-    left: -1000px;
-    z-index: 2;
-    transition: none;
-    
-    & .topSec {
-        position: absolute !important;
-        top: 0;
-        right: 0;
-
-         & svg {
-            color:#646464 !important;
-        }
-    }
-
-    & h2 {
-        margin: 0 0 5px 0;
-        color:#aaaaaa;
-        font-size: 18px;
-        font-weight: 400;
-    }
-
-    & .tvItemBox {
-        margin-bottom: 30px;
-    }
-
-    & .flexWrapper{
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        transition: none;
-    }
-
-    & .tvItemBox > div:last-child div{
-        transition: none;
-        background-color:#000 !important;
-    }
-}
-
-.categoryTitle {
-    margin: 20px 0 20px;
-}
-
-.chipSec {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
     flex-wrap: wrap;
+    min-width: 100%;
+    margin: 0 -1rem;
+    
+    & .itemWrapper {
+        flex: 1 0 auto;
+        max-width: 50%;
+        width: 18rem;
+        order: 0;
+        padding: 0 1rem;
+    }
 
-    & span {
-        font-size: 12px;
-        display: block;
-        border-radius: 15px;
-        font-weight: 400;
-        background: #ccc;
-        color: #6d6d6d;
-        padding: 3px 6px;
-        margin: 0 4px 5px 0;
-        cursor: pointer;
+    & .item {
+        margin-bottom: 2rem;
 
-        &.active {
-            background:#5b6ca9;
-            color:#fff;
+        & a {
+            display: block;
+            position: relative;
+            color:#19171c;
+            text-decoration: none;
+
+            &:hover {
+                color:#6441a4;
+            }
         }
 
-        &:hover {
-            background:#fff;
+        & h5 {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: .5rem 0 0;
+        }
+
+        & p {
+            margin: 0;
+            color:#888;
+        }
+
+        & figure {
+            padding-bottom: 139.705882353%;
+            background-color: #faf9fa;
+            display: block;
+            position: relative;
+            flex-shrink: 0;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        & img {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
     }
 }

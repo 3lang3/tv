@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link, browserHistory } from 'react-router';
 import LazyLoad from 'react-lazyload';
 import styles from './CategoryItem.css';
 import classnames from 'classnames';
@@ -79,27 +80,33 @@ class CategoryItem extends React.Component {
         
         const overflow = typeof this.props.overflow !== 'undefined' ? this.props.overflow : true;
         const online = this.props.online == true ? true : false;
-        const onlineHtml = online ? <div className={styles.onlineTarget}>正在直播</div> : '';
+        const onlineClass = online ? 'online' : '';
 
         return (
             <section 
                 onClick={() => {
                     this.props.addItem(item)
-                    this.props.layoutsOpen(false)
+                    browserHistory.push('/live')
                 }} 
-                className={classnames(styles[styleType], styles[notShow])}
+                className={classnames(styles[styleType], styles[notShow], styles[onlineClass])}
             >
                 
                 {/*<PlayAdd className={styles.add} />*/}
                 <section className={styles.imgWrapper}>
-                    <LazyLoad
-                        overflow={overflow}
-                        resize={true}
-                        height={158}
-                        throttle={200}
-                    >
-                        <img src={`${item.cover}`} onLoad={this.imageLoad} />
-                    </LazyLoad>
+                    {
+                        this.props.type == 'search'
+                            ? item.anchor.substr(0, 1)
+                            : <LazyLoad
+                                overflow={overflow}
+                                resize={true}
+                                throttle={200}
+                                height={`auto`}
+                            >
+                                <figure>
+                                    <img src={`${item.cover}`} onLoad={this.imageLoad} />
+                                </figure>
+                            </LazyLoad>
+                    }
                 </section>
                 <section className={styles.textSec}>
                     <div className={styles.title} title={`${item.title}`}>
@@ -111,7 +118,7 @@ class CategoryItem extends React.Component {
                         <span onClick={this.toggleFavorite} className={styles.like}>{this.props.favoriteStatus ? <FavoriteIco /> : <FavoriteBroIco style={{opacity: '.3'}} />}</span>
                     </div>
                 </section>
-                {onlineHtml}
+                <div className={styles.onlineTarget}></div>
             </section>
         )
     }

@@ -68,7 +68,7 @@ class Profile extends React.Component {
                                                 <GiftIco/ >
                                             </IconButton>
                             </p>
-                            {steamInfo
+                            {/*{steamInfo
                                 ? <div>
                                     <p>SteamID: {steamInfo.profile.steamid}</p>
                                     <p>单排分: {steamInfo.solo_competitive_rank}</p>
@@ -82,7 +82,7 @@ class Profile extends React.Component {
                                         icon={<IconSteam />}
                                         onClick={() => window.location.href = `${API_HOST}/loginSteam`}
                                     />
-                            }
+                            }*/}
                             <br/>
                             <FlatButton
                                 label="退出登录"

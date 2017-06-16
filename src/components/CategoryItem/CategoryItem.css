@@ -1,13 +1,20 @@
 .tvItem {
+    flex: 1 0 auto;
+    max-width: 50%;
+    width: 30rem;
     background:#fff;
-    font-size: 14px;
-    color:#666;
-    opacity: .75;
+    font-size: 1.4rem;
+    color:#19171c;
+    opacity: .9;
     position: relative;
     cursor: pointer;
-    margin-bottom: 20px;
-    max-width: 280px;
-    width: 100%;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+    transition: all .4s;
+
+    & * {
+        transition: all .4s;
+    }
 
     & .textSec {
         border-bottom: none !important;
@@ -20,15 +27,30 @@
         cursor: pointer;
         color:#ddd !important;  
     }
+
+    & figure {
+        margin: 0;
+        background-color: #faf9fa;
+        display: block;
+        position: relative;
+        flex-shrink: 0;
+        padding-bottom: 56.25%;
+        overflow: hidden;
+    }
+
     & img {
-        width: 280px;
-        height: 158px;
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
         opacity: 0;
     }
     & .title {
-        margin: 4px 15px 0;
-        padding: 0;
-        height: 18px;
+        margin: .5rem 0 0;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
@@ -36,15 +58,15 @@
     & .ico {
         display: flex;
         align-items: center;
-        padding: 1px 15px 20px;
+        padding: 0;
 
         & span {
-            margin-right: 4px;
+            margin-right: .4rem;
         }
     }
     & span {
         color: #bbb;
-        font-size: 10px;
+        font-size: .8rem;
         display: flex;
         align-items: center;
 
@@ -71,31 +93,42 @@
     }
 
     & .onlineTarget {
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        top: 23px;
-        right: 10px;
-        border-radius: 50%;
-        background:#cddc39;
+        display: none;
     }
 }
 
 .search {
-    background:#fff;
-    font-size: 14px;
-    color:#666;
+    font-size: 1.4rem;
+    color:#fff;
     position: relative;
     cursor: pointer;
     width: 100%;
     display: flex;
-    align-items: stretch;
-    float: left;
+    align-items: center;
     height: 50px;
     overflow: hidden;
+    transition: all .4s;
 
+    &.online {
+        & .imgWrapper {
+            background: #8bc34a;
+        }
+        & .onlineTarget {
+            display: block;
+        }
+    }
+
+    & .onlineTarget {
+        width: 5px;
+        height: 5px;
+        margin-right:1.4rem;
+        border-radius: 50%;
+        background:#cddc39;
+        display: none;
+    }
+    
     &:hover {
-        background:#f2f2f2;
+        background:#392e5c;
     }
 
     &:last-child {
@@ -103,19 +136,28 @@
     }
 
     & .imgWrapper {
-        width: 80px;
-        height: 50px;
-        background:#eee;
+        width: 36px;
+        height: 36px;
+        background:#ccc;
+        margin-left: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        text-transform: uppercase;
     }
 
     & .textSec {
         display: flex;
+        flex: 1;
         flex-direction: column;
         justify-content: center;
-        border-bottom: 1px solid #eee;
         width: 100%;
         font-size: 12px;
-        overflow: hidden;        
+        overflow: hidden;    
+        line-height: 1.2rem;
+        margin-right: 1.5rem;
+        padding: 0 0 0 10px; 
     }
 
     & .add {
@@ -127,23 +169,18 @@
         display: none !important;
     }
     & img {
-        width: 80px !important;
-        height: 50px !important;
-        border-radius: 0 !important;
-        opacity: 0;
+        display: none;
     }
     & .title {
-        margin: 0 10px;
-        padding: 0 20px 0 0;
-        height: 14px;
+        font-size: 1.4rem;
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        margin-bottom: .4rem;
     }
     & .ico {
         display: flex;
         align-items: center;
-        padding: 0 10px;
 
         & span {
             margin-right: 4px;
@@ -169,6 +206,7 @@
         position: absolute;
         right: 5px;
         top: 15px;
+        display: none;
         
         & svg {
             width: 20px !important;
@@ -180,20 +218,6 @@
 
     &:hover {
         opacity: 1;
-    }
-
-    & .onlineTarget {
-        position: absolute;
-        width: auto;
-        line-height: 20px;
-        height: 20px;
-        top: 15px;
-        padding: 0 10px;
-        left: 0;
-        background: #cddc39;
-        font-size: 10px;
-        color: #fff;
-        border-radius: 0 10px 10px 0;
     }
 }
 
@@ -209,8 +233,7 @@
     overflow: hidden;
     margin-bottom: 10px;
     opacity: .75;
-    transition: all .4s !important;
-
+    
     &:last-child {
         margin-bottom: 0;
     }

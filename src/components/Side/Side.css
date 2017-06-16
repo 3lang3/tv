@@ -1,0 +1,45 @@
+.container {
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 24rem;
+    height: 100vh;
+    background: #2c2541;
+    color:#fff;
+    padding: 1.5rem;
+    font-size: 1rem;
+}
+
+.logo {
+    margin-bottom: 3rem;
+
+    & h1 svg {
+        width: 50%;
+    }
+
+    & h1, & h2 {
+        margin: 0 0 2rem 0; 
+        font-weight: 300;
+    }
+
+    & h2 {
+        font-size: 2.4rem;
+        color:#ffffff;
+    }
+
+    & p {
+        color:#cdcdcd;
+        opacity: .5;
+        font-size: .8rem;
+        margin-bottom: 4rem;
+    }
+
+    & .icon {
+        & svg {
+            opacity: .5;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}

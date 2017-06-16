@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import styles from './User.css';
+import styles from './Live.css';
 import FlatButton from 'material-ui/FlatButton';
 import { IconLogo, IconName } from '../Icons';
 import {browserHistory} from 'react-router';

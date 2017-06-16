@@ -6,10 +6,14 @@
     padding: 20px;
     composes: flex;
     flex-direction: column;
-    position: relative;
-    width: 320px;
-    background: #2e3136;
-    color:#fff;
+    position: fixed;
+    height: 100vh;
+    top:0;
+    right: 0;
+    width: 340px;
+    background: #efeef1;
+    color:#333;
+    font-size: 1.4rem;
 }
 
 .chatClose {
