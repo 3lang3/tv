@@ -11,9 +11,9 @@
     transition: none;
     background: none;
     position: relative;
-    margin: auto;
+    margin: 0;
     height: auto;
-    padding: 0 .5%;
+    padding: 0 .5% .5%;
 
     & ul {
         list-style: none;
@@ -25,8 +25,9 @@
             display: block; 
             float: left;
             color:#999;
-            margin: 10px;
-            font-size: 14px;
+            font-size: 1.4rem;
+            padding: 1rem;
+
             & svg {
                 width: 22px !important;
                 height: 22px !important;
@@ -37,7 +38,7 @@
 
     & .brand {
         width: 100%;
-        padding: 1rem;
+        padding: .5rem 1rem;
         margin: 0;
         background: #f8f8f8;
         display: flex;
@@ -62,13 +63,10 @@
 
         & .title {
             flex: 1;
-        }
-
-        & .view {
+            overflow: hidden;
             display: flex;
-            align-items: center;
-            color: #999;
-            font-size: 1.4rem;
+            flex-direction: column;
+            justify-content: space-around;
 
             & span {
                 margin: 0 .75rem;
@@ -77,6 +75,14 @@
                 overflow: hidden;
                 white-space: nowrap;
             }
+        }
+
+        & .view {
+            display: flex;
+            align-items: center;
+            color: #999;
+            font-size: 1.4rem;
+            overflow: hidden;
         }
 
         & h3, & h5 {
@@ -107,7 +113,6 @@
     & .itemIframe {
         height: 100%;
         width: 100%;
-        background: #424242;
         position: relative;
         
         & iframe, & embed {
@@ -115,6 +120,7 @@
             width: 100%;
             height: 100%;
             max-height: 735px;
+            background:##000;
             position: absolute;
             left: 0;
             top: 0;
@@ -126,23 +132,35 @@
     & .itemInfo {
         position: absolute;
         top: 0;
-        right: 0;
+        right: .5%;
         width: auto;
         z-index: 1;
+
+        & .like {
+            color: #8bc34a !important;
+
+            & svg {
+                color: #8bc34a !important;
+            }
+        }
 
         & span {
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-        }
-
-        & svg {
-            color:#ccc !important;
 
             &:hover {
                 color:#333 !important;
+
+                & svg {
+                    color:#333 !important;
+                }
             }
+        }
+
+        & svg {
+            color:#999 !important;
         }
         
     }

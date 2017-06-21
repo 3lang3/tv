@@ -6,6 +6,7 @@
     width: calc(100% - 6rem);
     margin: 2rem 3rem 0;
     box-shadow: inset 0 -1px 0 #dad8de;
+    position: relative;
 }
 
 .navItem {
@@ -28,8 +29,20 @@
 
     &:hover, &.active {
         color: #0f0e11;
-        box-shadow: 0 -1px 0 #6441a4 inset;
+        box-shadow: 0 -2px 0 #6441a4 inset;
     }
 
+}
+
+.chatSwitch {
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+
+    & svg {
+        display: block;
+        color:#cdcdcd !important;
+        fill:#cdcdcd !important;
+    } 
 }
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './Side.css';
 import {IconLogo, IconGithub} from '../Icons';
+import IconBug from 'material-ui/svg-icons/action/bug-report';
+import IconCopyright from 'material-ui/svg-icons/action/copyright';
 
 import Favorite from 'components/Favorite';
 import Header from 'components/Header';
@@ -9,13 +11,19 @@ export default () => (
     <div className={styles.container}>
         <div className={styles.logo}>
             <h1><IconLogo /></h1>
-            <h2>全球视频聚合平台</h2>
-            <p>聚集全球热门主播于一身，一个ruarua全搞定，支持一屏多看，喜欢的主播都不放过!本站为零收益的开源站点，渴望你的支持！</p>
+            <h2>全球直播聚合平台</h2>
+            <p>网罗全球热门主播于一身，支持一屏多看，喜欢的主播全在RUARUA这里!<br />本站为开源站点，渴望你的支持！</p>
             <div className={styles.icon}>
-                <IconGithub />
+                <a data-tip="Github" href="https://github.com/EthanOrange/tv" target="_blank"><IconGithub /></a>
+                <a data-tip="Bug反馈" href="https://github.com/EthanOrange/tv/issues/new" target="_blank"><IconBug className={styles.size} /></a>
+                <IconCopyright data-tip="本站内容均为各大平台采集获得，若出现违规内容请及时通过意见反馈告知，谢谢监督" className={styles.size} />
             </div>
         </div>
-        <Favorite />
+        <div className={styles.layout}>
+            <div className={styles.layoutInner}>
+                <Favorite />
+            </div>
+        </div>
         <Header />
     </div>
 )

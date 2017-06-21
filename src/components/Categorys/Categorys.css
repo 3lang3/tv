@@ -46,6 +46,13 @@
     
 }
 
+.loader {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+}
+
 .chipSec {
     display: flex;
     justify-content: flex-start;

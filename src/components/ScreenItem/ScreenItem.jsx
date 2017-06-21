@@ -10,7 +10,11 @@ import {
 import ActionEye from 'material-ui/svg-icons/action/visibility';
 import IconClear from 'material-ui/svg-icons/content/clear';
 
-import {screenItemsRemove} from 'actions';
+import FavoriteBroIco from 'material-ui/svg-icons/action/favorite-border';
+import FavoriteIco from 'material-ui/svg-icons/action/favorite';
+
+import {screenItemsRemove, addFavorite, removeFavorite} from 'actions';
+
 
 const smallTitleHandler = (props) => {
     let result;
@@ -69,6 +73,24 @@ const preScreenCount = (count) => {
 // 
 class screenItem extends React.Component {
 
+    constructor(props) {
+        super(props)
+
+        this.toggleFavorite = this.toggleFavorite.bind(this)
+    }
+
+    toggleFavorite(e) {
+
+        let item = this.props.item;
+
+        if(this.props.favoriteStatus) {
+            this.props.removeFavorite(item);
+            
+        }else {
+            this.props.addFavorite(item);
+        }
+    }
+
     render() {
         const item = this.props.item;
         const id = preFixIds(this.props.item);
@@ -76,6 +98,7 @@ class screenItem extends React.Component {
         const secHeight = this.props.screenCount > 1 ? 100 : 100;
         const screenClass = preScreenCount(this.props.screenCount);
         const smallTitleText = smallTitleHandler(this.props);
+        const favoriteHtml = this.props.favoriteStatus ? <span className={styles.like}><FavoriteIco />已关注</span> : <span><FavoriteBroIco />关注</span>
 
         let _url;
         
@@ -91,10 +114,7 @@ class screenItem extends React.Component {
                     </div>
                     <div className={styles.title}>
                         <h3>{item.title}</h3>
-                        <h5><Link to={`/categorys/${item.type}`}><IconGame /> {smallTitleText}</Link></h5>
-                    </div>
-                    <div className={styles.view}>
-                        <span><IconUser />{item.anchor}</span> <span><ActionEye /> {item.view}</span>
+                        <h5><Link to={`/categorys/${item.type}`}><span><IconGame /> {smallTitleText} </span><span><IconUser />{item.anchor}</span> <span><ActionEye /> {item.view}</span> </Link></h5>
                     </div>
                 </section>
                 <section style={{paddingBottom: `${secHeight/paddBottom}%`}} className={styles.itemIframe} 
@@ -102,8 +122,11 @@ class screenItem extends React.Component {
                 </section>
                 <section className={styles.itemInfo}>
                     <ul>
-                        <li>
-                            <span><IconClear onClick={() => this.props.removeItem(item) } /></span>
+                        <li data-tip="取消关注" onClick={this.toggleFavorite}>
+                            {favoriteHtml}
+                        </li>
+                        <li onClick={() => this.props.removeItem(item) } >
+                            <span><IconClear/>关闭</span>
                         </li>
                     </ul>
                 </section>
@@ -118,6 +141,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
     removeItem: (item) => dispatch(screenItemsRemove(item)),
+    removeFavorite: (item) => dispatch(removeFavorite(item)),
+    addFavorite: (item) => dispatch(addFavorite(item)),
 })
 
 

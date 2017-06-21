@@ -2,6 +2,7 @@
     height: auto;
     transition: all .4s ease;
     margin: 0 -1.5rem;
+    height: 100%;
 
     & h4 {
         margin: 0 1.5rem;
@@ -18,9 +19,23 @@
     text-align: left;
     overflow: hidden;
     margin-top: .5rem;
+    height: 100%;
+    padding-bottom: 5rem;
 
     & span svg {
         color:#bbb !important;
+        fill:#bbb !important;
+    }
+}
+
+.scrollBox {
+    height: 50% !important;
+    margin-bottom: 1rem;
+
+    & > div {
+        &:last-child div {
+            background: #000 !important;
+        }
     }
 }
 

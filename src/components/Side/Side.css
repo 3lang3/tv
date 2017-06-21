@@ -1,17 +1,46 @@
 .container {
     position: fixed;
     left: 0;
-    top:0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
     width: 24rem;
-    height: 100vh;
+    height: 100%;
     background: #2c2541;
     color:#fff;
-    padding: 1.5rem;
     font-size: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+
+    & > * {
+        flex: 0 1 auto;
+        min-width: 0;
+        max-width: 100%;
+    }
+}
+
+.layout {
+    flex-grow: 1;
+    overflow: hidden;
+    height: auto;
+    position: relative;
+}
+
+.layoutInner {
+    width: auto!important;
+    height: auto!important;
+    position: absolute;
+    padding: 0 1.5rem;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .logo {
     margin-bottom: 3rem;
+    padding: 1.5rem;
 
     & h1 svg {
         width: 50%;
@@ -35,11 +64,33 @@
     }
 
     & .icon {
+        display: flex;
+        align-items: center;
+
+        & a {
+            margin-right: 1.5rem;
+            display: block;
+        }
+
         & svg {
             opacity: .5;
+            cursor: pointer;
+            color:#fff !important;
+            fill: #fff !important;
+            display: block;
+
             &:hover {
                 opacity: 1;
             }
+        }
+
+        & :nth-child(2) {
+            width: 25px !important;
+            height: 25px !important;
+        }
+        & :nth-child(3) {
+            width: 23px !important;
+            height: 23px !important;
         }
     }
 }

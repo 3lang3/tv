@@ -23,7 +23,7 @@
     padding: 50px 30px 20px;
     color: #fff;
     // background: #315af3;
-    background: #333;
+    background: url('../../../assets/default_bg.jpg');
     background-size: cover;
 
     & img {

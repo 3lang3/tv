@@ -4,9 +4,8 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    position: absolute;
-    left: 0;
-    bottom: 1.5rem;
+    background: #2c2541;
+    z-index: 1;
 
     & img {
         width: 36px;
@@ -27,12 +26,17 @@
     }
 }
 
-.profileBtn {
+.profileLogin {
+    width: 100%;
+    padding: 1rem 1.5rem;
+}
+
+.profileProfile {
     width: 100%;
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding: 0 1.5rem;
+    padding: 1rem 1.5rem;
 
     &:hover {
         background:#392e5c;

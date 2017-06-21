@@ -14,7 +14,6 @@ import {
 import FlatButton from 'material-ui/FlatButton';
 import ToggleIco from 'material-ui/svg-icons/communication/clear-all';
 
-import { layoutsChat, layoutsOpen } from 'actions';
 import Register from 'components/Register';
 import Profile from 'components/Profile';
 import Favorite from 'components/Favorite';
@@ -39,34 +38,33 @@ class Header extends React.Component {
     }
 
     render() {
-
-        const RegisterDialogStatus = this.state.open;
-
-        
+        const RegisterDialogStatus = this.state.open;        
         const {loading: loading, error: isError, done: isDone, data: userInfo } = this.props.metadata;
         const isLogin = userInfo.status ? true : false;
         const user = userInfo.user;
         const afterLoginProfile = isLogin 
-                                    ? <div onTouchTap={this.handleOpen} className={styles.profileBtn}>
+                                    ? <div onTouchTap={this.handleOpen} className={styles.profileProfile}>
                                         <img src={user.avatar || require('../../../assets/avatar.png')} />
                                         <div className={styles.text}>
                                             <h5>{user.nickname}</h5>
-                                            <span><i></i> 观看 Grimmmz 直播 PLAYERUNKNOWN'S BATTLEGROUNDS</span>
+                                            <span><i></i> { this.props.screenItems.length > 0 ? `观看 ${this.props.screenItems[0].anchor} 直播 ${this.props.screenItems[0].type}` : '空闲' }</span>
                                         </div> 
                                     </div>
-                                    : <FlatButton
+                                    : <div className={styles.profileLogin}>
+                                        <FlatButton
                                             onTouchTap={this.handleOpen}
                                             className={styles.btn}
                                         > 
                                             登录
-                                        </FlatButton> ;
+                                        </FlatButton> 
+                                        </div>;
         const afterLoginProfileDialog = isLogin 
                                     ? <Profile data={user} open={RegisterDialogStatus} handleClose={this.handleClose} />
                                     : <Register open={RegisterDialogStatus}  handleClose={this.handleClose} />;
 
         return (
             <section className={styles.header}>
-                    { loading ? <Spinner color="#fff" size={22} /> : afterLoginProfile }
+                { loading ? <Spinner color="#fff" size={22} /> : afterLoginProfile }
                 { afterLoginProfileDialog }
             </section>
         )
@@ -75,6 +73,7 @@ class Header extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     metadata: state.metadata,
+    screenItems: state.screenItems,
 })
 
 const mapDispatchToProps = (dispatch) => ({

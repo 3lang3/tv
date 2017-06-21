@@ -42,7 +42,6 @@ class ChatInput extends React.Component {
 
                 if (value && value.length > 0) {
                     this.refs.chatTextarea.value += '\r\n';
-                    // this.scrollToBottom('chatTextarea');
                 } else {
                     this.refs.chatTextarea.value = '\r\n';
                 }
@@ -61,7 +60,7 @@ class ChatInput extends React.Component {
             <section className={styles.chatInput}>
                 <textarea
                     ref="chatTextarea" 
-                    placeholder="#Message@someone"
+                    placeholder="发送消息"
                     onKeyDown={this.handleKeyEvent}
                 >
                 </textarea>

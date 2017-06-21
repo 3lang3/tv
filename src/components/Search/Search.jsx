@@ -6,11 +6,11 @@ import styles from './Search.css';
 import  debounce  from 'lodash/debounce';
 import Spinner from 'components/Spinner';
 import CategoryItem from 'components/CategoryItem';
-import { forceCheck } from 'react-lazyload';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { 
   IconFdj
 } from '../Icons';
+
 
 class Search extends React.Component {
 
@@ -22,10 +22,6 @@ class Search extends React.Component {
         this.state = {
             open: false,
         }
-    }
-
-    componentDidUpdate() {
-        forceCheck()
     }
 
     componentDidMount() {
@@ -72,7 +68,7 @@ class Search extends React.Component {
         if(data.length > 0) {
             data.forEach( (item, index) => {
                 //if(index  > 9 ) return;
-                results.push(<CategoryItem filterSwitch={false} key={item.roomId} type="search" item={item} />)
+                results.push(<CategoryItem filterSwitch={false} online={true} key={item.roomId} type="search" item={item} />)
             })
         }
 
@@ -89,12 +85,9 @@ class Search extends React.Component {
                 {
                     this.state.open 
                         ? 
-                                <Scrollbars style={{
-                                    maxHeight: '200px',
-                                    height: '200px'
-                                }}>
+                                <Scrollbars className={styles.scrollBox}>
                                     <section onClick={this.closeHander} className={styles.searchResult}>
-                                        {loading ? <Spinner color="#5b6ca9" size={30} /> : ''}
+                                        {loading ? <div className={styles.loader}><Spinner color="#fff" size={30} /></div> : ''}
 
                                         { done && !loading ? resultsHtml : '' }
                                     </section>

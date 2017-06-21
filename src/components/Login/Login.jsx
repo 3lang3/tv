@@ -11,7 +11,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
 import config from '../../../config';
-const API_HOST = `${config.HOST}:3000`
+const API_HOST = `${config.ENDHOST}`
 
 const convertFormdataToJson = (formData) => {
     let objData = {};

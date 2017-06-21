@@ -13,7 +13,7 @@ import { IconSteam } from '../Icons';
 import { browserHistory } from 'react-router';
 
 import config from '../../../config';
-const API_HOST = `${config.HOST}:3000`
+const API_HOST = `${config.ENDHOST}`
 
 class Profile extends React.Component {
     constructor(props) {
@@ -87,8 +87,8 @@ class Profile extends React.Component {
                             <FlatButton
                                 label="退出登录"
                                 className={styles.logoutBtn}
-                                backgroundColor="#ff4400"
-                                hoverColor="#ce3700"
+                                backgroundColor="#f8882d"
+                                hoverColor="#f0ad4e"
                                 onClick={() => window.location.href= `${API_HOST}/logout` }
                             />
                         </div>

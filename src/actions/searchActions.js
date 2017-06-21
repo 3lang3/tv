@@ -1,7 +1,7 @@
 /* global API_HOST */
 import fetch from 'isomorphic-fetch';
 import config from '../../config';
-const API_HOST = `${config.HOST}:3000`
+const API_HOST = `${config.ENDHOST}`
 const url = '/api/search/';
 
 const REQUEST = 'search/REQUEST';

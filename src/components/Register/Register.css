@@ -29,7 +29,7 @@
         color:#000;
 
         & span {
-            color:#f8882d;
+            color:#f0ad4e;
         }
     }
 
@@ -41,13 +41,11 @@
     }
 
     & .regBg {
-        background: url('../../../assets/dota2_lina.jpg') -97px 0 no-repeat;
-        background-size: cover;
+        background: url('../../../assets/default_bg.jpg');
     }
 
     & .loginBg {
-        background: url('../../../assets/dota2_qop.jpg') -386px 0 no-repeat;
-        background-size: cover;
+        background: url('../../../assets/default_bg.jpg');
     }
     
     & .btnGroup {
@@ -59,7 +57,7 @@
 
         & a {
             text-decoration: none;
-            color: #3f51b5;
+            color: #6f4ab1;
             font-size: 12px;
         }
     }

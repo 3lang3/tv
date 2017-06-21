@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import classnames from 'classnames';
 import CategoryItem from 'components/CategoryItem';
-import Banner from 'components/Banner';
 import Spinner from 'components/Spinner';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { forceCheck } from 'react-lazyload';
 import {getRecommend } from 'actions';
 
-import styles from './Recommend.css';
+import styles from './Hot.css';
 
-class Recommend extends React.Component {
+class Hot extends React.Component {
 
     constructor(props) {
         super(props)
@@ -51,7 +50,7 @@ class Recommend extends React.Component {
                                 {itemsHtml}
                             </div>
                     </div>
-                    : <div className={styles.empty}><Spinner /></div>
+                    : <div className={styles.loader}><Spinner /></div>
                 }
                 
             </div>
@@ -67,4 +66,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     getRecommend: () => dispatch(getRecommend()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Recommend);
+export default connect(mapStateToProps, mapDispatchToProps)(Hot);

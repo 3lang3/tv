@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import { alertOpen } from 'actions';
 
 import config from '../../../config';
-const API_HOST = `${config.HOST}:3000`
+const API_HOST = `${config.ENDHOST}`
 
 const convertFormdataToJson = (formData) => {
     let objData = {};
@@ -129,8 +129,8 @@ class Register extends React.Component {
                         <div className={styles.btnGroup}>
                             <FlatButton
                                 label={ textRegLogin }
-                                backgroundColor="#5d7ce6"
-                                hoverColor="#4e6dd7"
+                                backgroundColor="#6f4ab1"
+                                hoverColor="#6f4bb1"
                                 style={{
                                     color: '#fff',
                                 }}

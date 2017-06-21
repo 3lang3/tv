@@ -13,7 +13,7 @@ import App from 'components/App';
 import Category from 'components/Category';
 import Categorys from 'components/Categorys';
 import Live from 'components/Screen';
-import Recommend from 'components/Recommend';
+import Hot from 'components/Hot';
 import Wiki from 'components/pageWiki';
 import FourOhFour from 'components/FourOhFour';
 import CategoryItem from 'components/CategoryItem';
@@ -33,7 +33,7 @@ export default () => (
         <IndexRoute component={Category} />
         <Route path="categorys" component={Category} />
         <Route path="categorys/:name" component={Categorys} />
-        <Route path="recommend" component={Recommend} />
+        <Route path="hot" component={Hot} />
         <Route path="live" component={Live} />
         <Route path="*" component={FourOhFour} />
       </Route>

@@ -6,63 +6,53 @@ import styles from './CategoryItem.css';
 import classnames from 'classnames';
 import ActionEye from 'material-ui/svg-icons/action/visibility';
 import PlayAdd from 'material-ui/svg-icons/av/playlist-add';
-import FavoriteBroIco from 'material-ui/svg-icons/action/favorite-border';
-import FavoriteIco from 'material-ui/svg-icons/action/favorite';
+import { IconUser, IconGame, } from '../Icons';
 
-import {screensActive, screenItemsAdd, screenItemsRemove, layoutsOpen, alertOpen, addFavorite, removeFavorite} from 'actions';
+import {screenItemsAdd} from 'actions';
 
-const getClassType = (type) => {
-    switch(type) {
-        case 'category':
-            return 'tvItem';
-        case 'search':
-            return 'search';
-        case 'screen':
-            return 'screen';
+const typeHtmlHandler = (props) => {
+    let item = props.item;
+
+    switch(props.type) {
+        case 'random':
+            let _title = smallTitleHandler(props);
+
+            return <section className={styles.textSec}>
+                        <div className={styles.title} title={`${item.anchor}`}>
+                            {item.anchor}
+                        </div>
+                        <div className={styles.ico}>
+                            <span>{_title}</span>
+                        </div>
+                    </section>;;
         default:
-            return '';
+            return <section className={styles.textSec}>
+                        <div className={styles.title} title={`${item.title}`}>
+                            {item.title}
+                        </div>
+                        <div className={styles.ico}>
+                            <span><ActionEye /> {item.view}</span>
+                            <span><IconUser /> {item.anchor}</span>
+                        </div>
+                    </section>;
     }
 }
 
-const isFavorite = (item, favoriteList) => {
-  let _target = false;
+const smallTitleHandler = (props) => {
+    let result;
 
-  if(favoriteList instanceof Array) {
-    favoriteList.forEach((list, index) => {
-      if(item.roomId == list.roomId && item.anchor == list.anchor) {
-        _target = true;
-      }
-    })
-  }else {
-    _target = false;
-  }
+    props.category.data.forEach((el, index) => {
+        if(props.item.type == el.name ) result = `${el.name_cn} | ${el.name_en}`
+    });
 
-  return _target;
+    return result;
 }
 
-
 class CategoryItem extends React.Component {
+
     constructor(props) {
         super(props)
         this.imageLoad = this.imageLoad.bind(this)
-        this.toggleFavorite = this.toggleFavorite.bind(this)
-        
-    }
-
-    toggleFavorite(e) {
-
-        let item = this.props.item;
-
-        if(this.props.favoriteStatus) {
-            this.props.removeFavorite(item);
-            this.props.alertOpen('取关成功！')
-            
-        }else {
-            this.props.addFavorite(item);
-            this.props.alertOpen('关注成功！')
-        }
-
-        e.stopPropagation();
     }
 
     imageLoad(e) {
@@ -74,13 +64,14 @@ class CategoryItem extends React.Component {
 
         const filterSwitch = this.props.filterSwitch;
         const item = this.props.item;
-        const styleType = getClassType(this.props.type);
+        const styleType = this.props.type;
 
         const notShow = (!filterSwitch || !this.props.filter || this.props.filter == item.platform ) ? '' : 'notShow';
-        
-        const overflow = typeof this.props.overflow !== 'undefined' ? this.props.overflow : true;
+
         const online = this.props.online == true ? true : false;
         const onlineClass = online ? 'online' : '';
+
+        const typeHtml = typeHtmlHandler(this.props);
 
         return (
             <section 
@@ -94,10 +85,10 @@ class CategoryItem extends React.Component {
                 {/*<PlayAdd className={styles.add} />*/}
                 <section className={styles.imgWrapper}>
                     {
-                        this.props.type == 'search'
+                        this.props.type == 'search' || this.props.type == 'random'
                             ? item.anchor.substr(0, 1)
                             : <LazyLoad
-                                overflow={overflow}
+                                overflow={true}
                                 resize={true}
                                 throttle={200}
                                 height={`auto`}
@@ -108,17 +99,8 @@ class CategoryItem extends React.Component {
                             </LazyLoad>
                     }
                 </section>
-                <section className={styles.textSec}>
-                    <div className={styles.title} title={`${item.title}`}>
-                        {item.title}
-                    </div>
-                    <div className={styles.ico}>
-                        <span><ActionEye /> {item.view}</span>
-                        <span><ActionEye /> {item.anchor}</span>
-                        <span onClick={this.toggleFavorite} className={styles.like}>{this.props.favoriteStatus ? <FavoriteIco /> : <FavoriteBroIco style={{opacity: '.3'}} />}</span>
-                    </div>
-                </section>
-                <div className={styles.onlineTarget}></div>
+                {typeHtml}
+                <div className={styles.onlineTarget}><span>离线</span></div>
             </section>
         )
     }
@@ -126,15 +108,11 @@ class CategoryItem extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     filter: state.categorys.filter,
-    favorite: state.favorite.data,
+    category: state.category,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   addItem: (item) => dispatch(screenItemsAdd(item)),
-  layoutsOpen: (clas) => dispatch(layoutsOpen(clas)),
-  alertOpen: (clas) => dispatch(alertOpen(clas)),
-  removeFavorite: (item) => dispatch(removeFavorite(item)),
-  addFavorite: (item) => dispatch(addFavorite(item)),
 })
 
 

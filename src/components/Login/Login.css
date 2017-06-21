@@ -32,7 +32,7 @@
         width: 100%;
         height: 350px;
         flex: 1.5;
-        background: url('/assets/dota2_lina.jpg') -97px 0 no-repeat;
+        background: url('../../../assets/default_bg.jpg');
         background-size: cover;
         padding: 20px;
     }

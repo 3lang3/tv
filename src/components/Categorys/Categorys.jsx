@@ -104,7 +104,7 @@ class Categorys extends React.Component {
         
         
           <section className={styles.flexWrapper}>
-            {loading ? <Spinner size={50} /> : ''}
+            {loading ? <div className={styles.loader}><Spinner size={50} /></div> : ''}
             {isError ? <Error img={require('../../../assets/error_fetch.svg')} content='Ooops,服务器好像出了点小问题' /> : itemsHtml }
           </section>
         

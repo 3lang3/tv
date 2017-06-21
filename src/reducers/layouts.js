@@ -3,7 +3,7 @@ import { layoutsActions } from 'actions';
 const initialState = {
     width: false,
     open: false,
-    chat: false,
+    chat: true,
 };
 
 export default (state = initialState, action) => {

@@ -2,7 +2,7 @@
 import fetch from 'isomorphic-fetch';
 import config from '../../config';
 
-const API_HOST = `${config.HOST}:3000`
+const API_HOST = `${config.ENDHOST}`
 const url = '/api/cheese';
 
 const REQUEST = 'cheese/REQUEST';

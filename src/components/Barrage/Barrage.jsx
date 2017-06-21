@@ -32,6 +32,10 @@ class Barrage extends React.Component {
     }
   }
 
+  componentWillUpdate() {
+    this.refs.barrageScroll.scrollToBottom();
+  }
+
   onMessage(message) {
 
       this.setState({

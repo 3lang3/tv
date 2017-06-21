@@ -4,6 +4,8 @@ import { Link, browserHistory } from 'react-router';
 import styles from './Category.css';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { getCategory } from 'actions';
+import Spinner from 'components/Spinner';
+import Error from 'components/Error';
 
 class Category extends React.Component {
     constructor(props) {
@@ -24,7 +26,7 @@ class Category extends React.Component {
                             <div className={styles.item}>
                                 <Link to={`/categorys/${el.name}`}>
                                     <figure><img src={`http://localhost:3000/images/${el.name}.jpg`} /></figure>
-                                    <h5>{el.name_en}</h5>
+                                    <h5>{el.name_cn} | {el.name_en}</h5>
                                     <p>{el.count} 名主播</p>
                                 </Link>
                             </div>
@@ -36,7 +38,8 @@ class Category extends React.Component {
             <div className={styles.container}>
                 
                     <div className={styles.content}>
-                        {itemHtml}
+                        {loading ? <Spinner size={50} /> : ''}
+                        {error ? <Error img={require('../../../assets/error_fetch.svg')} content='Ooops,服务器好像出了点小问题' /> : itemHtml }
                     </div>
 
             </div>

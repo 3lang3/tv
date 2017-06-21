@@ -7,6 +7,8 @@ import classnames from 'classnames';
 import CategoryItem from 'components/CategoryItem';
 import Spinner from 'components/Spinner';
 import Error from 'components/Error';
+import Random from 'components/Random';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 import IconButton from 'material-ui/IconButton';
 import FavoriteBroIco from 'material-ui/svg-icons/action/favorite-border';
@@ -28,15 +30,10 @@ class Favorite extends React.Component {
         super(props)
     }
 
-    componentDidMount() {
+    componentWillMount() {
         let data = this.props.favorite;
         this.props.getOnline(data)
     }
-
-    componentWillUnmount() {
-        //document.removeEventListener('click', this.handleDocumentClick)
-    }
-
 
     render() {
 
@@ -55,16 +52,19 @@ class Favorite extends React.Component {
 
         let _html = favoriteHtml.length > 0 
                 ? favoriteHtml 
-                : <div className={styles.noContent}><Error img={require('../../../assets/followed-channels__empty.png')} content='关注频道,轻松观看您喜爱的内容。 您可能会喜欢这些内容！' /> </div>
+                : <div className={styles.noContent}>
+                    <Error img={require('../../../assets/followed-channels__empty.png')} content='关注频道,轻松观看您喜爱的内容。 您可能会喜欢这些内容！' />
+                </div>
 
         return (
             <div className={styles.favorite}>
                 <h4>正在关注</h4>
                 <div className={styles.favoriteContent}>
                     {loading ? <div style={{marginTop: '40%'}}><Spinner color="#5b6ca9" size={30} /></div> : ''}
-
-                    { done || error ? _html : ''}
-
+                    <Scrollbars className={styles.scrollBox}>
+                        { done || error ? _html : ''}
+                    </Scrollbars>
+                    <Random />
                 </div>
             </div>
         )

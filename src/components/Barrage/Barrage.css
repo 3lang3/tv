@@ -23,23 +23,19 @@
     
     & li {
         line-height: 1.3em;
-        color:#bcbcbc;
+        color:#6f6f6f;
         font-size: 13px;
         margin-bottom: 10px;
         margin-right: 20px;
         transition: none;
-
-        & * {
-            transition: none;
-        }
+        word-break: break-all;
     }
 }
 
 .share {
-    border-left: 3px solid #000;
-    background-color: rgba(90, 102, 138, 0.3);
-    padding: 10px;
-    border-radius: 3px;
-    margin-top: 10px;
+    border-left: 3px solid #6441a4;
+    background-color: #fff;
+    padding: 1rem;
+    margin-top: .2rem;
     overflow: hidden;
 }

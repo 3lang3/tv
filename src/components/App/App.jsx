@@ -6,6 +6,7 @@ import ChangeLog from 'components/Changelog';
 import Nav from 'components/Nav'
 import Chat from 'components/Chat';
 import Side from 'components/Side';
+import Alert from 'components/Alert';
 import ReactTooltip from 'react-tooltip'
 import { Scrollbars } from 'react-custom-scrollbars';
 
@@ -16,8 +17,8 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 const muiTheme = {
   palette: {
-    primary1Color: '#3F51B5',
-    primary2Color: '#3F51B5',
+    primary1Color: '#6441a4',
+    primary2Color: '#6441a4',
   }
 };
 
@@ -38,6 +39,7 @@ class App extends React.Component {
     let ChatOpen = this.props.chat ? 'chatOpen' : '';
 
     return (
+      <div>
       <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme, muiTheme)}>
           <div className={styles.container} >
             <Side />
@@ -54,9 +56,11 @@ class App extends React.Component {
             </div>
             <Chat />
             <ChangeLog />
-            <ReactTooltip place="top" effect="solid"/>
+            <Alert />
           </div>
       </MuiThemeProvider>
+      <ReactTooltip place="top" effect="solid"/>
+      </div>
     )
   }
 }
