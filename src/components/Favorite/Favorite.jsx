@@ -45,8 +45,12 @@ class Favorite extends React.Component {
         if(favoriteList instanceof Array) {
             favoriteList.forEach((item, index) => {
                 let online = onlineFiter(item, onlineFavoriteList);
-
-                favoriteHtml.push(<CategoryItem favoriteStatus={true} key={item.roomId} online={online} type="search" item={item} />)
+                if(online) {
+                    favoriteHtml.unshift(<CategoryItem favoriteStatus={true} key={item.roomId} online={online} type="search" item={item} />)
+                }else {
+                    favoriteHtml.push(<CategoryItem favoriteStatus={true} key={item.roomId} online={online} type="search" item={item} />)
+                }
+                
             })
         }
 

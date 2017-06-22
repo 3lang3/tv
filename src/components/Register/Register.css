@@ -41,11 +41,11 @@
     }
 
     & .regBg {
-        background: url('../../../assets/default_bg.jpg');
+        background: url('../../../assets/default_bg_reg.jpg') center center;
     }
 
     & .loginBg {
-        background: url('../../../assets/default_bg.jpg');
+        background: url('../../../assets/default_bg_login.jpg') center center;
     }
     
     & .btnGroup {

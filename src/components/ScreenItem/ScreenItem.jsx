@@ -13,6 +13,7 @@ import IconClear from 'material-ui/svg-icons/content/clear';
 import FavoriteBroIco from 'material-ui/svg-icons/action/favorite-border';
 import FavoriteIco from 'material-ui/svg-icons/action/favorite';
 
+import config from '../../../config';
 import {screenItemsRemove, addFavorite, removeFavorite} from 'actions';
 
 
@@ -110,7 +111,7 @@ class screenItem extends React.Component {
             <section className={classnames(styles.stageItem, styles[screenClass])}>
                 <section className={styles.brand}>
                     <div className={styles.typeImg}>
-                        <img src={`http://localhost:3000/images/${item.type}.jpg`} />
+                        <img src={`${config.ENDHOST}/images/${item.type}.jpg`} />
                     </div>
                     <div className={styles.title}>
                         <h3>{item.title}</h3>

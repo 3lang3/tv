@@ -46,26 +46,27 @@ class ChangeLog extends React.Component {
                 autoScrollBodyContent={true}
             >
                 <section className={styles.changeLogSec}>
-                    <h4>版本更新<span>version 2.0.0</span></h4>
+                    <h4>版本更新<span>version 3.0.0</span></h4>
                     <img src={require('../../../assets/changelog.jpg')}alt="" />
                     <h2>
                         更新内容
                     </h2>
                     <ul>
-                        <li><strong>重要提示: Douyu直播播放器会造成某些浏览器直接卡死</strong></li>
-                        <li>更改首页布局</li>
-                        <li>重构主舞台空闲状态UI, 现改为hot和banner栏目</li>
-                        <li>Chat模块从首页移除</li>
+                        <li>全新UI界面</li>
+                        <li>依然支持一屏多看功能</li>
+                        <li>默认打开Chat模块,Nav右上角有切换按钮,灵活使用</li>
+                        <li>更多内容等你发现</li>
                         <li>添加Github开源地址,期待你的加入 <strong><a href="https://github.com/EthanOrange/tv" target="_blank">View Github</a></strong></li>
                         <li>依然一大堆BUG和ISSUE <strong>#NeedYOU</strong></li>
+                        <li><strong>重要提示: 某些情况下Douyu播放器会造成部分浏览器直接卡死</strong></li>
                     </ul>
                     <div style={{
                         textAlign: 'center'
                     }}>
                         <FlatButton
                             label="进入"
-                            backgroundColor="#43b581"
-                            hoverColor="#2e9465"
+                            backgroundColor="#6441a4"
+                            hoverColor="#704bb3"
                             style={{
                                 width: '120px',
                                 margin: '30px auto 0',

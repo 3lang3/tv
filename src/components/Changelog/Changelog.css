@@ -6,7 +6,7 @@
 }
 
 .overlayClass {
-    background:rgba(0, 0, 0, .9) !important;
+    background:rgba(0, 0, 0, .95) !important;
 }
 
 .contentClass {
@@ -42,11 +42,13 @@
 
     & h2 {
         display: inline-block;
-        padding: 6px 12px;
-        border-radius: 2px;
-        color:#fff;
-        background:rgb(67, 181, 129);
-        font-size: 15px;
+        padding: .5rem 1rem;
+        border-radius: .2rem;
+        color: #fff;
+        background: #6441a4;
+        font-size: 1.4rem;
+        font-weight: 400;
+        opacity: .6;
     }
 
     & ul {
@@ -68,7 +70,7 @@
 
         & span {
             font-weight: 600;
-            color:rgb(129, 154, 226);
+            color:rgb(39, 39, 39);
         }
     }
 }
