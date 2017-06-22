@@ -35,6 +35,10 @@ class Category extends React.Component {
             itemHtml.push(_item)
         });
 
+        for (let k = 0; k < 10; k++) {
+            itemHtml.push(<div key={`empty${k}`} className={styles.itemWrapper}></div>)
+        }
+
         return (
             <div className={styles.container}>
                 

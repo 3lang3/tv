@@ -87,6 +87,10 @@ class Categorys extends React.Component {
         itemsHtml.push(<CategoryItem favoriteStatus={(isFavorite(item, favoriteList))} filterSwitch={true} key={`${item.roomId}${key}`} item={item} type="category" />)
       })
     }
+
+    for (let k = 0; k < 10; k++) {
+        itemsHtml.push(<div key={`empty${k}`} className={styles.categoryEmpty}></div>)
+    }
     
     return (
       <div className={classnames(styles.tv)}>

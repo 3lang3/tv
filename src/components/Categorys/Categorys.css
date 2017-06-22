@@ -46,6 +46,14 @@
     
 }
 
+.categoryEmpty {
+    flex: 1 0 auto;
+    max-width: 50%;
+    width: 30rem;
+    margin-bottom: 2rem;
+    padding: 0 1rem;
+}
+
 .loader {
     display: flex;
     justify-content: center;
