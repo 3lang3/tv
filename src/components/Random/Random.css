@@ -1,5 +1,7 @@
 
 .scrollBox {
+    height: calc(100% - 4.5rem) !important;
+    
     & > div {
         &:last-child div {
             background: #000 !important;
@@ -8,7 +10,7 @@
 }
 
 .favorite {
-    height: 48%;
+    height: 50%;
     overflow: hidden;
 
     & h4 span {
