@@ -54,7 +54,7 @@ class Favorite extends React.Component {
             })
         }
 
-        let _html = false
+        let _html = favoriteHtml.length > 0 
                 ? favoriteHtml 
                 : <div className={styles.noContent}>
                     <Error img={require('../../../assets/followed-channels__empty.png')} content='关注频道,轻松观看您喜爱的内容。 您可能会喜欢这些内容！' />
