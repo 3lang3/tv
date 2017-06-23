@@ -40,6 +40,9 @@ class Hot extends React.Component {
                 itemsHtml.push(<CategoryItem filterSwitch={false} key={`${item.roomId}${key}`} item={item} type="category" />)
             })
 
+            for (var k = 0; k < 10; k++) {
+                itemsHtml.push(<div key={`empt${key}${k}`} className={styles.itemWrapper}></div>)
+            }
         }
 
         return (
