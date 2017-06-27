@@ -20,9 +20,11 @@ HashBundlePlugin.prototype.apply = (compiler) => {
     if (!stats.errors.length) {
       const htmlFileName = 'index.html';
       const html = fs.readFileSync(path.join(__dirname, htmlFileName), 'utf8');
-      const htmlOutput = html.replace(/\/build\/.?bundle\.js/, `${'/build/'}${stats.hash}${'.bundle.js'}`);
+      const htmlOutput = html.replace(/\/build\/.?main\.js/, `${'/build/'}${stats.hash}${'.main.js'}`);
+      const vendorOutput = htmlOutput.replace(/\/build\/.?vendor\.js/, `${'/build/'}${stats.hash}${'.vendor.js'}`);
 
-      fs.writeFileSync(path.join(__dirname, htmlFileName), htmlOutput);
+      fs.writeFileSync(path.join(__dirname, htmlFileName), vendorOutput);
+      //fs.writeFileSync(path.join(__dirname, htmlFileName), vendorOutput);
     }
   });
 };
@@ -30,9 +32,10 @@ HashBundlePlugin.prototype.apply = (compiler) => {
 const config = {
   entry: ['babel-polyfill', path.resolve(__dirname, 'src')],
   output: {
-    filename: `${isProd ? '[hash].' : ''}bundle.js`,
+    filename: `${isProd ? '[hash].' : ''}[name].js`,
     path: path.resolve(__dirname, 'build'),
     publicPath: '/build/',
+    chunkFilename: '[chunkhash:8].[name].chunk.js',
   },
   resolve: {
     extensions: ['.jsx', '.js', '.css', '.json', 'scss'],
@@ -65,6 +68,13 @@ const config = {
     }],
   },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+        name: 'vendor',
+        minChunks: function (module) {
+          // 该配置假定你引入的 vendor 存在于 node_modules 目录中
+          return module.context && module.context.indexOf('node_modules') !== -1;
+        }
+    }),
     new webpack.LoaderOptionsPlugin({
       options: {
         postcss: [
