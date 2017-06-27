@@ -10,10 +10,7 @@ import store from 'store';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import App from 'components/App';
-import Category from 'components/Category';
-import Categorys from 'components/Categorys';
-import Live from 'components/Screen';
-import Hot from 'components/Hot';
+
 import Wiki from 'components/pageWiki';
 import FourOhFour from 'components/FourOhFour';
 import CategoryItem from 'components/CategoryItem';
@@ -26,28 +23,44 @@ const history = syncHistoryWithStore(browserHistory, store);
 store.dispatch(getMetadata());
 store.dispatch(getCategory());
 
+const getAppComp = (nextState, cb) => {
+  require.ensure([], (require) => {
+      cb(null, require('components/App').default)
+    }, 'app')
+}
+
+const getCategoryComp = (nextState, cb) => {
+  require.ensure([], (require) => {
+      cb(null, require('components/Category').default)
+    }, 'category')
+}
+const getCategorysComp = (nextState, cb) => {
+  require.ensure([], (require) => {
+      cb(null, require('components/Categorys').default)
+    }, 'categorys')
+}
+const getLiveComp = (nextState, cb) => {
+  require.ensure([], (require) => {
+      cb(null, require('components/Screen').default)
+    }, 'live')
+}
+const getHotComp = (nextState, cb) => {
+  require.ensure([], (require) => {
+      cb(null, require('components/Hot').default)
+    }, 'hot')
+}
+
 export default () => (
   <Provider store={store}>
     <Router history={history}>
       <Route path="/" component={App}>
-        <IndexRoute component={Category} />
-        <Route path="categorys" component={Category} />
-        <Route path="categorys/:name" component={Categorys} />
-        <Route path="hot" component={Hot} />
-        <Route path="live" component={Live} />
+        <IndexRoute getComponent={getCategoryComp} />
+        <Route path="categorys" getComponent={getCategoryComp} />
+        <Route path="categorys/:name" getComponent={getCategorysComp} />
+        <Route path="hot" getComponent={getHotComp} />
+        <Route path="live" getComponent={getLiveComp} />
         <Route path="*" component={FourOhFour} />
       </Route>
     </Router>
   </Provider>
 );
-
-const checkStatus = (nextState, replace, next) => {
- 
-        next()
-      
-}
-
-const checkFetchStatus = (nextState, replace, next) => {
-  if(store.getState().categorys.loading) return;
-  next();
-}
