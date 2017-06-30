@@ -1,4 +1,4 @@
-# [RUARUA.live](http://ruarua.live/invite?code=testcode)开源项目
+# [RUARUA.live](http://ruarua.live)开源项目
 
 #### ruarua.live: 全球视频直播资源聚合，同时观看多个内容,[点击进入](http://ruarua.live/invite?code=testcode)
 ![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/logo-text.png)
@@ -18,7 +18,7 @@
 * 欢迎Fork贡献代码
 * 提交一个pull request, 等待review和merge
 * 恭喜！你已经成为一名贡献者。
-* 想贡献代码的可以加qq群471451989, 一起讨论. 对全栈技术向感兴趣的也可以加.
+* 对全栈技术向感兴趣的可以加qq群471451989.
 
 
 发布(production)
