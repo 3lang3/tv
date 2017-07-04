@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 import styles from './Screen.css';
 import ScreenItem from 'components/ScreenItem';
-import {screenItemsAdd, screenItemsRemove, layoutsChat} from 'actions';
+import {getScreenItems} from 'actions';
 
 
 const isFavorite = (item, favoriteList) => {
@@ -28,18 +28,22 @@ class screen extends React.Component {
         super(props)
     }
 
-    // componentDidMount() {
-    //     this.props.layoutsChat(true)
-    // }
+    componentDidMount() {
+        const urlParams = this.props.location.query.rooms;
+        const screenItems = this.props.screenItems.data;
+        const screen =screenItems.length;
 
-    // componentWillUnmount() {
-    //     this.props.layoutsChat(false)
-    // }
-    
+        if(!screen && urlParams && urlParams.length > 0) {
+            this.props.getScreenItems(urlParams);
+        }
+    }
+
     render() {
         const items = [];
-        const screen = this.props.items.length;
-        this.props.items.forEach((item, key) => {
+        const screenItems = this.props.screenItems.data;
+        const screen =screenItems.length;
+
+        !!screen && screenItems.forEach((item, key) => {
             items.push(<ScreenItem key={`${item.roomId}${item}`} favoriteStatus={isFavorite(item, this.props.favorite)} screenCount={screen} item={item} />)
         })
         
@@ -57,12 +61,12 @@ class screen extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    items: state.screenItems,
+    screenItems: state.screenItems,
     favorite: state.favorite.data,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    layoutsChat: (clas) => dispatch(layoutsChat(clas)),
+    getScreenItems: (par) => dispatch(getScreenItems(par)),
 })
 
 

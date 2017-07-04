@@ -1,16 +1,23 @@
 import { screenItemsActions } from 'actions';
 
-const initialState = [];
+const initialState = {
+    loading: false,
+    error: false,
+    done: false,
+    url: '',
+    data: [],
+};
 
 export default (state = initialState, action) => {
+    
     switch (action.type) {
         case screenItemsActions.ADD:
-            if(state.length == 4) {
-                return [
-                    ...state,
-                ]
+            if(state.data.length == 4) {
+                return {
+                    ...state
+                }
             }else {
-                let newState = Object.assign([], state);
+                let newState = Object.assign([], state.data);
                 let isSame = false;
                 
                 newState.map(item => {
@@ -18,24 +25,62 @@ export default (state = initialState, action) => {
                 })
 
                 if(isSame) {
-                    return [
-                        ...state,
-                    ]
+                    return {
+                        ...state
+                    }
                 }else {
-                    return [
+                    return {
                         ...state,
-                        action.payload
-                    ]
+                        data: [
+                            ...state.data,
+                            action.payload
+                        ]
+                    }
                 }
-                
+
             }
             
             
         case screenItemsActions.REMOVE:
-            return state.filter(item =>(
+            return {
+                ...state,
+                data: state.data.filter(item =>(
                     (item != action.payload)
                 ))
+            }
+        
+        case screenItemsActions.REQUEST:
+            return {
+                ...state,
+                loading: true,
+                error: false,
+                done: false,
+                data: {}
+            }
             
+        case screenItemsActions.OK:
+            return {
+                ...state,
+                loading: false,
+                error: false,
+                done: true,
+                data: action.payload,
+            }
+
+        case screenItemsActions.ERROR:
+            return {
+                ...state,
+                loading: false,
+                error: true,
+                done: false,
+            }
+        
+        case screenItemsActions.URL:
+            return {
+                ...state,
+                url: action.payload,
+            }
+
         default:
             return state;
     }

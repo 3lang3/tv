@@ -50,17 +50,24 @@ const getHotComp = (nextState, cb) => {
     }, 'hot')
 }
 
+export const routes = (
+  <Route path="/" component={App}>
+      <IndexRoute getComponent={getCategoryComp} />
+      <Route path="categorys" getComponent={getCategoryComp} />
+      <Route path="categorys/:name" getComponent={getCategorysComp} />
+      <Route path="hot" getComponent={getHotComp} />
+      <Route path="live" getComponent={getLiveComp} />
+      <Route path="*" component={FourOhFour} />
+    </Route>
+)
+
 export default () => (
   <Provider store={store}>
     <Router history={history}>
-      <Route path="/" component={App}>
-        <IndexRoute getComponent={getCategoryComp} />
-        <Route path="categorys" getComponent={getCategoryComp} />
-        <Route path="categorys/:name" getComponent={getCategorysComp} />
-        <Route path="hot" getComponent={getHotComp} />
-        <Route path="live" getComponent={getLiveComp} />
-        <Route path="*" component={FourOhFour} />
-      </Route>
+      {routes}
     </Router>
   </Provider>
 );
+
+
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import { Provider } from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 
 import styles from './Nav.css'
 import classnames from 'classnames';
@@ -29,7 +29,7 @@ class Nav extends React.Component {
       <div className={styles.nav}>
         <Link to="/categorys" activeClassName={styles.active} className={styles.navItem} >游戏</Link>
         <Link to="/hot" activeClassName={styles.active} className={styles.navItem} >流行</Link>
-        <Link to="/live" activeClassName={styles.active} className={styles.navItem} >正在观看</Link>
+        <Link to={`/live${this.props.screenItemsUrl}`} activeClassName={styles.active} className={styles.navItem} >正在观看</Link>
         {/*<Link to="/wiki" activeClassName={styles.active} className={styles.navItem} >资讯<span className={styles.lab}>待开放</span></Link>*/}
         <Search />
 
@@ -48,6 +48,7 @@ class Nav extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
   layouts: state.layouts,
+  screenItemsUrl: state.screenItems.url,
 })
 
 const dispatchStateToProps = (dispatch, ownProps) => ({

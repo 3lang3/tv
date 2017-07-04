@@ -48,6 +48,18 @@ const smallTitleHandler = (props) => {
     return result;
 }
 
+const preUrlHandler = (items) => {
+    let _preUrl = '?';
+
+    if(!items.length) return '';
+
+    items.forEach((el, index) => {
+        _preUrl += `--${el.platform}+${JSON.stringify(el.roomId)}`;
+    })
+
+    return _preUrl;
+}
+
 class CategoryItem extends React.Component {
 
     constructor(props) {
@@ -77,7 +89,6 @@ class CategoryItem extends React.Component {
             <section 
                 onClick={() => {
                     this.props.addItem(item)
-                    browserHistory.push('/live')
                 }} 
                 className={classnames(styles[styleType], styles[notShow], styles[onlineClass])}
             >
@@ -109,6 +120,7 @@ class CategoryItem extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
     filter: state.categorys.filter,
     category: state.category,
+    screenItems: state.screenItems,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
