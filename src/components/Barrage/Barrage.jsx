@@ -46,7 +46,7 @@ class Barrage extends React.Component {
   }
 
   onMessageLogin(message) {
-    console.log(message)
+
     this.setState({
       barrages: barrageSplit(this.state.barrages, message),
     })

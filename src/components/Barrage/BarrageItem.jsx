@@ -13,7 +13,7 @@ const getBarrage = (props) => {
         
         case 'screen':
             let items = [];
-
+            console.log(props.content, props)
             JSON.parse(props.content).forEach((item, key) => {
                 items.push(<CategoryItem filterSwitch={false} key={`${item.roomId}${key}`} type="screen" item={item} />)
             })

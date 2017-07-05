@@ -45,7 +45,7 @@ ShareScreen.contextTypes = {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    items: state.screenItems,
+    items: state.screenItems.data,
 })
 
 export default connect(mapStateToProps)(ShareScreen);
