@@ -7,7 +7,7 @@ import IconButton from 'material-ui/IconButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
-import EmailIco from 'material-ui/svg-icons/Communication/email';
+import EmailIco from 'material-ui/svg-icons/communication/email';
 import GiftIco from 'material-ui/svg-icons/action/card-giftcard';
 import { IconSteam } from '../Icons';
 import { browserHistory } from 'react-router';

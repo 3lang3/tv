@@ -4,7 +4,7 @@ import styles from './Random.css';
 import CategoryItem from 'components/CategoryItem';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Spinner from 'components/Spinner';
-import RefreshIcon from 'material-ui/svg-icons/Navigation/refresh';
+import RefreshIcon from 'material-ui/svg-icons/navigation/refresh';
 
 import { getRandom } from 'actions';
 
