@@ -17,7 +17,6 @@
 * 打开http://localhost:8080
 * 欢迎Fork贡献代码
 * 提交一个pull request, 等待review和merge
-* 恭喜！你已经成为一名贡献者。
 * 对全栈技术向感兴趣的可以加qq群471451989.
 
 
