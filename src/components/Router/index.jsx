@@ -12,7 +12,7 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import App from 'components/App';
 
 import Wiki from 'components/pageWiki';
-import FourOhFour from 'components/FourOhFour';
+import FourOhFour from 'components/FourohFour';
 import CategoryItem from 'components/CategoryItem';
 import { getMetadata, getCategory } from 'actions';
 
