@@ -11,7 +11,7 @@
 
 快速开始(dev)
 ----
-* 安装 Node.js (6.0.0 +) 
+* 安装 Node.js & npm (nodejs 8.0+, npm 5.0 +) 
 * `npm install`
 * `npm run start`
 * 打开http://localhost:8080
