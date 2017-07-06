@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import styles from './ShareScreen.css';
-import ShareIco from 'material-ui/svg-icons/Communication/screen-share';
+import ShareIco from 'material-ui/svg-icons/communication/screen-share';
 
 class ShareScreen extends React.Component {
     constructor(props) {
