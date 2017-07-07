@@ -73,7 +73,7 @@ class Header extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
     metadata: state.metadata,
-    screenItems: state.screenItems,
+    screenItems: state.screenItems.data,
 })
 
 const mapDispatchToProps = (dispatch) => ({

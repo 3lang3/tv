@@ -37,7 +37,7 @@ class Barrage extends React.Component {
   }
 
   onMessage(message) {
-
+    console.log(message)
       this.setState({
         barrages: barrageSplit(this.state.barrages, message),
       })
@@ -61,7 +61,7 @@ class Barrage extends React.Component {
   connectSuccess() {
 
     this.context.socket.emit('login', {
-      username: this.props.nickname || '弹幕大神',
+      nickname: `${this.props.data.user ? this.props.data.user.nickname : '弹幕大神'}`,
       color: localStorage.getItem('__barrage_name_color'),
     });
 
@@ -73,15 +73,12 @@ class Barrage extends React.Component {
 
   render() {
     const isOnline = this.state.online;
-    const userInfo = this.props.data.user;
     let barragesHtml = [];
-    const nickname = userInfo ? userInfo.nickname : null,
-          mmr = userInfo && userInfo.steamInfo ? userInfo.steamInfo.solo_competitive_rank : null;
 
     this.state.barrages.forEach((barrage, key) => {
-      barragesHtml.push(<BarrageItem key={key} {...barrage} />)
+      barragesHtml.push(<BarrageItem  key={key} {...barrage} />)
     })
-    
+
     return (
       <Scrollbars ref="barrageScroll" className={styles.scrollBox}>
         {

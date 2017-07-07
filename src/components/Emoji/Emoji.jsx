@@ -45,7 +45,7 @@ class Emoji extends React.Component {
         var message = {
             content: ais,
             color: localStorage.getItem('__barrage_name_color'),
-            nickname: this.props.nickname,
+            nickname: `${this.props.data.user ? this.props.data.user.nickname : '弹幕大神'}`,
             mmr: this.props.mmr,
         };
 
@@ -93,4 +93,8 @@ Emoji.contextTypes = {
     socket: React.PropTypes.object.isRequired
 }
 
-export default Emoji;
+const mapStateToProps = (state, ownProps) => ({
+  data: state.metadata.data
+})
+
+export default connect(mapStateToProps)(Emoji)

@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect } from 'react-redux';
 import styles from './ChatInput.css';
 import { emojiToggle } from 'actions';
 import Emoji from 'components/Emoji';
@@ -26,7 +27,7 @@ class ChatInput extends React.Component {
         var message = {
             content: this.refs.chatTextarea.value,
             color: localStorage.getItem('__barrage_name_color'),
-            nickname: this.props.nickname,
+            nickname: `${this.props.data.user ? this.props.data.user.nickname : '弹幕大神'}`,
             mmr: this.props.mmr,
         };
 
@@ -75,4 +76,8 @@ ChatInput.contextTypes = {
     socket: React.PropTypes.object.isRequired
 }
 
-export default ChatInput;
+const mapStateToProps = (state, ownProps) => ({
+  data: state.metadata.data
+})
+
+export default connect(mapStateToProps)(ChatInput)

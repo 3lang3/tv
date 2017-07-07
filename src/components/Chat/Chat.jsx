@@ -12,9 +12,6 @@ const API_HOST = `${config.ChatHOST}`
 import styles from './Chat.css';
 
 const Chat = (props) =>{
-    const user = props.data.user;
-    const nickname = user ? user.nickname : null,
-              mmr = user && user.steamInfo ? user.steamInfo.solo_competitive_rank : null;
 
     const toggleClass = props.chatToggle ? '' : 'chatClose';
 
@@ -27,9 +24,9 @@ const Chat = (props) =>{
             }}
         >
             <div className={classnames(styles.chat, styles[toggleClass])}>
-                <Barrage nickname={nickname} />
+                <Barrage/>
                 <ChatSetting />
-                <ChatInput nickname={nickname} mmr={mmr} />
+                <ChatInput/>
             </div>
         </Socket>
     )

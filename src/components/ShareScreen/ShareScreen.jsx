@@ -23,7 +23,7 @@ class ShareScreen extends React.Component {
         var message = {
             content: JSON.stringify(this.props.items),
             color: localStorage.getItem('__barrage_name_color'),
-            nickname: this.props.nickname,
+            nickname: `${this.props.data.user ? this.props.data.user.nickname : '弹幕大神'}`,
             mmr: this.props.mmr,
         };
 
@@ -46,6 +46,7 @@ ShareScreen.contextTypes = {
 
 const mapStateToProps = (state, ownProps) => ({
     items: state.screenItems.data,
+    data: state.metadata.data,
 })
 
 export default connect(mapStateToProps)(ShareScreen);
