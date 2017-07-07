@@ -8,7 +8,6 @@
     width: 50%;
     float: left;
     box-sizing: border-box;
-    transition: none;
     background: none;
     position: relative;
     margin: 0;
@@ -23,10 +22,10 @@
 
         & li {
             display: block; 
-            float: left;
             color:#999;
             font-size: 1.4rem;
-            padding: 1rem;
+            padding: 0 1rem;
+            text-align: right;
 
             & svg {
                 width: 22px !important;
@@ -67,14 +66,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-
-            & span {
-                margin: 0 .75rem;
-                display: inline-block;
-                text-overflow: ellipsis;
-                overflow: hidden;
-                white-space: nowrap;
-            }
         }
 
         & .view {
@@ -106,6 +97,16 @@
 
             & a {
                 text-decoration: none;
+                display: block;
+                line-height: 1em;
+            }
+
+            & span {
+                margin: 0 1rem 0 0;
+                display: inline-block;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
         }
     }
@@ -128,42 +129,37 @@
             bottom: 0;
         }
     }
+}
 
-    & .itemInfo {
-        position: absolute;
-        top: 0;
-        right: .5%;
-        width: auto;
-        z-index: 1;
+.itemInfo {
+    width: auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
 
-        & .like {
-            color: #8bc34a !important;
-
-            & svg {
-                color: #8bc34a !important;
-            }
-        }
-
-        & span {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-
-            &:hover {
-                color:#333 !important;
-
-                & svg {
-                    color:#333 !important;
-                }
-            }
-        }
+    & .like {
+        color: #8bc34a !important;
 
         & svg {
-            color:#999 !important;
+            fill: #8bc34a !important;
         }
-        
     }
+
+    & span {
+
+        &:hover {
+            color:#333 !important;
+
+            & svg {
+                color:#333 !important;
+            }
+        }
+    }
+
+    & svg {
+        color:#999 !important;
+    }
+    
 }
 
     

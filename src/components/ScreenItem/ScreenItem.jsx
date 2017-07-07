@@ -117,19 +117,19 @@ class screenItem extends React.Component {
                         <h3>{item.title}</h3>
                         <h5><Link to={`/categorys/${item.type}`}><span><IconGame /> {smallTitleText} </span><span><IconUser />{item.anchor}</span> <span><ActionEye /> {item.view}</span> </Link></h5>
                     </div>
+                    <section className={styles.itemInfo}>
+                        <ul>
+                            <li onClick={() => this.props.removeItem(item) } >
+                                <span><IconClear/>关闭</span>
+                            </li>
+                            <li data-tip="取消关注" onClick={this.toggleFavorite}>
+                                {favoriteHtml}
+                            </li>
+                        </ul>
+                    </section>
                 </section>
                 <section style={{paddingBottom: `${secHeight/paddBottom}%`}} className={styles.itemIframe} 
                      dangerouslySetInnerHTML={{__html: `<embed allowscriptaccess="always" src="${_url}${id}" allowfullscreen="true"></embed>`}}>
-                </section>
-                <section className={styles.itemInfo}>
-                    <ul>
-                        <li data-tip="取消关注" onClick={this.toggleFavorite}>
-                            {favoriteHtml}
-                        </li>
-                        <li onClick={() => this.props.removeItem(item) } >
-                            <span><IconClear/>关闭</span>
-                        </li>
-                    </ul>
                 </section>
             </section>
         )

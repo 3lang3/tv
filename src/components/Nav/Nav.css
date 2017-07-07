@@ -9,6 +9,13 @@
     position: relative;
 }
 
+@media screen and (max-width: 1200px) {
+    .nav {
+        margin: 2rem 3rem 3rem;
+        box-shadow: none;
+    }
+}
+
 .navItem {
     padding: .5rem 0;
     font-size: 1.4rem;
