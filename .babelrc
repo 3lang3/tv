@@ -5,5 +5,8 @@
       "presets": ["es2015", "stage-3", "react"]
     }
   },
-  "plugins": ["react-hot-loader/babel"]
+  "plugins": [
+    "react-hot-loader/babel",
+    "transform-runtime"
+  ]
 }

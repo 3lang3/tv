@@ -30,7 +30,7 @@ HashBundlePlugin.prototype.apply = (compiler) => {
 };
 
 const config = {
-  entry: ['babel-polyfill', path.resolve(__dirname, 'src')],
+  entry: [path.resolve(__dirname, 'src')],
   output: {
     filename: `${isProd ? '[hash].' : ''}[name].js`,
     path: path.resolve(__dirname, 'build'),
@@ -113,7 +113,6 @@ if (!isProd) {
     'react-hot-loader/patch',
     `webpack-dev-server/client?http://${config.devServer.host}:${config.devServer.port}`,
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-    'babel-polyfill',
     path.resolve(__dirname, 'src'),
   ];
 
