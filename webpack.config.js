@@ -99,6 +99,9 @@ const config = {
     host: 'localhost',
     port: Number(process.env.PORT) || 8080,
     historyApiFallback: true,
+    stats: {
+      chunks: false
+    }
   },
 };
 
