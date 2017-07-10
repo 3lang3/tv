@@ -296,6 +296,18 @@
     }
 }
 
+.outside {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: auto;
+    border-radius: 1rem 0 0 1rem;
+    background: #faa61a;
+    color: #fff;
+    padding: 0 .25rem 0 .75rem;
+    font-size: 1rem;
+}
+
 .imgFadeIn {
     opacity: 1 !important;
 }

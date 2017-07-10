@@ -83,12 +83,18 @@ class CategoryItem extends React.Component {
         const online = this.props.online == true ? true : false;
         const onlineClass = online ? 'online' : '';
 
+        const outSide = item.platform === 'panda';
+        const outSideHtml = outSide ? <section data-tip="由于源限制, 将跳转至源网站观看" className={styles.outside}>站外资源</section>: '';
+        const outSidId = item.roomId;
+
+        console.log(outSide ? outSidId : '')
+
         const typeHtml = typeHtmlHandler(this.props);
 
         return (
             <section 
                 onClick={() => {
-                    this.props.addItem(item)
+                    !outSide ? this.props.addItem(item) : window.open(`http://panda.tv/${outSidId}`)
                 }} 
                 className={classnames(styles[styleType], styles[notShow], styles[onlineClass])}
             >
@@ -110,6 +116,7 @@ class CategoryItem extends React.Component {
                             </LazyLoad>
                     }
                 </section>
+                {outSideHtml}
                 {typeHtml}
                 <div className={styles.onlineTarget}><span>离线</span></div>
             </section>
