@@ -146,6 +146,7 @@
     }
 
     & span {
+        cursor: pointer;
 
         &:hover {
             color:#333 !important;

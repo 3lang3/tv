@@ -84,10 +84,8 @@ class CategoryItem extends React.Component {
         const onlineClass = online ? 'online' : '';
 
         const outSide = item.platform === 'panda';
-        const outSideHtml = outSide ? <section data-tip="由于源限制, 将跳转至源网站观看" className={styles.outside}>站外资源</section>: '';
+        const outSideHtml = outSide ? <section title="由于源限制, 将跳转至源网站观看" className={styles.outside}>站外资源</section>: '';
         const outSidId = item.roomId;
-
-        console.log(outSide ? outSidId : '')
 
         const typeHtml = typeHtmlHandler(this.props);
 
