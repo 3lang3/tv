@@ -99,7 +99,7 @@ class screenItem extends React.Component {
         const secHeight = this.props.screenCount > 1 ? 100 : 100;
         const screenClass = preScreenCount(this.props.screenCount);
         const smallTitleText = smallTitleHandler(this.props);
-        const favoriteHtml = this.props.favoriteStatus ? <span className={styles.like}><FavoriteIco />已关注</span> : <span><FavoriteBroIco />关注</span>
+        const favoriteHtml = this.props.favoriteStatus ? <span className={styles.like}><FavoriteIco /></span> : <span><FavoriteBroIco /></span>
 
         let _url;
         
@@ -120,7 +120,7 @@ class screenItem extends React.Component {
                     <section className={styles.itemInfo}>
                         <ul>
                             <li onClick={() => this.props.removeItem(item) } >
-                                <span><IconClear/>关闭</span>
+                                <span><IconClear/></span>
                             </li>
                             <li data-tip="取消关注" onClick={this.toggleFavorite}>
                                 {favoriteHtml}
@@ -129,7 +129,7 @@ class screenItem extends React.Component {
                     </section>
                 </section>
                 <section style={{paddingBottom: `${secHeight/paddBottom}%`}} className={styles.itemIframe} 
-                     dangerouslySetInnerHTML={{__html: `<embed allowscriptaccess="always" src="${_url}${id}" allowfullscreen="true"></embed>`}}>
+                     dangerouslySetInnerHTML={{__html: `<iframe allowscriptaccess="always" src="${_url}${id}" allowfullscreen="true"></iframe>`}}>
                 </section>
             </section>
         )

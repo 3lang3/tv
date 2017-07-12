@@ -3,7 +3,7 @@ import { layoutsActions } from 'actions';
 const initialState = {
     width: false,
     open: false,
-    chat: true,
+    chat: document.body.clientWidth > 1200,
 };
 
 export default (state = initialState, action) => {

@@ -20,6 +20,33 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100vw;
+        bottom: initial;
+        height: auto;
+        z-index: 4;
+
+        & > * {
+            display: none !important;
+        }
+
+        & .logo {
+            margin: 0;
+            display: flex  !important;
+            justify-content: space-between;
+
+            & h2, & p {
+                display: none;
+            }
+
+            & h1 {
+                margin: 0;
+            }
+        }
+    }
+}
+
 .layout {
     flex-grow: 1;
     overflow: hidden;

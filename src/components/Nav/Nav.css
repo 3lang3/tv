@@ -16,6 +16,16 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .nav {
+        margin: 7rem 3rem 3rem;
+
+        & > div {
+            display: none;
+        }
+    }
+}
+
 .navItem {
     padding: .5rem 0;
     font-size: 1.4rem;

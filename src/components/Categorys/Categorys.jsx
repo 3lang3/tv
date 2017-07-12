@@ -16,10 +16,7 @@ import CloseIco from 'material-ui/svg-icons/navigation/close';
 import {getCategorys, filterCategorys} from 'actions';
 
 const getData = (props) => {
-  console.log(props.params)
-
   props.getCategorys(props.params.name);
-
 }
 
 

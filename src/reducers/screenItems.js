@@ -8,13 +8,18 @@ const initialState = {
     data: [],
 };
 
+const MAX_SCREEN = document.body.clientWidth > 768 ? 4 : 1;
+
 export default (state = initialState, action) => {
     
     switch (action.type) {
         case screenItemsActions.ADD:
-            if(state.data.length == 4) {
+            if(state.data.length == MAX_SCREEN) {
                 return {
-                    ...state
+                    ...state,
+                    data: [
+                        action.payload
+                    ]
                 }
             }else {
                 let newState = Object.assign([], state.data);

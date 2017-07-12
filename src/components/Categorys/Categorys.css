@@ -20,6 +20,9 @@
         color:#19171c;
         font-weight: 400;
         font-size: 3rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
 
         & span {
             font-size: 2.8rem;
@@ -40,10 +43,6 @@
         min-width: 100%;
         margin: 0 -1rem
     }
-}
-
-.categoryTitle {
-    
 }
 
 .categoryEmpty {
@@ -76,7 +75,7 @@
         background: #e6e6e6;
         color: #6d6d6d;
         padding: .1rem 1rem;
-        margin: 0 .5rem 0 0;
+        margin: 0 .5rem .5rem 0;
         cursor: pointer;
         transition: all .4s;
 

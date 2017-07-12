@@ -19,6 +19,20 @@
     overflow: hidden;
 }
 
+.wrapperContainer {
+    padding: 2rem 3rem;
+    color:#333;
+    font-size: 1rem;
+    width: auto;
+    height: 100%;
+}
+
+.mainContainer {
+    width: 100%;
+    height: auto;
+    padding-bottom: 4rem;
+}
+
 .scrollContainer {
     position: relative;
     margin-left: 24rem;
@@ -34,16 +48,9 @@
     }
 }
 
-.wrapperContainer {
-    padding: 2rem 3rem;
-    color:#333;
-    font-size: 1rem;
-    width: auto;
-    height: 100%;
-}
 
-.mainContainer {
-    width: 100%;
-    height: auto;
-    padding-bottom: 4rem;
+@media screen and (max-width: 768px) {
+    .scrollContainer {
+        margin-left: 0;
+    }
 }
