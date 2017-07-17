@@ -1,8 +1,8 @@
 /* global API_HOST */
 import fetch from 'isomorphic-fetch';
-import {layoutsOpen} from 'actions';
 import config from '../../config';
-const API_HOST = `${config.ENDHOST}`
+
+const API_HOST = `${config.ENDHOST}`;
 const url = '/api/categorys/';
 
 const REQUEST = 'categorys/REQUEST';
@@ -34,9 +34,9 @@ const getCategorysError = payload => ({
 const filterCategorys = payload => ({
   type: FILTER,
   payload,
-})
+});
 
-const getCategorys = (name) => (dispatch) => {
+const getCategorys = name => (dispatch) => {
   dispatch(getCategorysRequest());
   dispatch(filterCategorys(''));
   return fetch(`${API_HOST}${url}${name}`)
@@ -47,5 +47,5 @@ const getCategorys = (name) => (dispatch) => {
 
 export {
   getCategorys,
-  filterCategorys
+  filterCategorys,
 };

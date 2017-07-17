@@ -1,34 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Snackbar from 'material-ui/Snackbar';
 import styles from './Alert.css';
 
-import Snackbar from 'material-ui/Snackbar';
+const Alert = (props) => {
+  const { open, message, duration } = props.alert;
 
-class Alert extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+  return (
+    <Snackbar
+      open={open}
+      message={message}
+      autoHideDuration={duration}
+      className={styles.alert}
+    />
+  );
+};
 
-    render() {
-        const {open: open, message: message , duration: duration} = this.props.alert;
+const mapStateToProps = state => ({
+  alert: state.alert,
+});
 
-        return (
-            <Snackbar
-                open={open}
-                message={message}
-                autoHideDuration={duration}
-                className={styles.alert}
-             />
-        )
-    }
-}
 
-const mapStateToProps = (state, ownProps) => ({
-    alert: state.alert,
-})
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    // dispatchAlert: .alert,
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Alert);
+export default connect(mapStateToProps)(Alert);

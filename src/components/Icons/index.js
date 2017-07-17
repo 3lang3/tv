@@ -28,4 +28,4 @@ export {
     IconSteam,
     IconGithub,
     IconCheese,
-}
+};

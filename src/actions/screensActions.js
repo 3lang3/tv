@@ -3,8 +3,8 @@
 const OK = 'screens/OK';
 
 export const screensActions = {
-  OK
-}
+  OK,
+};
 
 const screensActive = payload => ({
   type: OK,

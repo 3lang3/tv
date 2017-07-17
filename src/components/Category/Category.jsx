@@ -1,64 +1,53 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link, browserHistory } from 'react-router';
-import styles from './Category.css';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Link } from 'react-router';
 import { getCategory } from 'actions';
 import Spinner from 'components/Spinner';
 import Error from 'components/Error';
+import styles from './Category.css';
 import config from '../../../config';
 
-class Category extends React.Component {
-    constructor(props) {
-        super(props)
-    }
+const Category = (props) => {
+  const { error, loading, done, data } = props.category;
+  const itemHtml = [];
 
-    componentDidMount() {
-        // this.props.getCategory();
-    }
+  !!data.length && data.forEach((el, index) => {
+    const item = (<div className={styles.itemWrapper} key={index}>
+      <div className={styles.item}>
+        <Link to={`/categorys/${el.name}`}>
+          <figure><img src={`${config.ENDHOST}/images/${el.name}.jpg`} /></figure>
+          <h5>{el.name_cn} | {el.name_en}</h5>
+          <p>{el.count} 名主播</p>
+        </Link>
+      </div>
+    </div>);
+    itemHtml.push(item);
+  });
 
-    render() {
+  for (let k = 0; k < 10; k++) {
+    itemHtml.push(<div key={`empty${k}`} className={styles.itemWrapper} />);
+  }
 
-        const {error: error, loading: loading, done: done, data: data} = this.props.category;
-        let itemHtml = [];
+  return (
+    <div className={styles.container}>
 
-        !!data.length && data.forEach((el, index) => {
-            let _item = <div className={styles.itemWrapper} key={index}>
-                            <div className={styles.item}>
-                                <Link to={`/categorys/${el.name}`}>
-                                    <figure><img src={`${config.ENDHOST}/images/${el.name}.jpg`} /></figure>
-                                    <h5>{el.name_cn} | {el.name_en}</h5>
-                                    <p>{el.count} 名主播</p>
-                                </Link>
-                            </div>
-                        </div>
-            itemHtml.push(_item)
-        });
+      <div className={styles.content}>
+        {loading ? <Spinner size={50} /> : ''}
+        {error ? <Error img={require('../../../assets/error_fetch.svg')} content="Ooops,服务器好像出了点小问题" /> : itemHtml }
+      </div>
 
-        for (let k = 0; k < 10; k++) {
-            itemHtml.push(<div key={`empty${k}`} className={styles.itemWrapper}></div>)
-        }
+    </div>
+  );
+};
 
-        return (
-            <div className={styles.container}>
-                
-                    <div className={styles.content}>
-                        {loading ? <Spinner size={50} /> : ''}
-                        {error ? <Error img={require('../../../assets/error_fetch.svg')} content='Ooops,服务器好像出了点小问题' /> : itemHtml }
-                    </div>
 
-            </div>
-        )
-    }
-}
+const mapStateToProps = state => ({
+  category: state.category,
+});
 
-const mapStateToProps = (state, ownProps) => ({
-    category: state.category,
-})
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    getCategory: () => dispatch(getCategory())
-})
+const mapDispatchToProps = dispatch => ({
+  getCategory: () => dispatch(getCategory()),
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Category);

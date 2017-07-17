@@ -1,23 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Socket, Event } from 'react-socket-io';
+import { Event } from 'react-socket-io';
 import { Scrollbars } from 'react-custom-scrollbars';
-import BarrageItem from './BarrageItem';
 import Error from 'components/Error';
-
+import BarrageItem from './BarrageItem';
 import styles from './Barrage.css';
 
 const barrageSplit = (barrages, barrage) => {
-  let newBarrage = barrages.concat();
+  const newBarrage = barrages.concat();
 
-  if(newBarrage.length > 100) {
-    newBarrage.shift()
+  if (newBarrage.length > 100) {
+    newBarrage.shift();
   }
 
-  newBarrage.push(barrage)
+  newBarrage.push(barrage);
 
   return newBarrage;
-}
+};
 
 class Barrage extends React.Component {
   constructor(props, context) {
@@ -29,7 +28,7 @@ class Barrage extends React.Component {
     this.state = {
       barrages: [],
       online: false,
-    }
+    };
   }
 
   componentWillUpdate() {
@@ -37,29 +36,26 @@ class Barrage extends React.Component {
   }
 
   onMessage(message) {
-    console.log(message)
-      this.setState({
-        barrages: barrageSplit(this.state.barrages, message),
-      })
+    this.setState({
+      barrages: barrageSplit(this.state.barrages, message),
+    });
 
     this.refs.barrageScroll.scrollToBottom();
   }
 
   onMessageLogin(message) {
-
     this.setState({
       barrages: barrageSplit(this.state.barrages, message),
-    })
+    });
   }
-  
+
   connectError() {
     this.setState({
       online: false,
-    })
+    });
   }
 
   connectSuccess() {
-
     this.context.socket.emit('login', {
       nickname: `${this.props.data.user ? this.props.data.user.nickname : '弹幕大神'}`,
       color: localStorage.getItem('__barrage_name_color'),
@@ -67,47 +63,46 @@ class Barrage extends React.Component {
 
     this.setState({
       online: true,
-    })
-
+    });
   }
 
   render() {
     const isOnline = this.state.online;
-    let barragesHtml = [];
+    const barragesHtml = [];
 
     this.state.barrages.forEach((barrage, key) => {
-      barragesHtml.push(<BarrageItem  key={key} {...barrage} />)
-    })
+      barragesHtml.push(<BarrageItem key={key} {...barrage} />);
+    });
 
     return (
       <Scrollbars ref="barrageScroll" className={styles.scrollBox}>
         {
           isOnline
             ? <ol className={styles.chats}>
-                  {barragesHtml}
-              </ol>
+              {barragesHtml}
+            </ol>
             : <Error img={require('../../../assets/chat_status.svg')} content="正在连接弹幕服务器..." />
         }
-          
-          
-          <Event event='message:receive' handler={this.onMessage} />
-          <Event event='message:login' handler={this.onMessageLogin} />
-          <Event event='message:logout' handler={this.onMessageLogin} />
-          <Event event='connect_error' handler={this.connectError} />
-          <Event event='reconnecting' handler={this.connectError} />
-          <Event event='reconnect_error' handler={this.connectError} />
-          <Event event='connect' handler={this.connectSuccess} />
+
+
+        <Event event="message:receive" handler={this.onMessage} />
+        <Event event="message:login" handler={this.onMessageLogin} />
+        <Event event="message:logout" handler={this.onMessageLogin} />
+        <Event event="connect_error" handler={this.connectError} />
+        <Event event="reconnecting" handler={this.connectError} />
+        <Event event="reconnect_error" handler={this.connectError} />
+        <Event event="connect" handler={this.connectSuccess} />
       </Scrollbars>
-    )
+    );
   }
 }
 
 Barrage.contextTypes = {
-    socket: React.PropTypes.object.isRequired
-}
+  socket: React.PropTypes.object.isRequired,
+};
 
-const mapStateToProps = (state, ownProps) => ({
-  data: state.metadata.data
-})
+const mapStateToProps = state => ({
+  data: state.metadata.data,
+});
 
-export default connect(mapStateToProps)(Barrage)
+export default connect(mapStateToProps)(Barrage);

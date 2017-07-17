@@ -7,34 +7,30 @@ import ChatInput from 'components/Chat/ChatInput.jsx';
 import ChatSetting from 'components/Chat/ChatSetting.jsx';
 import config from '../../../config';
 
-const API_HOST = `${config.ChatHOST}`
+const API_HOST = `${config.ChatHOST}`;
 
 import styles from './Chat.css';
 
-const Chat = (props) =>{
+const Chat = (props) => {
+  const toggleClass = props.chatToggle ? '' : 'chatClose';
 
-    const toggleClass = props.chatToggle ? '' : 'chatClose';
+  return (
 
-    return (
-        
-        <Socket
-            uri={API_HOST} 
-            options={{ 
-                //transports: ['websocket'],
-            }}
-        >
-            <div className={classnames(styles.chat, styles[toggleClass])}>
-                <Barrage/>
-                <ChatSetting />
-                <ChatInput/>
-            </div>
-        </Socket>
-    )
-}
+    <Socket
+      uri={API_HOST}
+    >
+      <div className={classnames(styles.chat, styles[toggleClass])}>
+        <Barrage />
+        <ChatSetting />
+        <ChatInput />
+      </div>
+    </Socket>
+  );
+};
 
 const mapStateToProps = (state, ownProps) => ({
-    chatToggle: state.layouts.chat,
-    data: state.metadata.data,
-})
+  chatToggle: state.layouts.chat,
+  data: state.metadata.data,
+});
 
-export default connect(mapStateToProps)(Chat)
+export default connect(mapStateToProps)(Chat);

@@ -1,3 +1,3 @@
-import Barrage from './Barrage.jsx';
+import Barrage from './Barrage';
 
 export default Barrage;

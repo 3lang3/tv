@@ -25,7 +25,7 @@ export {
     emoji,
     alert,
     invite,
-    cheese, 
+    cheese,
     favorite,
     online,
     recommend,

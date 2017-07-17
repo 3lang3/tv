@@ -2,7 +2,7 @@
 import fetch from 'isomorphic-fetch';
 import config from '../../config';
 
-const API_HOST = `${config.ENDHOST}`
+const API_HOST = `${config.ENDHOST}`;
 const url = '/api/online';
 
 const REQUEST = 'online/REQUEST';
@@ -30,16 +30,16 @@ const getOnlineError = payload => ({
 });
 
 
-const getOnline = (data) => (dispatch) => {
+const getOnline = data => (dispatch) => {
   dispatch(getOnlineRequest());
 
-  let form = new FormData();
-  form.append( "json", JSON.stringify(data) );
+  const form = new FormData();
+  form.append('json', JSON.stringify(data));
 
   return fetch(`${API_HOST}${url}`, {
-      method: 'POST',
-      body: form,
-    })
+    method: 'POST',
+    body: form,
+  })
     .then(res => res.json())
     .then(json => dispatch(getOnlineOk(json)))
     .catch(err => dispatch(getOnlineError(err)));

@@ -1,9 +1,8 @@
 /* global API_HOST */
 import fetch from 'isomorphic-fetch';
-import {layoutsOpen} from 'actions';
-
 import config from '../../config';
-const API_HOST = `${config.ENDHOST}`
+
+const API_HOST = `${config.ENDHOST}`;
 const url = '/api/metadata';
 
 const REQUEST = 'metadata/REQUEST';
@@ -31,7 +30,7 @@ const getMetadataError = payload => ({
 });
 
 export const getMetadata = (host = API_HOST) => (dispatch) => {
-  dispatch(getMetadataRequest())
+  dispatch(getMetadataRequest());
   return fetch(`${host}${url}`, { credentials: 'include' })
   .then(response => response.json())
   .then(json => dispatch(getMetadataOk(json)))

@@ -1,3 +1,3 @@
-import Side from './Side.jsx';
+import Side from './Side';
 
 export default Side;

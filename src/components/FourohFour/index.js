@@ -1,3 +1,3 @@
-import FourohFour from './FourohFour'
+import FourohFour from './FourohFour';
 
-export default FourohFour
+export default FourohFour;

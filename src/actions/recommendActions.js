@@ -2,7 +2,7 @@
 import fetch from 'isomorphic-fetch';
 import config from '../../config';
 
-const API_HOST = `${config.ENDHOST}`
+const API_HOST = `${config.ENDHOST}`;
 const url = '/api/recommend';
 
 const REQUEST = 'recommend/REQUEST';
@@ -32,11 +32,11 @@ const getRecommendError = payload => ({
 
 const getRecommend = () => (dispatch) => {
   dispatch(getRecommendRequest());
-  
+
   return fetch(`${API_HOST}${url}`)
     .then(res => res.json())
-    .then(json => {
-      dispatch(getRecommendOk(json))
+    .then((json) => {
+      dispatch(getRecommendOk(json));
     })
     .catch(err => dispatch(getRecommendError(err)));
 };

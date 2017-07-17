@@ -25,7 +25,6 @@ const layoutsChat = payload => ({
 });
 
 
-
 export {
   layoutsOpen,
   layoutsWidth,

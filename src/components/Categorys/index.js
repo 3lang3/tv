@@ -1,3 +1,3 @@
-import Categorys from './Categorys.jsx';
+import Categorys from './Categorys';
 
 export default Categorys;

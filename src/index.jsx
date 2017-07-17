@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { render } from 'react-dom';
 import RouterWithProvider from 'components/Router';
 import injectTapEventPlugin from 'react-tap-event-plugin';

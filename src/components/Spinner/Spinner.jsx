@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './Spinner.css';
 import CircularProgress from 'material-ui/CircularProgress';
+import styles from './Spinner.css';
 
 
 const Spinner = ({ size = 59.5, color = '#6441a4' }) => (

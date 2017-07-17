@@ -1,3 +1,3 @@
-import ScreenItem from './ScreenItem.jsx';
+import ScreenItem from './ScreenItem';
 
 export default ScreenItem;

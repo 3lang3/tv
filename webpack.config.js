@@ -24,7 +24,7 @@ HashBundlePlugin.prototype.apply = (compiler) => {
       const vendorOutput = htmlOutput.replace(/\/build\/.?vendor\.js/, `${'/build/'}${stats.hash}${'.vendor.js'}`);
 
       fs.writeFileSync(path.join(__dirname, htmlFileName), vendorOutput);
-      //fs.writeFileSync(path.join(__dirname, htmlFileName), vendorOutput);
+      // fs.writeFileSync(path.join(__dirname, htmlFileName), vendorOutput);
     }
   });
 };
@@ -51,7 +51,7 @@ const config = {
       test: /\.css$/,
       loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]!postcss-loader',
       exclude: /node_modules\/c3/,
-    },{
+    }, {
       test: /\.css$/,
       loader: 'style-loader!css-loader',
       include: /node_modules\/c3/,
@@ -69,11 +69,11 @@ const config = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-        name: 'vendor',
-        minChunks: function (module) {
+      name: 'vendor',
+      minChunks(module) {
           // 该配置假定你引入的 vendor 存在于 node_modules 目录中
-          return module.context && module.context.indexOf('node_modules') !== -1;
-        }
+        return module.context && module.context.indexOf('node_modules') !== -1;
+      },
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
@@ -100,8 +100,8 @@ const config = {
     port: Number(process.env.PORT) || 8080,
     historyApiFallback: true,
     stats: {
-      chunks: false
-    }
+      chunks: false,
+    },
   },
 };
 

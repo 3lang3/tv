@@ -1,2 +1,3 @@
-import Error from './Error.jsx';
+import Error from './Error';
+
 export default Error;

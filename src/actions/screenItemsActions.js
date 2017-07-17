@@ -1,10 +1,10 @@
-import { Link, browserHistory } from 'react-router';
-import store from '../store';
-
 import fetch from 'isomorphic-fetch';
+import { browserHistory } from 'react-router';
+import store from '../store';
 import config from '../../config';
 
-const API_HOST = `${config.ENDHOST}`
+
+const API_HOST = `${config.ENDHOST}`;
 const url = '/api/screen/';
 
 const ADD = 'screenItems/ADD';
@@ -24,38 +24,38 @@ export const screenItemsActions = {
 };
 
 const preUrlHandler = (items) => {
-  let _preUrl = '?rooms=';
+  let preUrl = '?rooms=';
 
-  if(!items.length) return '';
+  if (!items.length) return '';
 
-  items.forEach((el, index) => {
-    let _id = el.roomId;
+  items.forEach((el) => {
+    let id = el.roomId;
 
-    if(typeof _id == 'object') _id = JSON.stringify(_id);
-    _preUrl += `${el.platform}_${_id}--`;
-  })
+    if (typeof id === 'object') id = JSON.stringify(id);
+    preUrl += `${el.platform}_${id}--`;
+  });
 
-  return _preUrl;
-}
+  return preUrl;
+};
 
 const getPreUrl = () => {
-  let items = store.getState().screenItems.data;
+  const items = store.getState().screenItems.data;
   return preUrlHandler(items);
-}
+};
 
 const replaceLocationHandler = () => {
-  let preUrl = getPreUrl();
+  const preUrl = getPreUrl();
 
   browserHistory.push(`/live${preUrl}`);
-}
+};
 
 const screenItemsUrl = () => {
-  let payload = getPreUrl();
+  const payload = getPreUrl();
 
   return {
     type: URL,
     payload,
-  }
+  };
 };
 
 const screenItemsAddHander = payload => ({
@@ -82,24 +82,24 @@ const getScreenItemsError = payload => ({
   payload,
 });
 
-const getScreenItems = (par) => (dispatch) => {
+const getScreenItems = par => (dispatch) => {
   dispatch(getScreenItemsRequest());
   return fetch(`${API_HOST}${url}${par}`)
     .then(res => res.json())
-    .then(json => {
-      dispatch(getScreenItemsOk(json))
+    .then((json) => {
+      dispatch(getScreenItemsOk(json));
       dispatch(screenItemsUrl());
     })
     .catch(err => dispatch(getScreenItemsError(err)));
 };
 
-const screenItemsAdd = (payload) => (dispatch) => {
+const screenItemsAdd = payload => (dispatch) => {
   dispatch(screenItemsAddHander(payload));
   dispatch(screenItemsUrl());
   replaceLocationHandler();
 };
 
-const screenItemsRemove = (payload) => (dispatch) => {
+const screenItemsRemove = payload => (dispatch) => {
   dispatch(screenItemsRemoveHander(payload));
   dispatch(screenItemsUrl());
   replaceLocationHandler();

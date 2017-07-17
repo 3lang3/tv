@@ -1,8 +1,8 @@
 /* global API_HOST */
 import fetch from 'isomorphic-fetch';
-
 import config from '../../config';
-const API_HOST = `${config.ENDHOST}`
+
+const API_HOST = `${config.ENDHOST}`;
 const url = '/api/invite/';
 
 const REQUEST = 'invite/REQUEST';
@@ -29,7 +29,7 @@ const getInviteError = payload => ({
   payload,
 });
 
-const getInvite = (code) => (dispatch) => {
+const getInvite = code => (dispatch) => {
   dispatch(getInviteRequest());
   return fetch(`${API_HOST}${url}${code}`)
     .then(res => res.json())

@@ -1,38 +1,38 @@
 import { favoriteActions } from 'actions';
 
 const initialState = {
-    data: JSON.parse(localStorage.getItem('favoriteList')) || [],
+  data: JSON.parse(localStorage.getItem('favoriteList')) || [],
 };
 
 export default (state = initialState, action) => {
-    switch (action.type) {
-        case favoriteActions.ADD:
+  switch (action.type) {
+    case favoriteActions.ADD:
 
-            let addItem = action.payload;
-            let newLocalStorage = Object.assign([], state.data);
+      const addItem = action.payload;
+      const newLocalStorage = Object.assign([], state.data);
 
-            newLocalStorage.push(addItem);
+      newLocalStorage.push(addItem);
 
-            localStorage.setItem('favoriteList', JSON.stringify(newLocalStorage));
+      localStorage.setItem('favoriteList', JSON.stringify(newLocalStorage));
 
-            return {
-                ...state,
-                data: newLocalStorage,
-            }
+      return {
+        ...state,
+        data: newLocalStorage,
+      };
 
-        case favoriteActions.REMOVE:
+    case favoriteActions.REMOVE:
 
-            let removeItem = action.payload;
-            let _newLocalStorage = state.data.filter( item => item.anchor != removeItem.anchor || item.roomId != removeItem.roomId );
-            
-            localStorage.setItem('favoriteList', JSON.stringify(_newLocalStorage));
+      const removeItem = action.payload;
+      const nowLocalStorage = state.data.filter(item => item.anchor !== removeItem.anchor || item.roomId !== removeItem.roomId);
 
-            return {
-                ...state,
-                data: _newLocalStorage,
-            }
+      localStorage.setItem('favoriteList', JSON.stringify(nowLocalStorage));
 
-        default:
-            return state;
-    }
-}
+      return {
+        ...state,
+        data: nowLocalStorage,
+      };
+
+    default:
+      return state;
+  }
+};

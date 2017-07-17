@@ -5,8 +5,8 @@ export const emojiActions = {
   TOGGLE,
 };
 
-const emojiToggle = payload => ({
-  type: TOGGLE
+const emojiToggle = () => ({
+  type: TOGGLE,
 });
 
 export {

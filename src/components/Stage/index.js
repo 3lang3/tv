@@ -1,3 +1,3 @@
-import Stage from './Stage.jsx';
+import Stage from './Stage';
 
 export default Stage;

@@ -1,14 +1,14 @@
 const OPEN = 'ALERT/OPEN';
 
 export const alertActions = {
-    OPEN: OPEN
-}
+  OPEN,
+};
 
-const alertOpen = (payload) => ({
+const alertOpen = payload => ({
   type: OPEN,
-  payload
+  payload,
 });
 
 export {
-    alertOpen
-}
+    alertOpen,
+};

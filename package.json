@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.5",
     "eslint-config-airbnb": "^14.1.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.16.4",

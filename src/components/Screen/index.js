@@ -1,3 +1,3 @@
-import Screen from './Screen.jsx';
+import Screen from './Screen';
 
 export default Screen;

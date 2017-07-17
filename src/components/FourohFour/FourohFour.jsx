@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default () => (
-    <div>404 page!</div>
-)
+  <div>404 page!</div>
+);

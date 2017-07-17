@@ -1,7 +1,8 @@
 /* global API_HOST */
 import fetch from 'isomorphic-fetch';
 import config from '../../config';
-const API_HOST = `${config.ENDHOST}`
+
+const API_HOST = `${config.ENDHOST}`;
 const url = '/api/search/';
 
 const REQUEST = 'search/REQUEST';
@@ -29,7 +30,7 @@ const getSearchError = payload => ({
 });
 
 
-const getSearch = (keyword) => (dispatch) => {
+const getSearch = keyword => (dispatch) => {
   dispatch(getSearchRequest());
   return fetch(`${API_HOST}${url}${keyword}`)
     .then(res => res.json())

@@ -1,3 +1,3 @@
-import Live from './Live.jsx'
+import Live from './Live';
 
 export default Live;

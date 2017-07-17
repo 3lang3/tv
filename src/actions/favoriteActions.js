@@ -1,7 +1,3 @@
-/* global API_HOST */
-
-const GET = 'favorite/GET';
-const SET = 'favorite/SET';
 const ADD = 'favorite/ADD';
 const REMOVE = 'favorite/REMOVE';
 
@@ -23,5 +19,5 @@ const removeFavorite = payload => ({
 
 export {
   addFavorite,
-  removeFavorite
+  removeFavorite,
 };

@@ -1,23 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
-
 import Header from 'components/Header';
 import Screen from 'components/Screen';
 import styles from './Stage.css';
 
-export const stage = (props) => {
+export const stage = () => (
+  <div className={styles.stage}>
+    <Header />
+    <Screen />
+  </div>
+  );
 
-  return (
-    <div className={styles.stage}>
-      <Header />
-      <Screen />
-    </div>
-  )
-}
+const mapStateToProps = state => ({
+  open: state.layouts.open,
+});
 
-const mapStateToProps = (state, ownProps) => ({
-    open: state.layouts.open,
-})
-
-export default connect(mapStateToProps)(stage)
+export default connect(mapStateToProps)(stage);

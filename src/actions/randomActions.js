@@ -2,7 +2,7 @@
 import fetch from 'isomorphic-fetch';
 import config from '../../config';
 
-const API_HOST = `${config.ENDHOST}`
+const API_HOST = `${config.ENDHOST}`;
 const url = '/api/random';
 
 const REQUEST = 'random/REQUEST';
@@ -33,11 +33,11 @@ const getRandomError = payload => ({
 
 const getRandom = () => (dispatch) => {
   dispatch(getRandomRequest());
-  
+
   return fetch(`${API_HOST}${url}`)
     .then(res => res.json())
-    .then(json => {
-      dispatch(getRandomOk(json))
+    .then((json) => {
+      dispatch(getRandomOk(json));
     })
     .catch(err => dispatch(getRandomError(err)));
 };
