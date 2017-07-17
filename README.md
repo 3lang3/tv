@@ -22,7 +22,7 @@
 
 发布(production)
 ----
-* `npm run build`
+* `npm run webpack`
 
 技术栈
 ----
