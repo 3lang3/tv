@@ -47,7 +47,7 @@ const preFixIds = (item) => {
 
   if (typeof ids !== 'object') {
     id = ids;
-    if (item.platform === 'huya') _id = `${ids}//huyacoop.swf`;
+    if (item.platform === 'huya') id = `${ids}//huyacoop.swf`;
   } else {
     for (const key in ids) {
       id += `&${key}=${ids[key]}`;

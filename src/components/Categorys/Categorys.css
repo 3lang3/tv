@@ -16,13 +16,14 @@
     }
 
     & h2 {
-        margin: 2.4rem 0;
+        margin: 1rem 0 2.4rem;
         color:#19171c;
         font-weight: 400;
         font-size: 3rem;
         white-space: nowrap;
         text-overflow: ellipsis;
         overflow: hidden;
+        line-height: 1.1em;
 
         & span {
             font-size: 2.8rem;
