@@ -8,7 +8,6 @@
     "start:src": " cross-env NODE_ENV=production webpack-dev-server --compress --watch-poll",
     "start": "webpack-dev-server --inline --compress",
     "start:noc": "webpack-dev-server --inline",
-    "build": "npm install && npm run lintnofix && npm run lint:css && npm test && npm run webpack",
     "lint": "eslint . --ext .js,.jsx --fix",
     "lintnofix": "eslint . --ext .js,.jsx",
     "lint:css": "stylelint 'src/**/*.css'",
