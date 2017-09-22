@@ -126,7 +126,7 @@ class screenItem extends React.Component {
         </section>
         <section
           style={{ paddingBottom: `${secHeight / paddBottom}%` }} className={styles.itemIframe}
-          dangerouslySetInnerHTML={{ __html: `<iframe allowscriptaccess="always" src="${url}${id}" allowfullscreen="true"></iframe>` }}
+          dangerouslySetInnerHTML={{ __html: `<embed type="application/x-shockwave-flash" allowscriptaccess="always" src="${url}${id}" allowfullscreen="true"></embed>` }}
         />
       </section>
     );
