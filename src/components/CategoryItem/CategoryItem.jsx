@@ -84,7 +84,7 @@ class CategoryItem extends React.Component {
                   height={'280px'}
                 >
                   <figure>
-                    <img src={`${item.cover}`} onError={(e)=> e.target.src=`${config.ENDHOST}/public/images/bilibili_no_img.png`} onLoad={this.imageLoad} />
+                    <img src={`${item.cover}`} onError={(e)=> e.target.src=`${config.ENDHOST}/images/bilibili_no_img.png`} onLoad={this.imageLoad} />
                   </figure>
                 </LazyLoad>
           }
