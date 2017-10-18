@@ -6,7 +6,7 @@ import ActionEye from 'material-ui/svg-icons/action/visibility';
 import { screenItemsAdd } from 'actions';
 import { IconUser } from '../Icons';
 import styles from './CategoryItem.css';
-import config from '../../config';
+import config from '../../../config';
 
 const typeHtmlHandler = (props) => {
   const item = props.item;
