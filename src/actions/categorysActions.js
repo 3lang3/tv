@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 import config from '../../config';
 
 const API_HOST = `${config.ENDHOST}`;
-const url = '/api/categorys/';
+const url = '/api/search?type=all&word=';
 
 const REQUEST = 'categorys/REQUEST';
 const OK = 'categorys/OK';
@@ -31,21 +31,26 @@ const getCategorysError = payload => ({
   payload,
 });
 
-const filterCategorys = payload => ({
-  type: FILTER,
-  payload,
-});
-
-const getCategorys = name => (dispatch) => {
+const getCategorys = ( platform = 'all', name, page = 0) => (dispatch) => {
   dispatch(getCategorysRequest());
-  dispatch(filterCategorys(''));
-  return fetch(`${API_HOST}${url}${name}`)
+
+  return fetch(`${API_HOST}${url}${name}&platform=${platform}&page=${page}`)
     .then(res => res.json())
     .then(json => dispatch(getCategorysOk(json)))
     .catch(err => dispatch(getCategorysError(err)));
 };
 
+
+const getCategorysMore = ( platform = 'all', name, page = 0) => (dispatch) => {
+  return fetch(`${API_HOST}${url}${name}&platform=${platform}&page=${page}`)
+    .then(res => res.json())
+    .then((json) => {
+      dispatch(getCategorysOk(json));
+    })
+    .catch(err => dispatch(getCategorysError(err)));
+}
+
 export {
   getCategorys,
-  filterCategorys,
+  getCategorysMore,
 };

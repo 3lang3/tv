@@ -4,6 +4,8 @@
     width: 100%;
     height: 100%;;
     transition: none;
+    display: flex;
+    flex-direction: column;
     
     & .topSec {
         position: absolute !important;
@@ -50,7 +52,7 @@
     flex: 1 0 auto;
     max-width: 50%;
     width: 30rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
     padding: 0 1rem;
 }
 

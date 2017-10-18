@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 import config from '../../config';
 
 const API_HOST = `${config.ENDHOST}`;
-const url = '/api/recommend';
+const url = '/api/search?type=all';
 
 const REQUEST = 'recommend/REQUEST';
 const OK = 'recommend/OK';
@@ -29,11 +29,10 @@ const getRecommendError = payload => ({
   payload,
 });
 
-
-const getRecommend = () => (dispatch) => {
+const getRecommend = (platform = 'all', word = 'all') => (dispatch) => {
   dispatch(getRecommendRequest());
 
-  return fetch(`${API_HOST}${url}`)
+  return fetch(`${API_HOST}${url}&platform=${platform}&word=${word}&page=0`)
     .then(res => res.json())
     .then((json) => {
       dispatch(getRecommendOk(json));
@@ -41,6 +40,17 @@ const getRecommend = () => (dispatch) => {
     .catch(err => dispatch(getRecommendError(err)));
 };
 
+const getRecommendMore = (platform = 'all', word = 'all', page = 0) => (dispatch) => {
+  
+  return fetch(`${API_HOST}${url}&platform=${platform}&word=${word}&page=${page}`)
+    .then(res => res.json())
+    .then((json) => {
+      dispatch(getRecommendOk(json));
+    })
+    .catch(err => dispatch(getRecommendError(err)));
+}
+
 export {
   getRecommend,
+  getRecommendMore,
 };

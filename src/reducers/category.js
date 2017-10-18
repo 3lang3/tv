@@ -5,6 +5,7 @@ const initialState = {
   error: false,
   done: false,
   data: {},
+  platforms: [],
 };
 
 export default (state = initialState, action) => {
@@ -16,6 +17,7 @@ export default (state = initialState, action) => {
         error: false,
         done: false,
         data: {},
+        platforms: [],
       };
 
     case categoryActions.OK:
@@ -24,7 +26,8 @@ export default (state = initialState, action) => {
         loading: false,
         error: false,
         done: true,
-        data: action.payload,
+        data: action.payload.list.result,
+        platforms: action.payload.platforms.result,
       };
 
     case categoryActions.ERROR:

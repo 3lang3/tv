@@ -7,30 +7,18 @@ import { screenItemsAdd } from 'actions';
 import { IconUser } from '../Icons';
 import styles from './CategoryItem.css';
 
-
-const smallTitleHandler = (props) => {
-  let result;
-
-  props.category.data.forEach((el) => {
-    if (props.item.type == el.name) result = `${el.name_cn} | ${el.name_en}`;
-  });
-
-  return result;
-};
-
 const typeHtmlHandler = (props) => {
   const item = props.item;
 
   switch (props.type) {
     case 'random':
-      const title = smallTitleHandler(props);
 
       return (<section className={styles.textSec}>
         <div className={styles.title} title={`${item.anchor}`}>
           {item.anchor}
         </div>
         <div className={styles.ico}>
-          <span>{title}</span>
+          <span>{item.type}</span>
         </div>
       </section>);
     default:
@@ -85,19 +73,20 @@ class CategoryItem extends React.Component {
         {/* <PlayAdd className={styles.add} />*/}
         <section className={styles.imgWrapper}>
           {
-                        this.props.type == 'search' || this.props.type === 'random'
-                            ? item.anchor.substr(0, 1)
-                            : <LazyLoad
-                              overflow
-                              resize
-                              throttle={200}
-                              height={'auto'}
-                            >
-                              <figure>
-                                <img src={`${item.cover}`} onLoad={this.imageLoad} />
-                              </figure>
-                            </LazyLoad>
-                    }
+            this.props.type == 'search' || this.props.type === 'random'
+                ? item.anchor.substr(0, 1)
+                : <LazyLoad
+                  overflow={true}
+                  resize={true}
+                  offset={100}
+                  throttle={200}
+                  height={'280px'}
+                >
+                  <figure>
+                    <img src={`${item.cover}`} onError={(e)=> e.target.src="../../../assets/bilibili_no_img.png"} onLoad={this.imageLoad} />
+                  </figure>
+                </LazyLoad>
+          }
         </section>
         {outSideHtml}
         {typeHtml}

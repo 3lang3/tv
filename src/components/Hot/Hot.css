@@ -1,7 +1,6 @@
 .container {
     width: auto;
     height: 100%;
-    margin: 0 -1rem;
     // background: radial-gradient(ellipse at bottom, #1c2837 0%, #050608 100%);
     // background-attachment: fixed;
 }
@@ -32,7 +31,7 @@
 .content {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     height: 100%;
     margin: 0 auto;
     justify-content: space-between;
@@ -41,14 +40,13 @@
 
     & h2 {
         width: 100%;
-        margin: 10px 0 12px;
+        margin: 10px 0 2.4rem;
         box-sizing: border-box;
         font-size: 2.8rem;
         font-weight: 400;
         text-transform: uppercase;
         color: #19171c;
         position: relative;
-        padding: 0 1rem;
 
         & .text {
             color: #6441a4;
@@ -67,6 +65,32 @@
             &:hover {
                 color: #000;
             }
+        }
+    }
+}
+
+.chipSec {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+
+    & span {
+        font-size: 1.2rem;
+        display: block;
+        border-radius: 1.5rem;
+        font-weight: 400;
+        background: #e6e6e6;
+        color: #6d6d6d;
+        padding: .1rem 1rem;
+        margin: 0 .5rem .5rem 0;
+        cursor: pointer;
+        transition: all .4s;
+
+        &.active, &:hover {
+            background:#19171c;
+            color:#fff;
         }
     }
 }

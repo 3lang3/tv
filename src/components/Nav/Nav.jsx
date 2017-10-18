@@ -9,8 +9,8 @@ import styles from './Nav.css';
 
 const Nav = (props) => (
   <div className={styles.nav}>
-    <Link to="/categorys" activeClassName={styles.active} className={styles.navItem} >游戏</Link>
     <Link to="/hot" activeClassName={styles.active} className={styles.navItem} >流行</Link>
+    <Link to="/categorys" activeClassName={styles.active} className={styles.navItem} >所有游戏</Link>
     <Link to={`/live${props.screenItemsUrl}`} activeClassName={styles.active} className={styles.navItem} >正在观看</Link>
     {/* <Link to="/wiki" activeClassName={styles.active} className={styles.navItem} >资讯<span className={styles.lab}>待开放</span></Link>*/}
     <Search />

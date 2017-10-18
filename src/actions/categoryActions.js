@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 import config from '../../config';
 
 const API_HOST = `${config.ENDHOST}`;
-const url = '/api/categorys';
+const url = '/api/search?type=getCategory';
 
 const REQUEST = 'category/REQUEST';
 const OK = 'category/OK';

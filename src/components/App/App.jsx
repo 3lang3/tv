@@ -30,7 +30,7 @@ const App = (props) => {
           <Side />
           <div className={classnames(styles.scrollContainer, styles[ChatOpen])}>
             <Nav />
-            <Scrollbars>
+
               <div className={styles.wrapperContainer}>
 
                 <div className={styles.mainContainer}>
@@ -38,7 +38,7 @@ const App = (props) => {
                 </div>
 
               </div>
-            </Scrollbars>
+
           </div>
           <Chat />
           <ChangeLog />

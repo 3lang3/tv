@@ -2,10 +2,10 @@ import { categorysActions } from 'actions';
 
 const initialState = {
   loading: false,
+  pageLoading: false,
   error: false,
   done: false,
-  data: {},
-  filter: '',
+  data: [],
 };
 
 export default (state = initialState, action) => {
@@ -14,30 +14,31 @@ export default (state = initialState, action) => {
       return {
         ...state,
         loading: true,
+        pageLoading: false,
         error: false,
         done: false,
-        data: {},
+        data: [],
       };
     case categorysActions.OK:
+      let newList = state.data.concat(action.payload);
+
       return {
         ...state,
         loading: false,
+        pageLoading: action.payload.length > 0,
         error: false,
         done: true,
-        data: action.payload,
+        data: newList,
       };
     case categorysActions.ERROR:
       return {
         ...state,
         loading: false,
+        pageLoading: false,
         error: true,
         done: false,
       };
-    case categorysActions.FILTER:
-      return {
-        ...state,
-        filter: action.payload,
-      };
+
     default:
       return state;
   }

@@ -29,7 +29,7 @@
 
 .mainContainer {
     width: 100%;
-    height: auto;
+    height: 100%;
     padding-bottom: 4rem;
 }
 
@@ -51,6 +51,22 @@
 
 @media screen and (max-width: 768px) {
     .scrollContainer {
+        margin-left: 0;
+    }
+}
+
+
+:global(.ScrollContainer) {
+    margin: 0 -1rem;
+    
+    & > div:first-child {
+        display:flex; 
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    :global(.ScrollContainer) {
         margin-left: 0;
     }
 }

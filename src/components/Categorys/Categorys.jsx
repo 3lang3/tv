@@ -1,26 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Scrollbars } from 'react-custom-scrollbars';
 import classnames from 'classnames';
 import CategoryItem from 'components/CategoryItem';
 import Error from 'components/Error';
 import Spinner from 'components/Spinner';
+import PageLoader from 'components/PageLoader';
 import { forceCheck } from 'react-lazyload';
-import { getCategorys, filterCategorys } from 'actions';
+import { getCategorys, getCategorysMore } from 'actions';
 import styles from './Categorys.css';
-
-const getData = (props) => {
-  props.getCategorys(props.params.name);
-};
-
-const preTypeTitle = (props) => {
-  let title;
-
-  !!props.category.data.length && props.category.data.forEach((el) => {
-    if (el.name === props.params.name) return title = <h2><span>{el.name_cn}</span>{el.name_en}</h2>;
-  });
-
-  return title;
-};
 
 const isFavorite = (item, favoriteList) => {
   let target = false;
@@ -41,35 +29,50 @@ const isFavorite = (item, favoriteList) => {
 class Categorys extends React.Component {
   constructor(props) {
     super(props);
-    this.filterHander = this.filterHander.bind(this);
+    this.page = 0;
+    this.platform = 'all';
+    this.word = props.params.name;
+    this.scrollEvent = this.scrollEvent.bind(this);
   }
 
+
   componentDidMount() {
-    getData(this.props);
+    this.props.getCategorys(this.platform, this.word);
   }
 
   componentDidUpdate() {
     forceCheck();
   }
 
-  filterHander(clas) {
-    this.props.filterCategorys(clas);
+  filterEvent({ platform, word }) {
+    this.page = 0;
+    if (platform) this.platform = platform;
+    if (word) this.word = word;
+    this.props.getCategorys(this.platform, this.word);
+  }
+
+  scrollEvent(value) {
+    if (value.top == 1) {
+      this.page++;
+      this.props.getCategorysMore(this.platform, this.word, this.page);
+    }
   }
 
   render() {
-    // const typeName = preTypeTitle(this.props);
-    const typeName = preTypeTitle(this.props);
-    const loading = this.props.data.loading;
-    const isError = this.props.data.error;
-    const items = this.props.data.data;
-    const filterName = this.props.data.filter;
+    const typeName = <h2><span>{this.props.params.name}</span></h2>;
+    const { loading, error, data, done, pageLoading } = this.props.data;
 
+    const categoryPlatformList = [];
     const itemsHtml = [];
     const itemsPlatform = [''];
     const favoriteList = this.props.favorite;
 
-    if (items instanceof Array) {
-      items.forEach((item, key) => {
+    this.props.category.done && this.props.category.platforms.forEach((item, key) => {
+      categoryPlatformList.push(<span key={item} className={this.platform == item ? styles.active : ''} onClick={() => this.filterEvent({ platform: item })}>{item}</span>)
+    })
+
+    if (data instanceof Array) {
+      data.forEach((item, key) => {
         if (itemsPlatform.indexOf(item.platform) === -1) itemsPlatform.push(item.platform);
 
         itemsHtml.push(<CategoryItem favoriteStatus={(isFavorite(item, favoriteList))} filterSwitch key={`${item.roomId}${key}`} item={item} type="category" />);
@@ -86,17 +89,19 @@ class Categorys extends React.Component {
         <div className={styles.categoryTitle}>
           {typeName}
           <section className={styles.chipSec}>
-            {
-                itemsPlatform.length > 1 && itemsPlatform.map((platform, key) => <span className={filterName == platform ? styles.active : ''} onClick={() => this.filterHander(platform)} key={key}>{platform || 'All'}</span>)
-              }
+            <span className={this.platform == 'all' ? styles.active : ''} onClick={() => this.filterEvent({ platform: 'all' })}>所有平台</span>
+            {categoryPlatformList}
           </section>
         </div>
 
-
-        <section className={styles.flexWrapper}>
+        <Scrollbars
+          className="ScrollContainer"
+          onScrollFrame={ pageLoading ? this.scrollEvent : () => null }
+        >
           {loading ? <div className={styles.loader}><Spinner size={50} /></div> : ''}
-          {isError ? <Error img={require('../../../assets/error_fetch.svg')} content="Ooops,服务器好像出了点小问题" /> : itemsHtml }
-        </section>
+          {error ? <Error img={require('../../../assets/error_fetch.svg')} content="Ooops,服务器好像出了点小问题" /> : itemsHtml}
+          {pageLoading ? PageLoader() : ''}
+        </Scrollbars>
 
       </div>
     );
@@ -106,12 +111,11 @@ class Categorys extends React.Component {
 const mapStateToProps = state => ({
   data: state.categorys,
   category: state.category,
-  filter: state.categorys.filter,
 });
 
 const mapDispatchToProps = dispatch => ({
-  filterCategorys: clas => dispatch(filterCategorys(clas)),
-  getCategorys: clas => dispatch(getCategorys(clas)),
+  getCategorys: (platform, word, page) => dispatch(getCategorys(platform, word, page)),
+  getCategorysMore: (platform, word, page) => dispatch(getCategorysMore(platform, word, page)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categorys);

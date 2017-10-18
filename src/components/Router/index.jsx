@@ -44,7 +44,7 @@ const getHotComp = (nextState, cb) => {
 
 export const routes = (
   <Route path="/" component={App}>
-    <IndexRoute getComponent={getCategoryComp} />
+    <IndexRoute getComponent={getHotComp} />
     <Route path="categorys" getComponent={getCategoryComp} />
     <Route path="categorys/:name" getComponent={getCategorysComp} />
     <Route path="hot" getComponent={getHotComp} />

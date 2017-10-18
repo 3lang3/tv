@@ -18,17 +18,6 @@ import {
 import config from '../../../config';
 import styles from './ScreenItem.css';
 
-
-const smallTitleHandler = (props) => {
-  let result;
-
-  props.category.data.forEach((el) => {
-    if (props.item.type === el.name) result = `${el.name_cn} | ${el.name_en}`;
-  });
-
-  return result;
-};
-
 const platforms = [
     { name: 'douyu', url: 'https://staticlive.douyucdn.cn/common/share/play.swf?room_id=' },
     { name: 'huomao', url: 'https://www.huomao.com/outplayer/index/' },
@@ -36,7 +25,8 @@ const platforms = [
     { name: 'afreecatv', url: 'http://www.afreecatv.com/player/player.html?isAfreeca=false&type=station&autoPlay=true&szPart=NORMAL' },
     { name: 'douyuvideo', url: 'https://v.douyu.com/video/share/index?vid=' },
     { name: 'huya', url: 'http://liveshare.huya.com/' },
-    { name: 'quanmin', url: 'http://quanmin.tv/static/v2/boot/embed/embed.html?isindex=2&roomid=' },
+    { name: 'zhanqi', url: 'http://www.zhanqi.tv/live/embed?roomId=' },
+    { name: 'quanmin', url: 'http://quanmin.tv/static/v2/boot/embed/embed.html?roomid=' },
     { name: 'bilibili', url: 'https://static.hdslb.com/live-static/swf/LivePlayerEx_1.swf?cid=' },
     { name: 'longzhu', url: 'http://player.plures.net/prod/player/vPlayer_v162.swf?&env=cn&vxml=http://player.plures.net/prod/player/videoConfig/video_homev6.xml&roomId=' },
 ];
@@ -94,7 +84,6 @@ class screenItem extends React.Component {
     const paddBottom = (item.platform === 'douyu' || item.platform === 'huya' || item.platform === 'douyuvideo') ? 16 / 9 : 16 / 9;
     const secHeight = this.props.screenCount > 1 ? 100 : 100;
     const screenClass = preScreenCount(this.props.screenCount);
-    const smallTitleText = smallTitleHandler(this.props);
     const favoriteHtml = this.props.favoriteStatus ? <span className={styles.like}><FavoriteIco /></span> : <span><FavoriteBroIco /></span>;
 
     let url;
@@ -106,12 +95,12 @@ class screenItem extends React.Component {
     return (
       <section className={classnames(styles.stageItem, styles[screenClass])}>
         <section className={styles.brand}>
-          <div className={styles.typeImg}>
+          {/* <div className={styles.typeImg}>
             <img src={`${config.ENDHOST}/images/${item.type}.jpg`} />
-          </div>
+          </div> */}
           <div className={styles.title}>
             <h3>{item.title}</h3>
-            <h5><Link to={`/categorys/${item.type}`}><span><IconGame /> {smallTitleText} </span><span><IconUser />{item.anchor}</span> <span><ActionEye /> {item.view}</span> </Link></h5>
+            <h5><Link to={`/categorys/${item.type}`}><span><IconGame /> {item.type} </span><span><IconUser />{item.anchor}</span> <span><ActionEye /> {item.view}</span> </Link></h5>
           </div>
           <section className={styles.itemInfo}>
             <ul>
@@ -126,7 +115,7 @@ class screenItem extends React.Component {
         </section>
         <section
           style={{ paddingBottom: `${secHeight / paddBottom}%` }} className={styles.itemIframe}
-          dangerouslySetInnerHTML={{ __html: `<embed type="application/x-shockwave-flash" allowscriptaccess="always" src="${url}${id}" allowfullscreen="true"></embed>` }}
+          dangerouslySetInnerHTML={{ __html: `<iframe type="application/x-shockwave-flash" allowscriptaccess="always" src="${url}${id}" allowfullscreen></iframe>` }}
         />
       </section>
     );

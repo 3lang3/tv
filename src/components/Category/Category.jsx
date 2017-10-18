@@ -1,23 +1,39 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
+import { Scrollbars } from 'react-custom-scrollbars';
 import { getCategory } from 'actions';
 import Spinner from 'components/Spinner';
+import PageLoader from 'components/PageLoader';
+import LazyLoad from 'react-lazyload';
 import Error from 'components/Error';
 import styles from './Category.css';
 import config from '../../../config';
 
+const imageLoad = (e) => {
+  e.target.className = styles.imgFadeIn;
+  return false;
+}
+
 const Category = (props) => {
-  const { error, loading, done, data } = props.category;
+  const { error, loading, done, data, pageLoading } = props.category;
   const itemHtml = [];
 
   !!data.length && data.forEach((el, index) => {
     const item = (<div className={styles.itemWrapper} key={index}>
       <div className={styles.item}>
-        <Link to={`/categorys/${el.name}`}>
-          <figure><img src={`${config.ENDHOST}/images/${el.name}.jpg`} /></figure>
-          <h5>{el.name_cn} | {el.name_en}</h5>
-          <p>{el.count} 名主播</p>
+        <Link to={`/categorys/${el.type}`}>
+          <LazyLoad
+            overflow={true}
+            resize={true}
+            offset={100}
+            throttle={200}
+            height={'330px'}
+          >
+            <figure><img onLoad={imageLoad} src={`${config.ENDHOST}/images/${el.type.indexOf(':') > -1 ? el.type.replace(':', '-') : el.type}.jpg`} /></figure>
+          </LazyLoad>
+          <h5>{el.type}</h5>
+          <p>{el.tv} 名主播 | {el.view}人气</p>
         </Link>
       </div>
     </div>);
@@ -32,13 +48,15 @@ const Category = (props) => {
     <div className={styles.container}>
 
       <div className={styles.content}>
-        {loading ? <Spinner size={50} /> : ''}
-        {error ? <Error img={require('../../../assets/error_fetch.svg')} content="Ooops,服务器好像出了点小问题" /> : itemHtml }
+        <Scrollbars className="ScrollContainer">
+          {loading ? <Spinner size={50} /> : ''}
+          {error ? <Error img={require('../../../assets/error_fetch.svg')} content="Ooops,服务器好像出了点小问题" /> : itemHtml}
+        </Scrollbars>
       </div>
 
     </div>
-  );
-};
+  )
+}
 
 
 const mapStateToProps = state => ({
