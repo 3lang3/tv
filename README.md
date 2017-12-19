@@ -1,6 +1,7 @@
 # [RUARUA.live](http://ruarua.live)开源项目
 
 #### ruarua.live: 全球视频直播资源聚合，同时观看多个内容,[点击进入](http://ruarua.live)
+#### (更新)分类功能完善
 ![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/logo-text.png)
 
 由于测试站点没有https证书, chrome 可能会提示flash不可用或者下载, 将站点加入到chrome flash可信列表可以正常测试
