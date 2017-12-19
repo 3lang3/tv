@@ -3,6 +3,7 @@
 #### ruarua.live: 全球视频直播资源聚合，同时观看多个内容,[点击进入](http://ruarua.live)
 ![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/logo-text.png)
 
+由于测试站点没有https证书, chrome 可能会提示flash不可用或者下载, 将站点加入到chrome flash可信列表可以正常测试
 #### live demo 截图:
 ##### 首页:
 ![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/doc_banner_1.jpg)
