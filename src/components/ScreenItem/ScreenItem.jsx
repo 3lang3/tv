@@ -19,16 +19,16 @@ import config from '../../../config';
 import styles from './ScreenItem.css';
 
 const platforms = [
-    { name: 'douyu', url: 'https://staticlive.douyucdn.cn/common/share/play.swf?room_id=' },
-    { name: 'huomao', url: 'https://www.huomao.com/outplayer/index/' },
+    { name: 'douyu', url: 'http://staticlive.douyucdn.cn/common/share/play.swf?room_id=', attr: 'type="application/x-shockwave-flash" allowscriptaccess="always" allownetworking="all" wmode="window" allowfullscreen="true" allowFullScreenInteractive="true"' },
+    { name: 'huomao', url: 'https://www.huomao.com/outplayer/index/', attr: '' },
     { name: 'twitch', url: 'https://player.twitch.tv/?channel=' },
     { name: 'afreecatv', url: 'http://www.afreecatv.com/player/player.html?isAfreeca=false&type=station&autoPlay=true&szPart=NORMAL' },
-    { name: 'douyuvideo', url: 'https://v.douyu.com/video/share/index?vid=' },
-    { name: 'huya', url: 'http://liveshare.huya.com/' },
-    { name: 'zhanqi', url: 'http://www.zhanqi.tv/live/embed?roomId=' },
-    { name: 'quanmin', url: 'http://quanmin.tv/static/v2/boot/embed/embed.html?roomid=' },
-    { name: 'bilibili', url: 'https://static.hdslb.com/live-static/swf/LivePlayerEx_1.swf?cid=' },
-    { name: 'longzhu', url: 'http://player.plures.net/prod/player/vPlayer_v162.swf?&env=cn&vxml=http://player.plures.net/prod/player/videoConfig/video_homev6.xml&roomId=' },
+    { name: 'douyuvideo', url: 'http://v.douyu.com/video/share/index?vid=' },
+    { name: 'huya', url: 'http://liveshare.huya.com/', attr: 'type="application/x-shockwave-flash" allowscriptaccess="always"' },
+    { name: 'zhanqi', url: 'http://www.zhanqi.tv/live/embed?roomId=', attr: '' },
+    { name: 'quanmin', url: 'http://quanmin.tv/static/v2/boot/embed/embed.html?roomid=',  attr: 'type="application/x-shockwave-flash" allowscriptaccess="always"' },
+    { name: 'bilibili', url: 'http://static.hdslb.com/live-static/swf/LivePlayerEx_1.swf?cid=', attr: 'type="application/x-shockwave-flash" allowscriptaccess="always"' },
+    { name: 'longzhu', url: 'http://player.plures.net/prod/player/vPlayer_v162.swf?&env=cn&vxml=http://player.plures.net/prod/player/videoConfig/video_homev6.xml&roomId=', attr: 'type="application/x-shockwave-flash" allowscriptaccess="always"' },
 ];
 
 const preFixIds = (item) => {
@@ -87,9 +87,18 @@ class screenItem extends React.Component {
     const favoriteHtml = this.props.favoriteStatus ? <span className={styles.like}><FavoriteIco /></span> : <span><FavoriteBroIco /></span>;
 
     let url;
+    let attr;
+    let name;
+    let player;
 
-    platforms.map((platform) => {
-      if (platform.name === item.platform) return url = platform.url;
+    platforms.map(platform => {
+      if (platform.name === item.platform) {
+        url = platform.url;
+        attr = platform.attr;
+        name = platform.name;
+        player = name == 'huomao' ? `<iframe ${attr} src="${url}${id}"></iframe>` : `<embed ${attr} src="${url}${id}"></embed>`
+        return
+      }
     });
 
     return (
@@ -115,7 +124,7 @@ class screenItem extends React.Component {
         </section>
         <section
           style={{ paddingBottom: `${secHeight / paddBottom}%` }} className={styles.itemIframe}
-          dangerouslySetInnerHTML={{ __html: `<iframe type="application/x-shockwave-flash" allowscriptaccess="always" src="${url}${id}" allowfullscreen></iframe>` }}
+          dangerouslySetInnerHTML={{ __html: player }}
         />
       </section>
     );

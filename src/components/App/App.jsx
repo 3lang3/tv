@@ -40,7 +40,7 @@ const App = (props) => {
               </div>
 
           </div>
-          <Chat />
+          {/* <Chat /> */}
           <ChangeLog />
           <Alert />
         </div>
