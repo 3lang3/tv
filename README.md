@@ -4,7 +4,8 @@
 #### (更新)分类功能完善
 ![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/logo-text.png)
 
-由于测试站点没有https证书, chrome 可能会提示flash不可用或者下载, 将站点加入到chrome flash可信列表可以正常测试
+#如果您的Chrome版本高于60 网站可能无法观看视频
+[chrome iframe swf don't work](https://bugs.chromium.org/p/chromium/issues/detail?id=767342)
 #### live demo 截图:
 ##### 首页:
 ![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/doc_banner_1.jpg)
