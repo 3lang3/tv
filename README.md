@@ -1,6 +1,9 @@
-# [RUARUA.live](http://ruarua.live)开源项目
+# RUARUA.live开源项目
 
-#### ruarua.live: 全球视频直播资源聚合，同时观看多个内容,[点击进入](http://ruarua.live)
+#demo站点不可用
+#直播平台大多已经转h5播放器 直播流获取难度增加, 大多都不能直接播放 有兴趣的可以自己探索
+
+#### ruarua.live: 全球视频直播资源聚合，同时观看多个内容
 #### (更新)分类功能完善
 ![image](https://raw.githubusercontent.com/EthanOrange/tv/master/assets/logo-text.png)
 
